@@ -19,13 +19,13 @@
     <Folder Include="Aids\" />
     <Folder Include="Data\" />
     <Folder Include="Infra\" />
-    <Folder Include="Soft\" />
     <Folder Include="Pages\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Facade\Facade.csproj" />
+    <ProjectReference Include="..\Soft\Soft.csproj" />
   </ItemGroup>
 
 </Project>
