@@ -1,10 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Contoso.Domain
-{
-    public class Department
-    {
+namespace Contoso.Domain {
+    public class Department {
         public int DepartmentID { get; set; }
 
         [StringLength(50, MinimumLength = 3)]

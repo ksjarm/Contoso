@@ -1,10 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Contoso.Domain
-{
-    public abstract class Person
-    {
+namespace Contoso.Domain {
+    public abstract class Person {
         public int ID { get; set; }
 
         [Required]
@@ -18,12 +16,8 @@ namespace Contoso.Domain
         public string? FirstMidName { get; set; }
 
         [Display(Name = "Full Name")]
-        public string FullName
-        {
-            get
-            {
-                return LastName + ", " + FirstMidName;
-            }
+        public string FullName {
+            get => LastName + ", " + FirstMidName;
         }
     }
 }

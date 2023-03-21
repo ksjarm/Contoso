@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Contoso.Domain
-{
-    public class OfficeAssignment
-    {
+namespace Contoso.Domain {
+    public class OfficeAssignment {
         [Key]
         public int InstructorID { get; set; }
         [StringLength(50)]

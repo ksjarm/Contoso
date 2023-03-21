@@ -1,10 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Contoso.Domain
-{
-
-    public class Enrollment
-    {
+namespace Contoso.Domain {
+    public class Enrollment {
         public int EnrollmentID { get; set; }
         public int CourseID { get; set; }
         public int StudentID { get; set; }

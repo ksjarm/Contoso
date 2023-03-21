@@ -1,10 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Contoso.Domain
-{
-    public class Course
-    {
+namespace Contoso.Domain {
+    public class Course {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Display(Name = "Number")]
         public int CourseID { get; set; }
