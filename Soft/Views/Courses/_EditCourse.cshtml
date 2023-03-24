@@ -1,8 +1,8 @@
-﻿@using Contoso.Soft.HtmlHelpers
+﻿@using Contoso.Pages.HtmlHelpers
 @model Course
 
-@Html.MyEditorFor(x => x.Title)
-@Html.MyEditorFor(x => x.Credits)
+@Html.ControllerFor(x => x.Title)
+@Html.ControllerFor(x => x.Credits)
 
 <div class="form-group">
 	<label asp-for="Department" class="control-label"></label>

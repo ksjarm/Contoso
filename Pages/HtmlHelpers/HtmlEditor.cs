@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq.Expressions;
 
-namespace Contoso.Soft.HtmlHelpers
+namespace Contoso.Pages.HtmlHelpers
 {
 	public static class HtmlEditor
 	{
-		public static IHtmlContent MyEditorFor<TModel, TResult>
+		public static IHtmlContent ControllerFor<TModel, TResult>
 				(this IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e)
 		{
 			var s = htmlStrings(h, e);

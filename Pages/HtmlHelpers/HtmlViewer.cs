@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Html;
+﻿using Contoso.Pages.Constants;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq.Expressions;
 
-namespace Contoso.Soft.HtmlHelpers;
+namespace Contoso.Pages.HtmlHelpers;
 	public static class HtmlViewer {
 		public static IHtmlContent ViewerFor<TModel, TResult>
 			(this IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e) {
@@ -12,9 +13,9 @@ namespace Contoso.Soft.HtmlHelpers;
 
 	private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h, 
 		Expression<Func<TModel, TResult>> e) => new () {
-			new HtmlString("<dt class=\"col-sm-2\">"),
+			new HtmlString((HtmlConstants.TitleEnd),
 			h.DisplayNameFor(e),
-			new HtmlString("/dt>"),
+			new HtmlString((HtmlConstants.TitleEnd),
 			new HtmlString("<dt class=\"col-sm-10\">"),
 			h.DisplayFor(e),
 			new HtmlString("/dt>")

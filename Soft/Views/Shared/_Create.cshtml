@@ -1,11 +1,12 @@
-﻿@{
-    //Layout = CommonViewStrings.Layout;
-    //ViewData[ViewDataStrings.Caption] = "Create";
+﻿@using Contoso.Pages.Constants;
+@{
+    Layout = CommonViewStrings.Layout;
+    ViewData[ViewDataStrings.Caption] = CreateViewStrings.CreateTitle;
 }
 
-@*<h1>@ViewData[ViewDataStrings.Titel]</h1>
+<h1>@ViewData[ViewDataStrings.Title]</h1>
 
-<h4>@ViewData[ViewDataStrings.Caption]</h4>*@
+<h4>@ViewData[ViewDataStrings.Caption]</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -22,7 +23,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@ViewData[CommonViewStrings.BackToList]</a>
 </div>
 
 @section Scripts {

@@ -1,0 +1,22 @@
+﻿@using Contoso.Pages.Constants;
+@{
+    Layout = CommonViewStrings.Layout;
+    ViewData[ViewDataStrings.Title] = DeleteViewStrings.DeleteTitle;
+}
+
+<h1>@ViewData[ViewDataStrings.Caption]</h1>
+
+<h3>@DeleteViewStrings.DeleteQuestion</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        @RenderBody()
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="@ViewData[ViewDataStrings.ItemID]" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
