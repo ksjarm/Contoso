@@ -1,9 +1,12 @@
 ﻿using Contoso.Domain;
 
-namespace Tests.Domain {
-    [TestClass] public class InstructorTests {
-        private Instructor? obj;
-        [TestInitialize] public void TestInitialize() => obj = new Instructor();
-        [TestMethod] public void CanCreateTest() => Assert.IsNotNull(obj);
+namespace Tests.Domain
+{
+    [TestClass] public class InstructorTests : ClassTests<Instructor, Person> {
+		[TestMethod] public void InstructorIDTest() {
+			var i = new Random().Next();
+			obj.ID = i;
+			Assert.AreEqual(i, obj.ID);
+		}
     }
 }
