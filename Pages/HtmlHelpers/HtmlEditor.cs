@@ -10,7 +10,6 @@ public static class HtmlEditor {
         var s = htmlStrings(h, e);
         return new HtmlContentBuilder(s);
     }
-
     internal static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h,
         Expression<Func<TModel, TResult>> e) => new() {
             new HtmlString(HtmlConstants.TitleStart),

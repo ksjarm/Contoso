@@ -19,7 +19,6 @@
     <Folder Include="Aids\" />
     <Folder Include="Data\" />
     <Folder Include="Infra\" />
-    <Folder Include="Pages\" />
   </ItemGroup>
 
   <ItemGroup>

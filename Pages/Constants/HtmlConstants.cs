@@ -1,6 +1,5 @@
 ﻿namespace Contoso.Pages.Constants;
-public static class HtmlConstants
-{
+public static class HtmlConstants {
     public static string BoldTitleStart = "<dt class=\"col-sm-2\">";
     public static string BoldTitleEnd = "</dt>";
     public static string TitleStart = "<dd class=\"col-sm-2\">";
