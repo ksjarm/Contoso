@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Contoso.Pages.Constants
+﻿namespace Contoso.Pages.Constants;
+public static class CreateViewStrings
 {
-    internal class CreateViewStrings
-    {
-    }
+    public const string CreateTitle = "Create";
 }

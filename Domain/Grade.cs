@@ -1,5 +1,4 @@
-﻿namespace Contoso.Domain {
-    public enum Grade {
-        A, B, C, D, F
-    }
+﻿namespace Contoso.Domain;
+public enum Grade {
+    A, B, C, D, F
 }

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Contoso.Pages.Constants
-{
-    internal class DetailsViewStrings
-    {
-    }
+﻿namespace Contoso.Pages.Constants;
+public static class DetailsViewStrings {
+    public const string DetailsTitle = "Details";
 }

@@ -1,9 +1,6 @@
-﻿using Contoso.Domain;
-using Contoso.Facade;
+﻿using Contoso.Facade;
 
-namespace Tests.Facade
-{
-    [TestClass] public class AssignedCourseDataTests : ClassTests<AssignedCourseData, object> {
+namespace Tests.Facade;
+[TestClass] public class AssignedCourseDataTests : ClassTests<AssignedCourseData, object> {
 		
-    }
 }
