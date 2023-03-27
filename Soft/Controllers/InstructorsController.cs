@@ -8,18 +8,18 @@ namespace Contoso.Soft.Controllers
 {
     public class InstructorsController : Controller
     {
-        private readonly SchoolContext _context;
+        private readonly SchoolContext context;
 
-        public InstructorsController(SchoolContext context)
+        public InstructorsController(SchoolContext c = null)
         {
-            _context = context;
+            this.context = c;
         }
 
         // GET: Instructors
         public async Task<IActionResult> Index(int? id, int? courseID)
         {
             var viewModel = new InstructorIndexData();
-            viewModel.Instructors = await _context.Instructors
+            viewModel.Instructors = await context.Instructors
                   .Include(i => i.OfficeAssignment)
                   .Include(i => i.CourseAssignments)
                     .ThenInclude(i => i.Course)
@@ -53,12 +53,12 @@ namespace Contoso.Soft.Controllers
         // GET: Instructors/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Instructors == null)
+            if (id == null || context.Instructors == null)
             {
                 return NotFound();
             }
 
-            var instructor = await _context.Instructors
+            var instructor = await context.Instructors
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (instructor == null)
             {
@@ -93,8 +93,8 @@ namespace Contoso.Soft.Controllers
             }
             if (ModelState.IsValid)
             {
-                _context.Add(instructor);
-                await _context.SaveChangesAsync();
+                context.Add(instructor);
+                await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             PopulateAssignedCourseData(instructor);
@@ -104,12 +104,12 @@ namespace Contoso.Soft.Controllers
         // GET: Instructors/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Instructors == null)
+            if (id == null || context.Instructors == null)
             {
                 return NotFound();
             }
 
-            var instructor = await _context.Instructors
+            var instructor = await context.Instructors
             .Include(i => i.OfficeAssignment)
             .Include(i => i.CourseAssignments).ThenInclude(i => i.Course)
             .AsNoTracking()
@@ -123,7 +123,7 @@ namespace Contoso.Soft.Controllers
         }
         private void PopulateAssignedCourseData(Instructor instructor)
         {
-            var allCourses = _context.Courses;
+            var allCourses = context.Courses;
             var instructorCourses = new HashSet<int>(instructor.CourseAssignments.Select(c => c.CourseID));
             var viewModel = new List<AssignedCourseData>();
             foreach (var course in allCourses)
@@ -150,7 +150,7 @@ namespace Contoso.Soft.Controllers
                 return NotFound();
             }
 
-            var instructorToUpdate = await _context.Instructors
+            var instructorToUpdate = await context.Instructors
                 .Include(i => i.OfficeAssignment)
                 .Include(i => i.CourseAssignments)
             .ThenInclude(i => i.Course)
@@ -168,7 +168,7 @@ namespace Contoso.Soft.Controllers
                 UpdateInstructorCourses(selectedCourses, instructorToUpdate);
                 try
                 {
-                    await _context.SaveChangesAsync();
+                    await context.SaveChangesAsync();
                 }
                 catch (DbUpdateException /* ex */)
                 {
@@ -194,7 +194,7 @@ namespace Contoso.Soft.Controllers
             var selectedCoursesHS = new HashSet<string>(selectedCourses);
             var instructorCourses = new HashSet<int>
                 (instructorToUpdate.CourseAssignments.Select(c => c.Course.CourseID));
-            foreach (var course in _context.Courses)
+            foreach (var course in context.Courses)
             {
                 if (selectedCoursesHS.Contains(course.CourseID.ToString()))
                 {
@@ -209,7 +209,7 @@ namespace Contoso.Soft.Controllers
                     if (instructorCourses.Contains(course.CourseID))
                     {
                         CourseAssignment courseToRemove = instructorToUpdate.CourseAssignments.FirstOrDefault(i => i.CourseID == course.CourseID);
-                        _context.Remove(courseToRemove);
+                        context.Remove(courseToRemove);
                     }
                 }
             }
@@ -218,12 +218,12 @@ namespace Contoso.Soft.Controllers
         // GET: Instructors/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Instructors == null)
+            if (id == null || context.Instructors == null)
             {
                 return NotFound();
             }
 
-            var instructor = await _context.Instructors
+            var instructor = await context.Instructors
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (instructor == null)
             {
@@ -238,24 +238,24 @@ namespace Contoso.Soft.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            Instructor instructor = await _context.Instructors
+            Instructor instructor = await context.Instructors
                 .Include(i => i.CourseAssignments)
                 .SingleAsync(i => i.ID == id);
 
-            var departments = await _context.Departments
+            var departments = await context.Departments
                 .Where(d => d.InstructorID == id)
                 .ToListAsync();
             departments.ForEach(d => d.InstructorID = null);
 
-            _context.Instructors.Remove(instructor);
+            context.Instructors.Remove(instructor);
 
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool InstructorExists(int id)
         {
-          return _context.Instructors.Any(e => e.ID == id);
+          return context.Instructors.Any(e => e.ID == id);
         }
     }
 }

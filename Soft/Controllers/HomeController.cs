@@ -8,14 +8,14 @@ namespace Contoso.Soft.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> logger;
 
-        private readonly SchoolContext _context;
+        private readonly SchoolContext context;
 
-        public HomeController(ILogger<HomeController> logger, SchoolContext context)
+        public HomeController(ILogger<HomeController> l, SchoolContext c = null)
         {
-            _logger = logger;
-            _context = context;
+            logger = l;
+            context = c;
         }
 
         public IActionResult Index()
@@ -36,7 +36,7 @@ namespace Contoso.Soft.Controllers
         public async Task<ActionResult> About()
         {
             IQueryable<EnrollmentDateGroup> data =
-                from student in _context.Students
+                from student in context.Students
                 group student by student.EnrollmentDate into dateGroup
                 select new EnrollmentDateGroup()
                 {

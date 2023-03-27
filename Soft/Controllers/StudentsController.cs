@@ -7,11 +7,11 @@ namespace Contoso.Soft.Controllers
 {
     public class StudentsController : Controller
     {
-        private readonly SchoolContext _context;
+        private readonly SchoolContext context;
 
-        public StudentsController(SchoolContext context)
+        public StudentsController(SchoolContext c = null)
         {
-            _context = context;
+            this.context = c;
         }
 
         // GET: Students
@@ -33,7 +33,7 @@ namespace Contoso.Soft.Controllers
                 searchString = currentFilter;
             }
             ViewData["CurrentFilter"] = searchString;
-            var students = from s in _context.Students
+            var students = from s in context.Students
                            select s;
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -62,12 +62,12 @@ namespace Contoso.Soft.Controllers
         // GET: Students/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Students == null)
+            if (id == null || context.Students == null)
             {
                 return NotFound();
             }
 
-            var student = await _context.Students
+            var student = await context.Students
                 .Include(s => s.Enrollments)
                 .ThenInclude(e => e.Course)
                 .AsNoTracking()
@@ -99,8 +99,8 @@ namespace Contoso.Soft.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _context.Add(student);
-                    await _context.SaveChangesAsync();
+                    context.Add(student);
+                    await context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
             }
@@ -123,7 +123,7 @@ namespace Contoso.Soft.Controllers
             {
                 return NotFound();
             }
-            var studentToUpdate = await _context.Students.FirstOrDefaultAsync(s => s.ID == id);
+            var studentToUpdate = await context.Students.FirstOrDefaultAsync(s => s.ID == id);
             if (await TryUpdateModelAsync<Student>(
                 studentToUpdate,
                 "",
@@ -131,7 +131,7 @@ namespace Contoso.Soft.Controllers
             {
                 try
                 {
-                    await _context.SaveChangesAsync();
+                    await context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateException /* ex */)
@@ -150,11 +150,11 @@ namespace Contoso.Soft.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Students == null)
+            if (id == null || context.Students == null)
             {
                 return NotFound();
             }
-            var student = await _context.Students.FindAsync(id);
+            var student = await context.Students.FindAsync(id);
             if (student == null)
             {
                 return NotFound();
@@ -165,12 +165,12 @@ namespace Contoso.Soft.Controllers
         // GET: Students/Delete/5
         public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false)
         {
-            if (id == null || _context.Students == null)
+            if (id == null || context.Students == null)
             {
                 return NotFound();
             }
 
-            var student = await _context.Students
+            var student = await context.Students
                     .AsNoTracking()
                     .FirstOrDefaultAsync(m => m.ID == id);
             if (student == null)
@@ -191,19 +191,19 @@ namespace Contoso.Soft.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Students == null)
+            if (context.Students == null)
             {
                 return Problem("Entity set 'SchoolContext.Students'  is null.");
             }
-            var student = await _context.Students.FindAsync(id);
+            var student = await context.Students.FindAsync(id);
             if (student == null)
             {
                 return RedirectToAction(nameof(Index));
             }
             try
             {
-                _context.Students.Remove(student);
-                await _context.SaveChangesAsync();
+                context.Students.Remove(student);
+                await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch (DbUpdateException /* ex */)
@@ -215,7 +215,7 @@ namespace Contoso.Soft.Controllers
 
         private bool StudentExists(int id)
         {
-            return _context.Students.Any(e => e.ID == id);
+            return context.Students.Any(e => e.ID == id);
         }
     }
 }

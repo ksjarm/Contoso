@@ -8,17 +8,14 @@ namespace Contoso.Soft.Controllers
 {
     public class CoursesController : Controller
     {
-        private readonly SchoolContext _context;
+        private readonly SchoolContext context;
 
-        public CoursesController(SchoolContext context)
-        {
-            _context = context;
-        }
+        public CoursesController(SchoolContext c = null) => context = c;
 
         // GET: Courses
         public async Task<IActionResult> Index()
         {
-            var courses = _context.Courses
+            var courses = context.Courses
                 .Include(c => c.Department)
                 .AsNoTracking();
             return View(await courses.ToListAsync());
@@ -27,12 +24,12 @@ namespace Contoso.Soft.Controllers
         // GET: Courses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Courses == null)
+            if (id == null || context.Courses == null)
             {
                 return NotFound();
             }
 
-            var course = await _context.Courses
+            var course = await context.Courses
                 .Include(c => c.Department)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.CourseID == id);
@@ -60,8 +57,8 @@ namespace Contoso.Soft.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(course);
-                await _context.SaveChangesAsync();
+                context.Add(course);
+                await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             PopulateDepartmentsDropDownList(course.DepartmentID);
@@ -76,7 +73,7 @@ namespace Contoso.Soft.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses
+            var course = await context.Courses
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.CourseID == id);
             if (course == null)
@@ -98,7 +95,7 @@ namespace Contoso.Soft.Controllers
                 return NotFound();
             }
 
-            var courseToUpdate = await _context.Courses
+            var courseToUpdate = await context.Courses
                 .FirstOrDefaultAsync(c => c.CourseID == id);
 
             if (await TryUpdateModelAsync<Course>(courseToUpdate,
@@ -107,7 +104,7 @@ namespace Contoso.Soft.Controllers
             {
                 try
                 {
-                    await _context.SaveChangesAsync();
+                    await context.SaveChangesAsync();
                 }
                 catch (DbUpdateException /* ex */)
                 {
@@ -123,7 +120,7 @@ namespace Contoso.Soft.Controllers
         }
         private void PopulateDepartmentsDropDownList(object selectedDepartment = null)
         {
-            var departmentsQuery = from d in _context.Departments
+            var departmentsQuery = from d in context.Departments
                                    orderby d.Name
                                    select d;
             ViewBag.DepartmentID = new SelectList(departmentsQuery.AsNoTracking(), "DepartmentID", "Name", selectedDepartment);
@@ -132,12 +129,12 @@ namespace Contoso.Soft.Controllers
         // GET: Courses/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Courses == null)
+            if (id == null || context.Courses == null)
             {
                 return NotFound();
             }
 
-            var course = await _context.Courses
+            var course = await context.Courses
                 .Include(c => c.Department)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.CourseID == id);
@@ -154,23 +151,23 @@ namespace Contoso.Soft.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Courses == null)
+            if (context.Courses == null)
             {
                 return Problem("Entity set 'SchoolContext.Courses'  is null.");
             }
-            var course = await _context.Courses.FindAsync(id);
+            var course = await context.Courses.FindAsync(id);
             if (course != null)
             {
-                _context.Courses.Remove(course);
+                context.Courses.Remove(course);
             }
 
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CourseExists(int id)
         {
-            return _context.Courses.Any(e => e.CourseID == id);
+            return context.Courses.Any(e => e.CourseID == id);
         }
     }
 }
