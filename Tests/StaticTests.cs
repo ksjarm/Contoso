@@ -1,24 +1,22 @@
-﻿using System.Reflection;
+﻿using Contoso.Aids;
+using System.Formats.Asn1;
+using System.Reflection;
 
 namespace Tests;
 public abstract class StaticTests {
-    protected Type? type;
+    protected Type type;
     [TestInitialize] public virtual void TestInitialize() => type = getType();
     protected abstract Type? getType();
     [TestMethod] public void IsTested() {
-        var allTests = GetType().GetMembers().Select(x => x.Name);
-        var allMembers = type.GetMembers(
-             BindingFlags.DeclaredOnly
-            | BindingFlags.Public
-            | BindingFlags.Instance
-            | BindingFlags.Static)
-            .Select(x => x.Name)
-            .Where(x => !x.StartsWith("get_")
-                || x.StartsWith("set_")
-                || x.StartsWith(".ctor"));
-        foreach (var member in allMembers) {
-            if (allTests.Contains(member + "Test")) continue;
-            Assert.Inconclusive($"<{member}> is not tested");
+        var allMembers = GetClass.DeclaredMemberNames(type);
+
+        allMembers.RemoveAll("get_", "set_", ".ctor");
+
+        var allTests = GetClass.DeclaredMemberNames(this);
+
+        foreach (var m in allMembers) {
+            if (allTests.Contains(m + "Test")) continue;
+            Assert.Inconclusive($"<{m}> is not tested");
         }
     }
 }
