@@ -1,0 +1,31 @@
+﻿@using Contoso.Pages.Constants;
+@{
+    Layout = CommonViewStrings.Layout;
+    ViewData[ViewDataStrings.Title] = EditViewStrings.EditTitle;
+}
+
+<h1>@ViewData[ViewDataStrings.Title]</h1>
+
+<h4>@ViewData[ViewDataStrings.Caption]</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @RenderBody()
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@ViewData[CommonViewStrings.BackToList]</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

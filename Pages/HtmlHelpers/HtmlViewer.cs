@@ -12,9 +12,9 @@ public static class HtmlViewer {
 	}
 	internal static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h,
 		Expression<Func<TModel, TResult>> e) => new() {
-			new HtmlString(HtmlConstants.TitleStart),
+			new HtmlString(HtmlConstants.BoldTitleStart),
 			h.DisplayNameFor(e),
-			new HtmlString(HtmlConstants.TitleEnd),
+			new HtmlString(HtmlConstants.BoldTitleEnd),
 			new HtmlString(HtmlConstants.DataStart),
 			h.DisplayFor(e),
 			new HtmlString(HtmlConstants.DataEnd),
