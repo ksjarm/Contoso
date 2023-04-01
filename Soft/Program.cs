@@ -1,9 +1,11 @@
+using Contoso.Infra;
 using Contoso.Soft.Data;
 using Microsoft.EntityFrameworkCore;
+using Contoso.Domain.Repos;
 
 namespace Contoso.Soft
 {
-    public class Program
+	public class Program
     {
         public static void Main(string[] args)
         {
@@ -16,7 +18,10 @@ namespace Contoso.Soft
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            var app = builder.Build();
+            builder.Services.AddTransient<IInstructorsRepo, InstructorsRepo>();
+			builder.Services.AddTransient<IStudentsRepo, StudentsRepo>();
+
+			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

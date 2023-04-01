@@ -1,17 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Contoso.Soft.Data;
 using Contoso.Domain;
+using Contoso.Infra;
+using Contoso.Domain.Repos;
 
 namespace Contoso.Soft.Controllers
 {
-    public class StudentsController : Controller
+	public class StudentsController : Controller
     {
         private readonly SchoolContext context;
+		private readonly IStudentsRepo repo;
 
-        public StudentsController(SchoolContext c = null)
+		public StudentsController(SchoolContext c, IStudentsRepo r)
         {
-            this.context = c;
+            context = c;
+            repo = r;
         }
 
         // GET: Students

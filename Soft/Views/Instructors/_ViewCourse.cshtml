@@ -1,6 +1,7 @@
 ﻿@using Contoso.Pages.HtmlHelpers;
 @model Instructor
 
-@Html.ViewerFor(x => x.LastName)
-@Html.ViewerFor(x => x.FirstMidName)
+@*@Html.ViewerFor(x => x.LastName)
+*@@Html.ViewerFor(x => x.FirstMidName)
 @Html.ViewerFor(x => x.HireDate)
+@Html.ViewerFor(x => x.OfficeAssignment.Location)

@@ -1,4 +1,6 @@
-﻿namespace Contoso.Domain.Repos;
+﻿using Contoso.Data;
+
+namespace Contoso.Domain.BaseRepos;
 
 public interface IFilteredRepo<T> : IGrudRepo<T> where T : IEntity
 {

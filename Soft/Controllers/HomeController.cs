@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-using Contoso.Soft.Data;
 using Contoso.Facade;
+using Contoso.Infra;
 
 namespace Contoso.Soft.Controllers
 {
-    public class HomeController : Controller
+	public class HomeController : Controller
     {
         private readonly ILogger<HomeController> logger;
 

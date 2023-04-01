@@ -1,18 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Contoso.Soft.Data;
 using Contoso.Domain;
 using Contoso.Facade;
+using Contoso.Infra;
+using Contoso.Domain.Repos;
 
 namespace Contoso.Soft.Controllers
 {
-    public class InstructorsController : Controller
+	public class InstructorsController : Controller
     {
         private readonly SchoolContext context;
-
-        public InstructorsController(SchoolContext c = null)
-        {
-            this.context = c;
+        private readonly IInstructorsRepo repo;
+        public InstructorsController(SchoolContext c, IInstructorsRepo r) {
+            context = c;
+            repo = r;
         }
 
         // GET: Instructors
@@ -236,20 +237,9 @@ namespace Contoso.Soft.Controllers
         // POST: Instructors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            Instructor instructor = await context.Instructors
-                .Include(i => i.CourseAssignments)
-                .SingleAsync(i => i.ID == id);
-
-            var departments = await context.Departments
-                .Where(d => d.InstructorID == id)
-                .ToListAsync();
-            departments.ForEach(d => d.InstructorID = null);
-
-            context.Instructors.Remove(instructor);
-
-            await context.SaveChangesAsync();
+        public async Task<IActionResult> DeleteConfirmed(int id) {
+            await Task.CompletedTask;
+            repo.Delete(id);
             return RedirectToAction(nameof(Index));
         }
 

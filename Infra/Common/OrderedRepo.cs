@@ -1,6 +1,10 @@
-﻿using Contoso.Domain;
-using Contoso.Domain.Repos;
+﻿using Contoso.Data;
+using Contoso.Domain.BaseRepos;
+using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra.Common;
 
-public abstract class OrderedRepo<T> : FilteredRepo<T>, IOrderedRepo<T> where T : IEntity { }
+public abstract class OrderedRepo<T> 
+	: FilteredRepo<T>, IOrderedRepo<T> where T : class, IEntity {
+	protected OrderedRepo(DbContext? c, DbSet<T>? s) : base(c, s) { }
+}

@@ -1,8 +1,9 @@
 ﻿using Contoso.Domain;
+using Contoso.Infra;
 
 namespace Contoso.Soft.Data
 {
-    public static class DbInitializer
+	public static class DbInitializer
     {
         public static void Initialize(SchoolContext context)
         {

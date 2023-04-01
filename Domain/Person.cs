@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Contoso.Data;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Contoso.Domain;
-public abstract class Person {
+public abstract class Person : IEntity {
     public int ID { get; set; }
 
     [Required]

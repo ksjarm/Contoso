@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Contoso.Soft.Data;
 using Contoso.Domain;
+using Contoso.Infra;
 
 namespace Contoso.Soft.Controllers
 {
-    public class DepartmentsController : Controller
+	public class DepartmentsController : Controller
     {
         private readonly SchoolContext context;
 
