@@ -1,13 +1,6 @@
-﻿@using Contoso.Pages.HtmlHelpers;
-@model Course
+﻿@model Course
+@using Contoso.Pages.HtmlHelpers;
 
-@Html.ViewerFor(x => x.CourseID)
-@Html.ViewerFor(x => x.Title)
-@Html.ViewerFor(x => x.Credits)
-
-<dt class="col-sm-2">
-	@Html.DisplayNameFor(model => model.Department)
-</dt>
-<dd class="col-sm-10">
-	@Html.DisplayFor(model => model.Department.Name)
-</dd>
+@Html.ViewItem(x => x.Title)
+@Html.ViewItem(x => x.Credits)
+@Html.ViewItem(x => x.Department.Name, x => x.Department)

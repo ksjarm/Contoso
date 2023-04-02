@@ -1,14 +1,12 @@
 ﻿@model Course
+@using Contoso.Pages.Constants
+@using Contoso.Pages.HtmlHelpers
 
 @{
-	Layout = "_Create";
-	ViewData["Caption"] = "Course";
+    ViewData[Data.Title] = nameof(Course);
+    Layout = Layouts.Create;
 }
 
-<div class="form-group">
-	<label asp-for="CourseID" class="control-label"></label>
-	<input asp-for="CourseID" class="form-control" />
-	<span asp-validation-for="CourseID" class="text-danger"></span>
-</div>
+@Html.EditItem( x => x.ID)
 
 <partial name="_EditCourse" model="@Model" />

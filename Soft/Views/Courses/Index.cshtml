@@ -1,53 +1,22 @@
 ﻿@model IEnumerable<Course>
+@using Contoso.Pages.HtmlHelpers
+@using Contoso.Pages.Constants
+@using System.Linq.Expressions;
 
 @{
-    ViewData["Title"] = "Courses";
+    ViewData[Data.Title] = "Courses";
+    var columns = new Dictionary<string, Expression<Func<Course, dynamic>>>{
+        {nameof(Course.ID), x => x.ID },
+        {nameof(Course.Title),x => x.Title },
+        {nameof(Course.Credits),x => x.Credits },
+        {nameof(Course.Department),x => x.Department.Name} };
+    dynamic getId(Course c) => c.ID;
 }
 
-<h2>Courses</h2>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(m => m.CourseID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(m => m.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(m => m.Credits)
-            </th>
-            <th>
-                @Html.DisplayNameFor(m => m.Department)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CourseID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Credits)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CourseID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CourseID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CourseID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+@Html.ViewList(Model, columns, getId)

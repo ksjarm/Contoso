@@ -1,14 +1,17 @@
 ﻿@model Department
+@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers
 
 @{
-	Layout = "_Edit";
-	ViewData["Caption"] = "Department";
+	ViewData[Data.Title] = nameof(Department);
+	ViewData[Data.ItemID] = Model.ID;
+	Layout = Layouts.Edit;
 }
 
-<input type="hidden" asp-for="DepartmentID" />
+<input type="hidden" asp-for="ID" />
 <input type="hidden" asp-for="RowVersion" />
 
-<partial name="_EditCourse" model="@Model" />
+<partial name="_EditDepartments" model="@Model" />
 
 <div class="form-group">
 	<label asp-for="InstructorID" class="control-label"></label>

@@ -2,7 +2,7 @@
 
 namespace Contoso.Domain;
 public class OfficeAssignment {
-    [Key]
+    public int ID { get; set; }
     public int InstructorID { get; set; }
     [StringLength(50)]
     [Display(Name = "Office Location")]

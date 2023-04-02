@@ -1,12 +1,14 @@
 ﻿@model Department
+@using Contoso.Pages.Constants
+@using Contoso.Pages.HtmlHelpers
 
 @{
-	Layout = "_Delete";
-	ViewData["Caption"] = "Department";
-	ViewData["ItemID"] = Model.DepartmentID;
+	ViewData[Data.Title] = nameof(Department);
+	ViewData[Data.ItemID] = Model.ID;
+	Layout = Layouts.Delete;
 }
 
-<partial name="_ViewCourse" model="@Model" />
+<partial name="_ViewDepartments" model="@Model" />
 
 <dt class="col-sm-2">
 	@Html.DisplayNameFor(m => m.RowVersion)

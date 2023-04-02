@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Contoso.Domain;
 public class Department {
-    public int DepartmentID { get; set; }
+    public int ID { get; set; }
 
     [StringLength(50, MinimumLength = 3)]
     public string? Name { get; set; }
