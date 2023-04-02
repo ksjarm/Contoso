@@ -30,7 +30,7 @@ namespace Contoso.Soft.Controllers
             var department = await context.Departments
                 .Include(d => d.Administrator)
                     .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.DepartmentID == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (department == null)
             {
                 return NotFound();
@@ -74,7 +74,7 @@ namespace Contoso.Soft.Controllers
             var department = await context.Departments
                 .Include(i => i.Administrator)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.DepartmentID == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (department == null)
             {
                 return NotFound();
@@ -95,7 +95,7 @@ namespace Contoso.Soft.Controllers
                 return NotFound();
             }
 
-            var departmentToUpdate = await context.Departments.Include(i => i.Administrator).FirstOrDefaultAsync(m => m.DepartmentID == id);
+            var departmentToUpdate = await context.Departments.Include(i => i.Administrator).FirstOrDefaultAsync(m => m.ID == id);
 
             if (departmentToUpdate == null)
             {
@@ -176,7 +176,7 @@ namespace Contoso.Soft.Controllers
             var department = await context.Departments
                 .Include(d => d.Administrator)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.DepartmentID == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (department == null)
             {
                 if (concurrencyError.GetValueOrDefault())
@@ -206,7 +206,7 @@ namespace Contoso.Soft.Controllers
         {
             try
             {
-                if (await context.Departments.AnyAsync(m => m.DepartmentID == department.DepartmentID))
+                if (await context.Departments.AnyAsync(m => m.ID == department.ID))
                 {
                     context.Departments.Remove(department);
                     await context.SaveChangesAsync();
@@ -216,13 +216,13 @@ namespace Contoso.Soft.Controllers
             catch (DbUpdateConcurrencyException /* ex */)
             {
                 //Log the error (uncomment ex variable name and write a log.)
-                return RedirectToAction(nameof(Delete), new { concurrencyError = true, id = department.DepartmentID });
+                return RedirectToAction(nameof(Delete), new { concurrencyError = true, id = department.ID });
             }
         }
 
         private bool DepartmentExists(int id)
         {
-            return context.Departments.Any(e => e.DepartmentID == id);
+            return context.Departments.Any(e => e.ID == id);
         }
     }
 }

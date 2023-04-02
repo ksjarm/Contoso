@@ -1,6 +1,10 @@
-﻿@using Contoso.Pages.HtmlHelpers
-@model Department
+﻿@model Department
+@using Contoso.Pages.HtmlHelpers
 
-@Html.ControllerFor(x => x.Name)
-@Html.ControllerFor(x => x.Budget)
-@Html.ControllerFor(x => x.StartDate)
+@{
+    var items = (IEnumerable<SelectListItem>)ViewBag.DepartmentId;
+}
+
+@Html.EditItem(x => x.Name)
+@Html.EditItem(x => x.Budget)
+@Html.EditItem(x => x.StartDate)

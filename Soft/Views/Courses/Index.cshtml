@@ -6,9 +6,9 @@
 @{
     ViewData[Data.Title] = "Courses";
     var columns = new Dictionary<string, Expression<Func<Course, dynamic>>>{
-        {nameof(Course.ID), x => x.ID },
-        {nameof(Course.Title),x => x.Title },
-        {nameof(Course.Credits),x => x.Credits },
+        //{nameof(Course.ID), x => x.ID },
+        //{nameof(Course.Title),x => x.Title },
+        //{nameof(Course.Credits),x => x.Credits },
         {nameof(Course.Department),x => x.Department.Name} };
     dynamic getId(Course c) => c.ID;
 }

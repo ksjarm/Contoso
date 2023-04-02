@@ -21,7 +21,7 @@ public class CoursesController : Controller {
         var course = await context.Courses
             .Include(c => c.Department)
             .AsNoTracking()
-            .FirstOrDefaultAsync(m => m.CourseID == id);
+            .FirstOrDefaultAsync(m => m.ID == id);
         if (course == null) {
             return NotFound();
         }
@@ -48,7 +48,7 @@ public class CoursesController : Controller {
         }
         var course = await context.Courses
             .AsNoTracking()
-            .FirstOrDefaultAsync(m => m.CourseID == id);
+            .FirstOrDefaultAsync(m => m.ID == id);
         if (course == null) {
             return NotFound();
         }
@@ -65,7 +65,7 @@ public class CoursesController : Controller {
         }
 
         var courseToUpdate = await context.Courses
-            .FirstOrDefaultAsync(c => c.CourseID == id);
+            .FirstOrDefaultAsync(c => c.ID == id);
 
         if (await TryUpdateModelAsync<Course>(courseToUpdate,
             "",
@@ -106,7 +106,7 @@ public class CoursesController : Controller {
         var course = await context.Courses
             .Include(c => c.Department)
             .AsNoTracking()
-            .FirstOrDefaultAsync(m => m.CourseID == id);
+            .FirstOrDefaultAsync(m => m.ID == id);
         if (course == null)
         {
             return NotFound();
@@ -114,10 +114,7 @@ public class CoursesController : Controller {
 
         return View(course);
     }
-
-    // POST: Courses/Delete/5
-    [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
+    [HttpPost, ActionName("Delete")] [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         if (context.Courses == null)
@@ -136,6 +133,6 @@ public class CoursesController : Controller {
 
     private bool CourseExists(int id)
     {
-        return context.Courses.Any(e => e.CourseID == id);
+        return context.Courses.Any(e => e.ID == id);
     }
 }

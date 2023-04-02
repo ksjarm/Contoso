@@ -1,6 +1,6 @@
-﻿@using Contoso.Pages.HtmlHelpers;
-@model Department
+﻿@model Department
+@using Contoso.Pages.HtmlHelpers;
 
-@Html.ViewerFor(x => x.Name)
-@Html.ViewerFor(x => x.Budget)
-@Html.ViewerFor(x => x.StartDate)
+@Html.ViewItem(x => x.Name)
+@Html.ViewItem(x => x.Budget)
+@Html.ViewItem(x => x.StartDate)

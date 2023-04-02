@@ -77,9 +77,9 @@ public class InstructorsController : Controller {
 		var viewModel = new List<AssignedCourseData>();
 		foreach (var course in allCourses) {
 			viewModel.Add(new AssignedCourseData {
-				CourseID = course.CourseID,
+				CourseID = course.ID,
 				Title = course.Title,
-				Assigned = instructorCourses.Contains(course.CourseID)
+				Assigned = instructorCourses.Contains(course.ID)
 			});
 		}
 		ViewData["Courses"] = viewModel;
@@ -115,14 +115,14 @@ public class InstructorsController : Controller {
 			return;
 		}
 		var selectedCoursesHS = new HashSet<string>(selectedCourses);
-		var instructorCourses = new HashSet<int> (instructorToUpdate.CourseAssignments.Select(c => c.Course.CourseID));
+		var instructorCourses = new HashSet<int> (instructorToUpdate.CourseAssignments.Select(c => c.Course.ID));
 		foreach (var course in context.Courses) {
-			if (selectedCoursesHS.Contains(course.CourseID.ToString())) {
-				if (!instructorCourses.Contains(course.CourseID)) instructorToUpdate.CourseAssignments.Add(new CourseAssignment { InstructorID = instructorToUpdate.ID, CourseID = course.CourseID });
+			if (selectedCoursesHS.Contains(course.ID.ToString())) {
+				if (!instructorCourses.Contains(course.ID)) instructorToUpdate.CourseAssignments.Add(new CourseAssignment { InstructorID = instructorToUpdate.ID, CourseID = course.ID });
 			}
 			else {
-				if (instructorCourses.Contains(course.CourseID)) {
-					CourseAssignment courseToRemove = instructorToUpdate.CourseAssignments.FirstOrDefault(i => i.CourseID == course.CourseID);
+				if (instructorCourses.Contains(course.ID)) {
+					CourseAssignment courseToRemove = instructorToUpdate.CourseAssignments.FirstOrDefault(i => i.CourseID == course.ID);
 					context.Remove(courseToRemove);
 				}
 			}

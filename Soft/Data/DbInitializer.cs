@@ -85,26 +85,26 @@ namespace Contoso.Soft.Data
 
             var courses = new Course[]
             {
-                new Course {CourseID = 1050, Title = "Chemistry",      Credits = 3,
-                    DepartmentID = departments.Single( s => s.Name == "Engineering").DepartmentID
+                new Course {ID = 1050, Title = "Chemistry",      Credits = 3,
+                    DepartmentID = departments.Single( s => s.Name == "Engineering").ID
                 },
-                new Course {CourseID = 4022, Title = "Microeconomics", Credits = 3,
-                    DepartmentID = departments.Single( s => s.Name == "Economics").DepartmentID
+                new Course {ID = 4022, Title = "Microeconomics", Credits = 3,
+                    DepartmentID = departments.Single( s => s.Name == "Economics").ID
                 },
-                new Course {CourseID = 4041, Title = "Macroeconomics", Credits = 3,
-                    DepartmentID = departments.Single( s => s.Name == "Economics").DepartmentID
+                new Course {ID = 4041, Title = "Macroeconomics", Credits = 3,
+                    DepartmentID = departments.Single( s => s.Name == "Economics").ID
                 },
-                new Course {CourseID = 1045, Title = "Calculus",       Credits = 4,
-                    DepartmentID = departments.Single( s => s.Name == "Mathematics").DepartmentID
+                new Course {ID = 1045, Title = "Calculus",       Credits = 4,
+                    DepartmentID = departments.Single( s => s.Name == "Mathematics").ID
                 },
-                new Course {CourseID = 3141, Title = "Trigonometry",   Credits = 4,
-                    DepartmentID = departments.Single( s => s.Name == "Mathematics").DepartmentID
+                new Course {ID = 3141, Title = "Trigonometry",   Credits = 4,
+                    DepartmentID = departments.Single( s => s.Name == "Mathematics").ID
                 },
-                new Course {CourseID = 2021, Title = "Composition",    Credits = 3,
-                    DepartmentID = departments.Single( s => s.Name == "English").DepartmentID
+                new Course {ID = 2021, Title = "Composition",    Credits = 3,
+                    DepartmentID = departments.Single( s => s.Name == "English").ID
                 },
-                new Course {CourseID = 2042, Title = "Literature",     Credits = 4,
-                    DepartmentID = departments.Single( s => s.Name == "English").DepartmentID
+                new Course {ID = 2042, Title = "Literature",     Credits = 4,
+                    DepartmentID = departments.Single( s => s.Name == "English").ID
                 },
             };
 
@@ -136,35 +136,35 @@ namespace Contoso.Soft.Data
             var courseInstructors = new CourseAssignment[]
             {
                 new CourseAssignment {
-                    CourseID = courses.Single(c => c.Title == "Chemistry" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Chemistry" ).ID,
                     InstructorID = instructors.Single(i => i.LastName == "Kapoor").ID
                     },
                 new CourseAssignment {
-                    CourseID = courses.Single(c => c.Title == "Chemistry" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Chemistry" ).ID,
                     InstructorID = instructors.Single(i => i.LastName == "Harui").ID
                     },
                 new CourseAssignment {
-                    CourseID = courses.Single(c => c.Title == "Microeconomics" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Microeconomics" ).ID,
                     InstructorID = instructors.Single(i => i.LastName == "Zheng").ID
                     },
                 new CourseAssignment {
-                    CourseID = courses.Single(c => c.Title == "Macroeconomics" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Macroeconomics" ).ID,
                     InstructorID = instructors.Single(i => i.LastName == "Zheng").ID
                     },
                 new CourseAssignment {
-                    CourseID = courses.Single(c => c.Title == "Calculus" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Calculus" ).ID,
                     InstructorID = instructors.Single(i => i.LastName == "Fakhouri").ID
                     },
                 new CourseAssignment {
-                    CourseID = courses.Single(c => c.Title == "Trigonometry" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Trigonometry" ).ID,
                     InstructorID = instructors.Single(i => i.LastName == "Harui").ID
                     },
                 new CourseAssignment {
-                    CourseID = courses.Single(c => c.Title == "Composition" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Composition" ).ID,
                     InstructorID = instructors.Single(i => i.LastName == "Abercrombie").ID
                     },
                 new CourseAssignment {
-                    CourseID = courses.Single(c => c.Title == "Literature" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Literature" ).ID,
                     InstructorID = instructors.Single(i => i.LastName == "Abercrombie").ID
                     },
             };
@@ -179,56 +179,56 @@ namespace Contoso.Soft.Data
             {
                 new Enrollment {
                     StudentID = students.Single(s => s.LastName == "Alexander").ID,
-                    CourseID = courses.Single(c => c.Title == "Chemistry" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Chemistry" ).ID,
                     Grade = Grade.A
                 },
                     new Enrollment {
                     StudentID = students.Single(s => s.LastName == "Alexander").ID,
-                    CourseID = courses.Single(c => c.Title == "Microeconomics" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Microeconomics" ).ID,
                     Grade = Grade.C
                     },
                     new Enrollment {
                     StudentID = students.Single(s => s.LastName == "Alexander").ID,
-                    CourseID = courses.Single(c => c.Title == "Macroeconomics" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Macroeconomics" ).ID,
                     Grade = Grade.B
                     },
                     new Enrollment {
                         StudentID = students.Single(s => s.LastName == "Alonso").ID,
-                    CourseID = courses.Single(c => c.Title == "Calculus" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Calculus" ).ID,
                     Grade = Grade.B
                     },
                     new Enrollment {
                         StudentID = students.Single(s => s.LastName == "Alonso").ID,
-                    CourseID = courses.Single(c => c.Title == "Trigonometry" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Trigonometry" ).ID,
                     Grade = Grade.B
                     },
                     new Enrollment {
                     StudentID = students.Single(s => s.LastName == "Alonso").ID,
-                    CourseID = courses.Single(c => c.Title == "Composition" ).CourseID,
+                    CourseID = courses.Single(c => c.Title == "Composition" ).ID,
                     Grade = Grade.B
                     },
                     new Enrollment {
                     StudentID = students.Single(s => s.LastName == "Anand").ID,
-                    CourseID = courses.Single(c => c.Title == "Chemistry" ).CourseID
+                    CourseID = courses.Single(c => c.Title == "Chemistry" ).ID
                     },
                     new Enrollment {
                     StudentID = students.Single(s => s.LastName == "Anand").ID,
-                    CourseID = courses.Single(c => c.Title == "Microeconomics").CourseID,
+                    CourseID = courses.Single(c => c.Title == "Microeconomics").ID,
                     Grade = Grade.B
                     },
                     new Enrollment {
                     StudentID = students.Single(s => s.LastName == "Barzdukas").ID,
-                    CourseID = courses.Single(c => c.Title == "Chemistry").CourseID,
+                    CourseID = courses.Single(c => c.Title == "Chemistry").ID,
                     Grade = Grade.B
                     },
                     new Enrollment {
                     StudentID = students.Single(s => s.LastName == "Li").ID,
-                    CourseID = courses.Single(c => c.Title == "Composition").CourseID,
+                    CourseID = courses.Single(c => c.Title == "Composition").ID,
                     Grade = Grade.B
                     },
                     new Enrollment {
                     StudentID = students.Single(s => s.LastName == "Justice").ID,
-                    CourseID = courses.Single(c => c.Title == "Literature").CourseID,
+                    CourseID = courses.Single(c => c.Title == "Literature").ID,
                     Grade = Grade.B
                     }
             };
@@ -238,7 +238,7 @@ namespace Contoso.Soft.Data
                 var enrollmentInDataBase = context.Enrollments.Where(
                     s =>
                             s.Student.ID == e.StudentID &&
-                            s.Course.CourseID == e.CourseID).SingleOrDefault();
+                            s.Course.ID == e.CourseID).SingleOrDefault();
                 if (enrollmentInDataBase == null)
                 {
                     context.Enrollments.Add(e);

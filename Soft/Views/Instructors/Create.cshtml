@@ -1,8 +1,9 @@
-﻿@model Instructor
+﻿@using Contoso.Pages.Constants;
+@model Instructor
 
 @{
-    Layout = "_Create";
-    ViewData["Caption"] = "Instructor";
+    ViewData[Data.Title] = nameof(Instructor);
+    Layout = Layouts.Create;
 }
 
 <partial name="_EditCourse" model="@Model" />
