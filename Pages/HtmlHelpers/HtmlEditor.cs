@@ -12,12 +12,12 @@ public static class HtmlEditor {
     }
     internal static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h,
         Expression<Func<TModel, TResult>> e) => new() {
-            new HtmlString(HtmlConstants.TitleStart),
+            new HtmlString(Tags.TitleStart),
             h.LabelFor(e),
-            new HtmlString(HtmlConstants.TitleEnd),
-            new HtmlString(HtmlConstants.DataStart),
+            new HtmlString(Tags.TitleEnd),
+            new HtmlString(Tags.DataStart),
             h.EditorFor(e),
-            h.ValidationMessageFor(e, string.Empty, new { @class = HtmlConstants.TextDanger }),
-            new HtmlString(HtmlConstants.DataEnd),
+            h.ValidationMessageFor(e, string.Empty, new { @class = Tags.TextDanger }),
+            new HtmlString(Tags.DataEnd),
         };
 }

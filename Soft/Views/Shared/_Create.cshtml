@@ -1,31 +1,26 @@
-﻿@using Contoso.Pages.Constants;
+﻿@using Contoso.Pages.Constants
 @{
-    Layout = CommonViewStrings.Layout;
-    ViewData[ViewDataStrings.Caption] = CreateViewStrings.CreateTitle;
+    Layout = Layouts.Default;
 }
 
-<h1>@ViewData[ViewDataStrings.Title]</h1>
+<h1>@ViewData[Data.Title]</h1>
 
-<h4>@ViewData[ViewDataStrings.Caption]</h4>
+<h3>@Texts.Create</h3>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            @RenderBody()
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <dl class="row">
+        @RenderBody()
+    </dl>
+
+    <div class="form-group">
+        <input type="submit" value="@Texts.Create" class="btn btn-primary" /> |
+        <a asp-action="Index">@Texts.BackToList</a>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">@ViewData[CommonViewStrings.BackToList]</a>
-</div>
+</form>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

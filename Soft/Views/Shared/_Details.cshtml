@@ -1,19 +1,17 @@
-﻿@using Contoso.Pages.Constants;
+﻿@using Contoso.Pages.Constants
 @{
-    Layout = CommonViewStrings.Layout;
-    ViewData[ViewDataStrings.Title] = DetailsViewStrings.DetailsTitle;
+    Layout = Layouts.Default;
 }
 
-<h1>@ViewData[ViewDataStrings.Caption]</h1>
+<h1>@ViewData[Data.Title]</h1>
 
-<div>
-    <h4>@ViewData[ViewDataStrings.Title]</h4>
-    <hr />
-    <dl class="row">
-        @RenderBody()
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@ViewData[ViewDataStrings.ItemID]">@ViewData[CommonViewStrings.Edit]</a>
-    <a asp-action="Index">@ViewData[CommonViewStrings.BackToList]</a>
-</div>
+<h3>@Texts.Details</h3>
+
+<hr />
+
+<dl class="row">
+    @RenderBody()
+</dl>
+
+<a asp-action="Edit" asp-route-id="@ViewData[Data.ItemID]">@Texts.Edit</a> |
+<a asp-action="Index">@Texts.BackToList</a>
