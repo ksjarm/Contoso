@@ -1,10 +1,11 @@
-﻿@model Course
-@using Contoso.Pages.HtmlHelpers
+﻿@using Contoso.Pages.HtmlHelpers
+@model Course
 
 @{
-    var items = (IEnumerable<SelectListItem>)ViewBag.DepartmentID;
+    var items = (IEnumerable<SelectListItem>)ViewBag.Department.ID;
 }
 
+@Html.EditItem(x => x.ID)
 @Html.EditItem(x => x.Title)
 @Html.EditItem(x => x.Credits)
-@Html.SelectItem(x => x.DepartmentID, items, x => x.Department)
+@Html.SelectItem(x => x.Department.ID, items, x => x.Department)

@@ -1,9 +1,10 @@
-﻿@model Student
+﻿@using Contoso.Pages.Constants;
+@model Student
 
 @{
-	Layout = "_Delete";
-	ViewData["Caption"] = "Student";
-	ViewData["ItemID"] = Model.ID;
+    ViewData[Data.Title] = nameof(Student);
+    ViewData[Data.ItemID] = Model.ID;
+    Layout = Layouts.Delete;
 }
 
-<partial name="_ViewCourse" model="@Model" />
+<partial name="_ViewStudents" model="@Model" />
