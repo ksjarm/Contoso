@@ -5,10 +5,14 @@
 //using System.Text.Encodings.Web;
 
 //namespace Tests.Pages.HtmlHelpers;
-//[TestClass] public class HtmlEditorTests : StaticTests {
-//    protected override Type getType() => typeof(HtmlEditor);
-//    [TestMethod] public void ControllerForTest() {
-//        var html = HtmlEditor.ControllerFor(new HtmlHelperMock<Course>(), (Expression<Func<Course, string>>) (x => x.Title) );
+//[TestClass]
+//public class HtmlEditItemTests : StaticTests
+//{
+//    protected override Type getType() => typeof(HtmlEditItem);
+//    [TestMethod]
+//    public void ControllerForTest()
+//    {
+//        var html = HtmlEditItem.EditItem(new HtmlHelperMock<Course>(), (Expression<Func<Course, string>>)(x => x.Title));
 //        var b = html as HtmlContentBuilder;
 //        Assert.IsNotNull(b);
 //        Assert.AreEqual(7, b.Count);

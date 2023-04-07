@@ -1,10 +1,9 @@
-﻿@model Department
-@using Contoso.Pages.Constants;
+﻿@using Contoso.Pages.Constants;
 @using Contoso.Pages.HtmlHelpers
+@model Department
 
 @{
 	ViewData[Data.Title] = nameof(Department);
-	ViewData[Data.ItemID] = Model.ID;
 	Layout = Layouts.Edit;
 }
 
@@ -12,11 +11,3 @@
 <input type="hidden" asp-for="RowVersion" />
 
 <partial name="_EditDepartments" model="@Model" />
-
-<div class="form-group">
-	<label asp-for="InstructorID" class="control-label"></label>
-	<select asp-for="InstructorID" class="form-control" asp-items="ViewBag.InstructorID">
-		<option value="">-- Select Administrator --</option>
-	</select>
-	<span asp-validation-for="InstructorID" class="text-danger"></span>
-</div>

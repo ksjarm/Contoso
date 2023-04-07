@@ -1,6 +1,8 @@
-﻿@model Department
-@using Contoso.Pages.HtmlHelpers;
+﻿@using Contoso.Pages.HtmlHelpers;
+@model Department
 
 @Html.ViewItem(x => x.Name)
 @Html.ViewItem(x => x.Budget)
 @Html.ViewItem(x => x.StartDate)
+@Html.ViewItem(x => x.RowVersion)
+@Html.ViewItem(x => x.Administrator.FullName, x => x.Administrator)

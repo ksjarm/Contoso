@@ -17,8 +17,7 @@ public static class HtmlEditItem {
         return new HtmlContentBuilder(s);
     }
     internal static List<object> htmlStrings<TModel, TValue, TLabel>(IHtmlHelper<TModel> h,
-        Expression<Func<TModel, TValue>> value, 
-        Expression<Func<TModel, TLabel>> label) => new() {
+        Expression<Func<TModel, TValue>> value, Expression<Func<TModel, TLabel>> label) => new() {
                 new HtmlString(Tags.TitleStart),
                 h.DisplayNameFor(label),
                 new HtmlString(Tags.TitleEnd),
