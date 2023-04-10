@@ -8,10 +8,10 @@ public class Program {
     public static void Main(string[] args) {
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddDbContext<SchoolContext>(options => options.UseSqlServer(
-            builder.Configuration.GetConnectionString("Defaultconnection")
+            builder.Configuration.GetConnectionString("DefaultConnection")
                 ));
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolContext")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
         builder.Services.AddControllersWithViews();
         builder.Services.AddTransient<IInstructorsRepo, InstructorsRepo>();

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Contoso.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230410205922_EntityBaseClasses")]
+    [Migration("20230410211036_EntityBaseClasses")]
     partial class EntityBaseClasses
     {
         /// <inheritdoc />

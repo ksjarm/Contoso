@@ -85,25 +85,25 @@ namespace Contoso.Soft.Data
 
             var courses = new Course[]
             {
-                new Course {ID = 1050, Name = "Chemistry",      Credits = 3,
+                new Course {Number = 1050, Name = "Chemistry",      Credits = 3,
                     DepartmentID = departments.Single( s => s.Name == "Engineering").ID
                 },
-                new Course {ID = 4022, Name = "Microeconomics", Credits = 3,
+                new Course {Number = 4022, Name = "Microeconomics", Credits = 3,
                     DepartmentID = departments.Single( s => s.Name == "Economics").ID
                 },
-                new Course {ID = 4041, Name = "Macroeconomics", Credits = 3,
+                new Course {Number = 4041, Name = "Macroeconomics", Credits = 3,
                     DepartmentID = departments.Single( s => s.Name == "Economics").ID
                 },
-                new Course {ID = 1045, Name = "Calculus",       Credits = 4,
+                new Course {Number = 1045, Name = "Calculus",       Credits = 4,
                     DepartmentID = departments.Single( s => s.Name == "Mathematics").ID
                 },
-                new Course {ID = 3141, Name = "Trigonometry",   Credits = 4,
+                new Course {Number = 3141, Name = "Trigonometry",   Credits = 4,
                     DepartmentID = departments.Single( s => s.Name == "Mathematics").ID
                 },
-                new Course {ID = 2021, Name = "Composition",    Credits = 3,
+                new Course {Number = 2021, Name = "Composition",    Credits = 3,
                     DepartmentID = departments.Single( s => s.Name == "English").ID
                 },
-                new Course {ID = 2042, Name = "Literature",     Credits = 4,
+                new Course {Number = 2042, Name = "Literature",     Credits = 4,
                     DepartmentID = departments.Single( s => s.Name == "English").ID
                 },
             };
