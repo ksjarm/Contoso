@@ -12,4 +12,8 @@ public class ApplicationDbContext : IdentityDbContext {
         initializeTables(b);
     }
     private static void initializeTables(ModelBuilder b) => SchoolContext.InitializeTables(b);
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        // You don't actually ever need to call this
+    }
 }
