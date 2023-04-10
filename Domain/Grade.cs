@@ -1,4 +1,11 @@
-﻿namespace Contoso.Domain;
+﻿using System.ComponentModel;
+
+namespace Contoso.Domain;
 public enum Grade {
-    A, B, C, D, F
+    [Description("Excellent")] A = 5,
+    [Description("Very good")] B = 4,
+    [Description("Good")] C = 3,
+    [Description("Satisfactory")] D = 2,
+    [Description("Poor")] E = 1,
+    [Description("Failed")] F = 0
 }

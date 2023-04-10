@@ -21,10 +21,10 @@ public class StudentsController : Controller {
 		ViewData["CurrentFilter"] = searchString;
 		var students = from s in context.Students select s;
 		if (!string.IsNullOrEmpty(searchString))
-			students = students.Where(s => s.LastName.Contains(searchString) || s.FirstMidName.Contains(searchString));
+			students = students.Where(s => s.Name.Contains(searchString) || s.FirstMidName.Contains(searchString));
 		switch (sortOrder) {
 			case "name_desc":
-				students = students.OrderByDescending(s => s.LastName);
+				students = students.OrderByDescending(s => s.Name);
 				break;
 			case "Date":
 				students = students.OrderBy(s => s.EnrollmentDate);
@@ -33,7 +33,7 @@ public class StudentsController : Controller {
 				students = students.OrderByDescending(s => s.EnrollmentDate);
 				break;
 			default:
-				students = students.OrderBy(s => s.LastName);
+				students = students.OrderBy(s => s.Name);
 				break;
 		}
 		int pageSize = 3;
@@ -51,7 +51,7 @@ public class StudentsController : Controller {
 	}
 	public IActionResult Create() => View();
 	[HttpPost] [ValidateAntiForgeryToken]
-	public async Task<IActionResult> Create([Bind("EnrollmentDate,FirstMidName,LastName")] Student s) {
+	public async Task<IActionResult> Create([Bind("EnrollmentDate,FirstMidName,Name")] Student s) {
 		await Task.CompletedTask;
 		try {
 			if (ModelState.IsValid) {
@@ -70,7 +70,7 @@ public class StudentsController : Controller {
 		if (id == null) return NotFound();
 		var studentToUpdate = await context.Students.FirstOrDefaultAsync(s => s.ID == id);
 		if (await TryUpdateModelAsync<Student>(studentToUpdate, "",
-			s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate)) {
+			s => s.FirstMidName, s => s.Name, s => s.EnrollmentDate)) {
 			try {
 				await context.SaveChangesAsync();
 				return RedirectToAction(nameof(Index));

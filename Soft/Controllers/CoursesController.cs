@@ -69,7 +69,7 @@ public class CoursesController : Controller {
 
         if (await TryUpdateModelAsync<Course>(courseToUpdate,
             "",
-            c => c.Credits, c => c.DepartmentID, c => c.Title))
+            c => c.Credits, c => c.DepartmentID, c => c.Name))
         {
             try
             {

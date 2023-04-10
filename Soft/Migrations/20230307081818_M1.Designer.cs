@@ -149,7 +149,7 @@ namespace Contoso.Soft.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("FirstName");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");

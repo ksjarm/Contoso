@@ -1,7 +1,7 @@
 ﻿@model Contoso.Facade.InstructorIndexData
 
 @{
-    ViewData["Title"] = "Instructors";
+    ViewData["Name"] = "Instructors";
 }
 
 <h2>Instructors</h2>
@@ -30,7 +30,7 @@
             }
             <tr class="@selectedRow">
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstMidName)
@@ -47,7 +47,7 @@
             <td>
                 @foreach (var course in item.CourseAssignments)
                 {
-                    @course.Course.ID @course.Course.Title <br />
+                    @course.Course.ID @course.Course.Name <br />
                 }
             </td>
             <td>
@@ -67,7 +67,7 @@
             <tr>
                 <th></th>
                 <th>Number</th>
-                <th>Title</th>
+                <th>Name</th>
                 <th>Department</th>
             </tr>
 
@@ -86,7 +86,7 @@
                     @item.ID
                         </td>
                         <td>
-                    @item.Title
+                    @item.Name
                         </td>
                         <td>
                     @item.Department.Name

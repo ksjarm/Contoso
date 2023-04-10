@@ -1,4 +1,5 @@
 ﻿using Contoso.Domain;
+using Contoso.Domain.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra;

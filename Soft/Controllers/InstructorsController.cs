@@ -21,7 +21,7 @@ public class InstructorsController : Controller {
 			  .Include(i => i.CourseAssignments)
 				.ThenInclude(i => i.Course)
 					.ThenInclude(i => i.Department)
-			  .OrderBy(i => i.LastName)
+			  .OrderBy(i => i.Name)
 			  .ToListAsync();
 		if (id != null) {
 			ViewData["InstructorID"] = id.Value;
@@ -44,7 +44,7 @@ public class InstructorsController : Controller {
 		return View();
 	}
 	[HttpPost] [ValidateAntiForgeryToken]
-	public async Task<IActionResult> Create([Bind("FirstMidName,HireDate,LastName,OfficeAssignment")] Instructor i, string[] selectedCourses) {
+	public async Task<IActionResult> Create([Bind("FirstMidName,HireDate,Name,OfficeAssignment")] Instructor i, string[] selectedCourses) {
 		await Task.CompletedTask;
 		if (selectedCourses != null) {
 			i.CourseAssignments = new List<CourseAssignment>();
@@ -78,7 +78,7 @@ public class InstructorsController : Controller {
 		foreach (var course in allCourses) {
 			viewModel.Add(new AssignedCourseData {
 				CourseID = course.ID,
-				Title = course.Title,
+				Title = course.Name,
 				Assigned = instructorCourses.Contains(course.ID)
 			});
 		}
@@ -93,7 +93,7 @@ public class InstructorsController : Controller {
 		.ThenInclude(i => i.Course)
 			.FirstOrDefaultAsync(s => s.ID == id);
 		if (await TryUpdateModelAsync<Instructor>( instructorToUpdate, "",
-			i => i.FirstMidName, i => i.LastName, i => i.HireDate, i => i.OfficeAssignment)) {
+			i => i.FirstMidName, i => i.Name, i => i.HireDate, i => i.OfficeAssignment)) {
 			if (String.IsNullOrWhiteSpace(instructorToUpdate.OfficeAssignment?.Location)) instructorToUpdate.OfficeAssignment = null;
 			UpdateInstructorCourses(selectedCourses, instructorToUpdate);
 			try {
