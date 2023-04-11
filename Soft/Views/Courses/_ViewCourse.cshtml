@@ -1,7 +1,7 @@
-﻿@model Course
-@using Contoso.Pages.HtmlHelpers;
+﻿@using Contoso.Pages.HtmlHelpers;
+@model Course
 
-@Html.ViewItem(x => x.ID)
+@Html.ViewItem(x => x.Number)
 @Html.ViewItem(x => x.Name)
 @Html.ViewItem(x => x.Credits)
 @Html.ViewItem(x => x.Department.Name, x => x.Department)

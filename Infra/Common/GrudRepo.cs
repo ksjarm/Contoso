@@ -36,8 +36,7 @@ public abstract class GrudRepo<T> : IGrudRepo<T> where T : class, IEntity {
 	public T? Get(int? id) => (id is not null)? set?.Find(id): null;
 	public bool Update(T obj) {
 		try {
-			var x = Get(obj.ID);
-			if (x is null) return Add(obj);
+			if (!set.Any(x => x.ID == obj.ID)) return Add(obj);
 			set.Update(obj);
 			db.SaveChanges();
 			return true;
