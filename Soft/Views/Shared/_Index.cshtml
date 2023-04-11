@@ -1,0 +1,13 @@
+﻿@using Contoso.Pages.Constants
+
+@{ 
+    Layout = Layouts.Default;
+}
+
+<h1>@ViewData[Data.Title]</h1>
+
+<p>
+    <a asp-action="@Actions.Create">@Texts.Create</a>
+</p>
+
+@RenderBody()

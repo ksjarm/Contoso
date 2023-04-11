@@ -60,7 +60,7 @@ public class CoursesController : Controller {
         var departmentsQuery = from d in context.Departments
                                orderby d.Name
                                select d;
-        ViewBag.DepartmentID = new SelectList(departmentsQuery.AsNoTracking(), "DepartmentID", "Name", selectedDepartment);
+        ViewBag.DepartmentID = new SelectList(departmentsQuery.AsNoTracking(), "ID", "Name", selectedDepartment);
     }
     public async Task<IActionResult> Delete(int? id) {
         await Task.CompletedTask;

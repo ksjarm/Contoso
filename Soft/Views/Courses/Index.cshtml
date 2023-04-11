@@ -4,6 +4,7 @@
 @model IEnumerable<Course>
 
 @{
+    Layout = Layouts.Index;
     ViewData[Data.Title] = "Courses";
     var columns = new Dictionary<string, Expression<Func<Course, dynamic>>>{
         {nameof(Course.Number), x => x.Number },
@@ -12,11 +13,5 @@
         {nameof(Course.Department),x => x.Department.Name} };
     dynamic getId(Course c) => c.ID;
 }
-
-<h1>Courses</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 
 @Html.ViewList(Model, columns, getId)
