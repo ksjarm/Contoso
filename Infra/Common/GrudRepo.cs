@@ -1,4 +1,5 @@
-﻿using Contoso.Data;
+﻿using Contoso.Aids;
+using Contoso.Data;
 using Contoso.Domain.BaseRepos;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,37 +12,27 @@ public abstract class GrudRepo<T> : IGrudRepo<T> where T : class, IEntity {
 		db = c;
 		set = s;
 	}
-	public bool Add(T obj) {
-		try {
-			set.Add(obj);
-			db.SaveChanges();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-	public bool Delete(int id) {
-		try {
-			var x = Get(id);
-			if (x is null) return false;
-			set.Remove(x);
-			db.SaveChanges();
-			return true;
-		}
-		catch (Exception e) {
-			return false;
-		}
-	}
-	public IEnumerator<T> Get() => throw new NotImplementedException();
+	public bool Add(T obj) => Safe.Run(() => add(obj));
+	public bool Delete(int id) => Safe.Run(() => delete(id));
+    public IEnumerator<T> Get() => throw new NotImplementedException();
 	public T? Get(int? id) => (id is not null)? set?.Find(id): null;
-	public bool Update(T obj) {
-		try {
-			if (!set.Any(x => x.ID == obj.ID)) return Add(obj);
-			set.Update(obj);
-			db.SaveChanges();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
+	public bool Update(T obj) => Safe.Run(() =>  update(obj));
+    internal bool add(T obj) {
+        set.Add(obj);
+        db.SaveChanges();
+        return true;
+    }
+    internal bool delete(int id) {
+        var x = Get(id);
+        if (x is null) return false;
+        set.Remove(x);
+        db.SaveChanges();
+        return true;
+    }
+    internal bool update(T obj) {
+        if (!set.Any(x => x.ID == obj.ID)) return Add(obj);
+        set.Update(obj);
+        db.SaveChanges();
+        return true;
+    }
 }

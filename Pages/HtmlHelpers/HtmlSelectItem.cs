@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq.Expressions;
 
 namespace Contoso.Pages.HtmlHelpers;
-public static class HtmlSelectItem
-{
+public static class HtmlSelectItem {
     public static IHtmlContent SelectItem<TModel, TValue>(this IHtmlHelper<TModel> h,
         Expression<Func<TModel, TValue>> value, IEnumerable<SelectListItem> items) {
         var s = htmlStrings(h, value, items, value);
@@ -18,8 +17,7 @@ public static class HtmlSelectItem
         return new HtmlContentBuilder(s);
     }
     internal static List<object> htmlStrings<TModel, TValue, TLabel>(IHtmlHelper<TModel> h,
-         Expression<Func<TModel, TValue>> value,
-         IEnumerable<SelectListItem> items,
+         Expression<Func<TModel, TValue>> value, IEnumerable<SelectListItem> items,
          Expression<Func<TModel, TLabel>> label) => new() {
                 new HtmlString(Tags.TitleStart),
                 h.DisplayNameFor(label),

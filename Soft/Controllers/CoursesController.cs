@@ -13,6 +13,8 @@ public class CoursesController : Controller {
         context = c;
         repo = r;
     }
+    internal const string properties = $"{nameof(Course.ID)}, {nameof(Course.Number)}, "+
+        $"{nameof(Course.Name)}, {nameof(Course.Credits)}, {nameof(Course.DepartmentID)}";
     public async Task<IActionResult> Index() {
         var courses = context.Courses
             .Include(c => c.Department)
@@ -29,7 +31,7 @@ public class CoursesController : Controller {
         return View();
     }
     [HttpPost] [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("ID, Number, Name, Credits, DepartmentID")] Course course) {
+    public async Task<IActionResult> Create([Bind(properties)] Course course) {
         await Task.CompletedTask;
         if (ModelState.IsValid) {
             repo.Add(course);
@@ -45,7 +47,7 @@ public class CoursesController : Controller {
         return View(course);
     }
     [HttpPost] [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("ID, Number, Name, Credits, DepartmentID")] Course course) {
+    public async Task<IActionResult> Edit(int id, [Bind(properties)] Course course) {
         if (id != course.ID) return NotFound();
         if (ModelState.IsValid) {
             if(repo.Update(course)) return RedirectToAction(nameof(Index));
@@ -65,7 +67,7 @@ public class CoursesController : Controller {
         var course = repo.Get(id);
         return View(course);
     }
-    [HttpPost, ActionName("Delete")] [ValidateAntiForgeryToken]
+    [HttpPost, ActionName(nameof(Delete))] [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id) {
         await Task.CompletedTask;
         repo.Delete(id);
