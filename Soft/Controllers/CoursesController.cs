@@ -16,10 +16,8 @@ public class CoursesController : Controller {
     internal const string properties = $"{nameof(Course.ID)}, {nameof(Course.Number)}, "+
         $"{nameof(Course.Name)}, {nameof(Course.Credits)}, {nameof(Course.DepartmentID)}";
     public async Task<IActionResult> Index() {
-        var courses = context.Courses
-            .Include(c => c.Department)
-            .AsNoTracking();
-        return View(await courses.ToListAsync());
+        await Task.CompletedTask;
+        return View(repo.Get());
     }
     public async Task<IActionResult> Details(int? id) {
         await Task.CompletedTask;

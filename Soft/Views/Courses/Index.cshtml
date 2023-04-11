@@ -9,8 +9,8 @@
     var columns = new Dictionary<string, Expression<Func<Course, dynamic>>>{
         {nameof(Course.Number), x => x.Number },
         {nameof(Course.Name),x => x.Name },
-        {nameof(Course.Credits),x => x.Credits },
-        {nameof(Course.Department),x => x.Department.Name} };
+        {nameof(Course.Credits),x => x.Credits } };
+    //{nameof(Course.Department),x => x.Department.Name} };
     dynamic getId(Course c) => c.ID;
 }
 

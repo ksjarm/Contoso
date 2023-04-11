@@ -4,7 +4,7 @@ namespace Contoso.Domain.BaseRepos;
 
 public interface IGrudRepo<T> where T : IEntity
 {
-	IEnumerator<T> Get();
+	IEnumerable<T> Get();
 	T? Get(int? id);
 	bool Update(T obj);
 	bool Add(T obj);
