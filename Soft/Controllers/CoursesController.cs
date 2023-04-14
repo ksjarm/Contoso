@@ -15,7 +15,12 @@ public class CoursesController : Controller {
     }
     internal const string properties = $"{nameof(Course.ID)}, {nameof(Course.Number)}, "+
         $"{nameof(Course.Name)}, {nameof(Course.Credits)}, {nameof(Course.DepartmentID)}";
-    public async Task<IActionResult> Index() => View(await repo.GetAsync());
+    internal string getPage => nameof(CoursesController).Replace(nameof(Controller), string.Empty);
+    public async Task<IActionResult> Index(string sortOrder) {
+        ViewData[Pages.Constants.Data.SortOrder] = sortOrder;
+        ViewData[Pages.Constants.Data.Page] = getPage;
+        return View(await repo.GetAsync(sortOrder));
+    }
     public async Task<IActionResult> Details(int? id) => View(await repo.GetAsync(id));
     public IActionResult Create() {
         PopulateDepartmentsDropDownList();

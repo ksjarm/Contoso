@@ -14,17 +14,16 @@ public static class HtmlViewList
         return new HtmlContentBuilder(s);
     }
     internal static List<object> htmlStrings<TModel>(
-        IHtmlHelper<IEnumerable<TModel>> h,
-        IEnumerable<TModel> items, 
+        IHtmlHelper<IEnumerable<TModel>> h, IEnumerable<TModel> items, 
         Dictionary<string, Expression<Func<TModel, dynamic>>> columns,
         Func<TModel, dynamic> getId) {
         List<object> list = new (){ new HtmlString("<table class=\"table\"> <thead> <tr>") };
         foreach (var c in columns) {
-            list.Add(new HtmlString("<th>"));
-            list.Add( h.Raw(c.Key));
-            list.Add(new HtmlString("</th>"));
+            list.Add(new HtmlString("<td>"));
+            list.Add(h.TableHeader(c.Key, getSortOrder(h), getPage(h)));
+            list.Add(new HtmlString("</td>"));
         }
-        list.Add(new HtmlString("<th></th> </tr> </thead>"));
+        list.Add(new HtmlString("<td></td> </tr> </thead>"));
         list.Add(new HtmlString("<tbody>"));
         foreach (var i in items) {
             list.Add(new HtmlString("<tr>"));
@@ -51,4 +50,9 @@ public static class HtmlViewList
         list.Add(new HtmlString("</tbody> </table>"));
         return list;
     }
+
+    private static string? getSortOrder<TModel>(IHtmlHelper<IEnumerable<TModel>> h)
+        => h.ViewData[Constants.Data.SortOrder]?.ToString();
+    private static string? getPage<TModel>(IHtmlHelper<IEnumerable<TModel>> h)
+        => h.ViewData[Constants.Data.Page]?.ToString();
 }

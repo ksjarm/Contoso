@@ -24,6 +24,7 @@ public abstract class GrudRepo<T> : IGrudRepo<T> where T : class, IEntity {
         sql = сreateSQL();
         return await runSQLAsync();
     }
+    public abstract Task<IEnumerable<T>> GetAsync(string sortOrder);
     public async Task<T?> GetAsync(int? id) => await getAsync(id);
     public async Task<bool> UpdateAsync(T obj) => await Safe.RunAsync(() => updateAsync(obj));
     internal bool add(T obj) => addAsync(obj).GetAwaiter().GetResult();
