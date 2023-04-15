@@ -16,10 +16,12 @@ public class CoursesController : Controller {
     internal const string properties = $"{nameof(Course.ID)}, {nameof(Course.Number)}, "+
         $"{nameof(Course.Name)}, {nameof(Course.Credits)}, {nameof(Course.DepartmentID)}";
     internal string getPage => nameof(CoursesController).Replace(nameof(Controller), string.Empty);
-    public async Task<IActionResult> Index(string sortOrder) {
+    public async Task<IActionResult> Index(string sortOrder, int pageIndex) {
         ViewData[Pages.Constants.Data.SortOrder] = sortOrder;
         ViewData[Pages.Constants.Data.Page] = getPage;
-        return View(await repo.GetAsync(sortOrder));
+        ViewData[Pages.Constants.Data.PageIndex] = pageIndex;
+        ViewData[Pages.Constants.Data.TotalPages] = repo.TotalPages;
+        return View(await repo.GetAsync(sortOrder, pageIndex));
     }
     public async Task<IActionResult> Details(int? id) => View(await repo.GetAsync(id));
     public IActionResult Create() {

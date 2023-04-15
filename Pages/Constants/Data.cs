@@ -1,7 +1,9 @@
 ﻿namespace Contoso.Pages.Constants;
 public static class Data {
-    public static string Title => "Title";
-    public static string ItemID => "ItemID";
-    public static string Page => "Page";
-    public static string SortOrder => "SortOrder";
+    public static string Title => nameof(Title);
+    public static string ItemID => nameof(ItemID);
+    public static string Page => nameof(Page);
+    public static string SortOrder => nameof(SortOrder);
+    public static string PageIndex => nameof(PageIndex);
+    public static string TotalPages => nameof(TotalPages);
 }

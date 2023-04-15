@@ -1,7 +1,22 @@
 ﻿@using Contoso.Pages.Constants
 
-@{ 
+@{
     Layout = Layouts.Default;
+    int pageIndex = toInt(ViewData[Data.PageIndex]);
+    int pageCount = toInt(ViewData[Data.TotalPages]);
+    
+    var disabledFirstPrev = (pageIndex == 0) ? "disabled" : string.Empty;
+    var disabledNextLast = (pageIndex == pageCount - 1) ? "disabled" : string.Empty;
+    var showMessage = $"Page {pageIndex + 1} of total pages {pageCount}";
+    
+    int toInt(object? o)
+    {
+        var s = o?.ToString();
+        if (s is null) return 0;
+        int i;
+        var b = int.TryParse(s, out i);
+        return b ? i : 0;
+    }
 }
 
 <h1>@ViewData[Data.Title]</h1>
@@ -11,3 +26,28 @@
 </p>
 
 @RenderBody()
+
+<div>
+    <a asp-action="Index"
+       asp-route-pageIndex="0"
+       class="btn btn-primary @disabledFirstPrev">
+        First
+    </a>&nbsp;
+    <a asp-action="Index"
+       asp-route-pageIndex="@(pageIndex - 1)"
+       class="btn btn-primary @disabledFirstPrev">
+        Previous
+    </a>&nbsp;
+    @showMessage
+    &nbsp;
+    <a asp-action="Index"
+       asp-route-pageIndex="@(pageIndex + 1)"
+       class="btn btn-primary @disabledNextLast">
+        Next
+    </a>&nbsp;
+    <a asp-action="Index"
+       asp-route-pageIndex="@(pageCount-1)"
+       class="btn btn-primary @disabledNextLast">
+        Last
+    </a>&nbsp;
+</div>
