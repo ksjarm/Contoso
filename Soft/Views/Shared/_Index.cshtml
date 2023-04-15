@@ -25,29 +25,39 @@
     <a asp-action="@Actions.Create">@Texts.Create</a>
 </p>
 
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData[Data.CurrentFilter]" />
+            <input type="submit" value="Search" class="btn btn-light" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
 @RenderBody()
 
 <div>
     <a asp-action="Index"
        asp-route-pageIndex="0"
-       class="btn btn-primary @disabledFirstPrev">
+       class="btn btn-secondary @disabledFirstPrev">
         First
     </a>&nbsp;
     <a asp-action="Index"
        asp-route-pageIndex="@(pageIndex - 1)"
-       class="btn btn-primary @disabledFirstPrev">
+       class="btn btn-secondary @disabledFirstPrev">
         Previous
     </a>&nbsp;
     @showMessage
     &nbsp;
     <a asp-action="Index"
        asp-route-pageIndex="@(pageIndex + 1)"
-       class="btn btn-primary @disabledNextLast">
+       class="btn btn-secondary @disabledNextLast">
         Next
     </a>&nbsp;
     <a asp-action="Index"
-       asp-route-pageIndex="@(pageCount-1)"
-       class="btn btn-primary @disabledNextLast">
+       asp-route-pageIndex="@(pageCount - 1)"
+       class="btn btn-secondary @disabledNextLast">
         Last
     </a>&nbsp;
 </div>

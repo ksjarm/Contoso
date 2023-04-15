@@ -12,9 +12,9 @@ public abstract class OrderedRepo<T> : FilteredRepo<T>, IOrderedRepo<T> where T 
     internal PropertyInfo? propertyInfo => Safe.Run(() => typeof(T).GetProperty(propertyName ?? string.Empty));
     public string SortOrder { get; set; }
 	protected OrderedRepo(DbContext? c, DbSet<T>? s) : base(c, s) { }
-	public override async Task<IEnumerable<T>> GetAsync(string sortOrder, int pageIndex) {
+	public override async Task<IEnumerable<T>> GetAsync(string sortOrder, int pageIndex, string searchString) {
 		SortOrder = sortOrder;
-		return await base.GetAsync(sortOrder, pageIndex);
+		return await base.GetAsync(sortOrder, pageIndex, searchString);
 	}
     protected internal override IQueryable<T> сreateSQL() {
         var s = base.сreateSQL();

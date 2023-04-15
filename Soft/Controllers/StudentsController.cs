@@ -13,32 +13,15 @@ public class StudentsController : Controller {
 		context = c;
 		repo = r;
 	}
-	public async Task<IActionResult> Index( string sortOrder, string currentFilter, string searchString, int? pageNumber) {
-		ViewData["CurrentSort"] = sortOrder;
-		ViewData["NameSortParm"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-		ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
-		if (searchString != null) pageNumber = 1; else searchString = currentFilter;
-		ViewData["CurrentFilter"] = searchString;
-		var students = from s in context.Students select s;
-		if (!string.IsNullOrEmpty(searchString))
-			students = students.Where(s => s.Name.Contains(searchString) || s.FirstMidName.Contains(searchString));
-		switch (sortOrder) {
-			case "name_desc":
-				students = students.OrderByDescending(s => s.Name);
-				break;
-			case "Date":
-				students = students.OrderBy(s => s.EnrollmentDate);
-				break;
-			case "date_desc":
-				students = students.OrderByDescending(s => s.EnrollmentDate);
-				break;
-			default:
-				students = students.OrderBy(s => s.Name);
-				break;
-		}
-		int pageSize = 3;
-		return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pageNumber ?? 1, pageSize));
-	}
+    internal string getPage => nameof(StudentsController).Replace(nameof(Controller), string.Empty);
+    public async Task<IActionResult> Index(string sortOrder, int pageIndex, string searchString) {
+        ViewData[Pages.Constants.Data.SortOrder] = sortOrder;
+        ViewData[Pages.Constants.Data.Page] = getPage;
+        ViewData[Pages.Constants.Data.PageIndex] = pageIndex;
+        ViewData[Pages.Constants.Data.TotalPages] = repo.TotalPages;
+        ViewData[Pages.Constants.Data.CurrentFilter] = searchString;
+        return View(await repo.GetAsync(sortOrder, pageIndex, searchString));
+    }
 	public async Task<IActionResult> Details(int? id) {
 		if (id == null || context.Students == null) return NotFound();
 		var student = await context.Students

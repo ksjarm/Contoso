@@ -11,9 +11,9 @@ public class PagedRepo<T> : OrderedRepo<T>, IPagedRepo<T> where T : class, IEnti
     public int PageIndex { get; set; }
     public int PageSize { get; set; } = 3;
     public int skippedItemsCount => PageSize * PageIndex;
-    public override async Task<IEnumerable<T>> GetAsync(string sortOrder, int pageIndex) {
+    public override async Task<IEnumerable<T>> GetAsync(string sortOrder, int pageIndex, string searchString) {
         PageIndex = pageIndex;
-        return await base.GetAsync(sortOrder, pageIndex);
+        return await base.GetAsync(sortOrder, pageIndex, searchString);
     }
     protected internal override IQueryable<T> сreateSQL() {
         var s = base.сreateSQL();
