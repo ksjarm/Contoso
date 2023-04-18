@@ -1,0 +1,7 @@
+﻿@using Contoso.Pages.HtmlHelpers;
+@model Enrollment
+
+@Html.ViewItem(x => x.Course.ID, x => x.Course)
+@Html.ViewItem(x => x.Student.ID, x => x.Student)
+@Html.ViewItem(x => x.Grade)
+

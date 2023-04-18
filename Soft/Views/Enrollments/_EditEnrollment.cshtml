@@ -1,0 +1,11 @@
+﻿@using Contoso.Pages.HtmlHelpers
+@model Enrollment
+
+@{
+    var courses = (IEnumerable<SelectListItem>)ViewData["CourseID"]; 
+    var students = (IEnumerable<SelectListItem>)ViewData["StudentID"];
+}
+
+@Html.SelectItem(x => x.CourseID, courses, x => x.Course)
+@Html.SelectItem(x => x.StudentID, students, x => x.Student)
+@Html.EditItem(x => x.Grade)

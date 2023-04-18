@@ -6,41 +6,19 @@ using Contoso.Infra;
 using Contoso.Domain.Repos;
 
 namespace Contoso.Soft.Controllers;
-public class CoursesController : Controller {
-    private readonly SchoolContext context;
-    private readonly ICoursesRepo repo;
-    public CoursesController(SchoolContext c = null, ICoursesRepo r = null) {
-        context = c;
-        repo = r;
-    }
+public class CoursesController : SchoolController<ICoursesRepo, Course> {
+    public CoursesController(SchoolContext c = null, ICoursesRepo r = null) : base(c, r) { }
+
     internal const string properties = $"{nameof(Course.ID)}, {nameof(Course.Number)}, "+
         $"{nameof(Course.Name)}, {nameof(Course.Credits)}, {nameof(Course.DepartmentID)}";
-    internal string getPage => nameof(CoursesController).Replace(nameof(Controller), string.Empty);
-    public async Task<IActionResult> Index(string sortOrder, int pageIndex, string searchString) {
-        ViewData[Pages.Constants.Data.SortOrder] = sortOrder;
-        ViewData[Pages.Constants.Data.Page] = getPage;
-        ViewData[Pages.Constants.Data.PageIndex] = pageIndex;
-        ViewData[Pages.Constants.Data.TotalPages] = repo.TotalPages;
-        ViewData[Pages.Constants.Data.CurrentFilter] = searchString;
-        return View(await repo.GetAsync(sortOrder, pageIndex, searchString));
-    }
-    public async Task<IActionResult> Details(int? id) => View(await repo.GetAsync(id));
-    public IActionResult Create() {
-        PopulateDepartmentsDropDownList();
-        return View();
-    }
+    
     [HttpPost] [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] Course course) {
         if (ModelState.IsValid) {
             await repo.AddAsync(course);
             return RedirectToAction(nameof(Index));
         }
-        PopulateDepartmentsDropDownList(course.DepartmentID);
-        return View(course);
-    }
-    public async Task<IActionResult> Edit(int? id) {
-        var course = await repo.GetAsync(id);
-        PopulateDepartmentsDropDownList(course.DepartmentID);
+        relatedLists(course);
         return View(course);
     }
     [HttpPost] [ValidateAntiForgeryToken]
@@ -50,20 +28,14 @@ public class CoursesController : Controller {
             if(await repo.UpdateAsync(course)) return RedirectToAction(nameof(Index));
             else NotFound();
         }
-        PopulateDepartmentsDropDownList(course.DepartmentID);
+        relatedLists(course);
         return View(course);
     }
-    private void PopulateDepartmentsDropDownList(object selectedDepartment = null) {
+    protected internal override void relatedLists(Course selectedItem = null) {
         var departmentsQuery = from d in context.Departments
                                orderby d.Name
                                select d;
-        ViewBag.DepartmentID = new SelectList(departmentsQuery.AsNoTracking(), "ID", "Name", selectedDepartment);
-    }
-    public async Task<IActionResult> Delete(int? id) => View(await repo.GetAsync(id));
-    [HttpPost, ActionName(nameof(Delete))] [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int id) {
-        await repo.DeleteAsync(id);
-        return RedirectToAction(nameof(Index));
+        ViewBag.Departments = new SelectList(departmentsQuery.AsNoTracking(), "ID", "Name", selectedItem?.DepartmentID);
     }
     private bool CourseExists(int id) => context.Courses.Any(e => e.ID == id);
 }

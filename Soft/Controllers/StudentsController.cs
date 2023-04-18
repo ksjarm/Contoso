@@ -6,22 +6,8 @@ using Contoso.Domain.Repos;
 
 namespace Contoso.Soft.Controllers;
 
-public class StudentsController : Controller {
-	private readonly SchoolContext context;
-	private readonly IStudentsRepo repo;
-	public StudentsController(SchoolContext c, IStudentsRepo r) {
-		context = c;
-		repo = r;
-	}
-    internal string getPage => nameof(StudentsController).Replace(nameof(Controller), string.Empty);
-    public async Task<IActionResult> Index(string sortOrder, int pageIndex, string searchString) {
-        ViewData[Pages.Constants.Data.SortOrder] = sortOrder;
-        ViewData[Pages.Constants.Data.Page] = getPage;
-        ViewData[Pages.Constants.Data.PageIndex] = pageIndex;
-        ViewData[Pages.Constants.Data.TotalPages] = repo.TotalPages;
-        ViewData[Pages.Constants.Data.CurrentFilter] = searchString;
-        return View(await repo.GetAsync(sortOrder, pageIndex, searchString));
-    }
+public class StudentsController : SchoolController<IStudentsRepo, Student> {
+	public StudentsController(SchoolContext c = null, IStudentsRepo r = null) : base(c, r) { }
 	public async Task<IActionResult> Details(int? id) {
 		if (id == null || context.Students == null) return NotFound();
 		var student = await context.Students

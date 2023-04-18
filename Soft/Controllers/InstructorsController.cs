@@ -7,13 +7,8 @@ using Contoso.Domain.Repos;
 
 namespace Contoso.Soft.Controllers;
 
-public class InstructorsController : Controller {
-	private readonly SchoolContext context;
-	private readonly IInstructorsRepo repo;
-	public InstructorsController(SchoolContext c, IInstructorsRepo r) {
-		context = c;
-		repo = r;
-	}
+public class InstructorsController : SchoolController<IInstructorsRepo, Instructor> {
+	public InstructorsController(SchoolContext c = null, IInstructorsRepo r = null) : base(c, r) { }
 	public async Task<IActionResult> Index(int? id, int? courseID) {
 		var viewModel = new InstructorIndexData();
 		viewModel.Instructors = await context.Instructors

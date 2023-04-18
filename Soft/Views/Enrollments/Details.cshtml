@@ -1,0 +1,11 @@
+﻿@model Enrollment
+@using Contoso.Pages.Constants
+@using Contoso.Pages.HtmlHelpers
+
+@{
+    ViewData[Data.Title] = nameof(Enrollment);
+    ViewData[Data.ItemID] = Model.ID;
+    Layout = Layouts.Details;
+}
+
+<partial name="_ViewEnrollment" model="@Model" />

@@ -1,6 +1,7 @@
 ﻿using Contoso.Domain;
 using Contoso.Domain.Repos;
 using Contoso.Infra.Common;
+using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra;
 public class CoursesRepo : BaseRepo<Course>, ICoursesRepo {
@@ -12,4 +13,6 @@ public class CoursesRepo : BaseRepo<Course>, ICoursesRepo {
                x.Credits.ToString().Contains(v) ||
                x.Number.ToString().Contains(v));
     }
+	protected internal override IQueryable<Course> addAggregates(IQueryable<Course> sql)
+		=> sql.Include(e => e.Department);
 }
