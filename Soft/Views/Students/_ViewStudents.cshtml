@@ -4,3 +4,26 @@
 @Html.ViewItem(x => x.Name)
 @Html.ViewItem(x => x.FirstMidName)
 @Html.ViewItem(x => x.EnrollmentDate)
+
+<dt class="col-sm-2">
+	@Html.DisplayNameFor(m => m.Enrollments)
+</dt>
+<dd class="col-sm-10">
+	<table class="table">
+		<tr>
+			<th>Course Title</th>
+			<th>Grade</th>
+		</tr>
+		@foreach (var item in Model.Enrollments)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Course.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Grade)
+				</td>
+			</tr>
+		}
+	</table>
+</dd>

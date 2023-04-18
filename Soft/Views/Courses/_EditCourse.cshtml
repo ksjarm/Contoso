@@ -5,7 +5,6 @@
     var departments = (IEnumerable<SelectListItem>)ViewBag.Departments;
 }
 
-@Html.EditItem(x => x.Number)
 @Html.EditItem(x => x.Name)
 @Html.EditItem(x => x.Credits)
 @Html.SelectItem(x => x.DepartmentID, departments, x => x.Department)

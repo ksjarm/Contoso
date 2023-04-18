@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Enrollment>
-@using Contoso.Pages.HtmlHelpers
+﻿@using Contoso.Pages.HtmlHelpers
 @using Contoso.Pages.Constants
 @using System.Linq.Expressions;
+@model IEnumerable<Enrollment>
 
 @{
     Layout = Layouts.Index;
@@ -10,7 +10,7 @@
         {nameof(Enrollment.CourseID), x => x.Course.ID},
         {nameof(Enrollment.Course),x => x.Course.Name},
         {nameof(Enrollment.StudentID),x => x.Student.ID},
-        //{nameof(Enrollment.Student.FirstMidName),x => x.Student.FirstMidName},
+        {nameof(Enrollment.Student.FirstMidName),x => x.Student.FirstMidName},
         {nameof(Enrollment.Student),x => x.Student.Name},
         {nameof(Enrollment.Grade),x => x.Grade} 
     };

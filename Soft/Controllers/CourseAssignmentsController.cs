@@ -1,14 +1,9 @@
-﻿using Contoso.Domain.Repos;
+﻿using Contoso.Domain;
+using Contoso.Domain.Repos;
 using Contoso.Infra;
-using Microsoft.AspNetCore.Mvc;
+using Contoso.Soft.Controllers.Common;
 
 namespace Contoso.Soft.Controllers;
-public class CourseAssignmentsController : Controller {
-    private readonly SchoolContext context;
-    private readonly ICourseAssignmentsRepo repo;
-    public CourseAssignmentsController(SchoolContext c, ICourseAssignmentsRepo r)
-    {
-        context = c;
-        repo = r;
-    }
+public class CourseAssignmentsController : SchoolController<ICourseAssignmentsRepo, CourseAssignment> {
+    public CourseAssignmentsController(SchoolContext c, ICourseAssignmentsRepo r) : base(c, r) { }
 }

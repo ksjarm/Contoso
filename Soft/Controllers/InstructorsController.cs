@@ -4,6 +4,7 @@ using Contoso.Domain;
 using Contoso.Facade;
 using Contoso.Infra;
 using Contoso.Domain.Repos;
+using Contoso.Soft.Controllers.Common;
 
 namespace Contoso.Soft.Controllers;
 

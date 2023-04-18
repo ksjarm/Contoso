@@ -4,8 +4,7 @@ using System.Linq.Expressions;
 using Contoso.Pages.Constants;
 
 namespace Contoso.Pages.HtmlHelpers;
-public static class HtmlViewList
-{
+public static class HtmlViewList {
     public static IHtmlContent ViewList<TModel> (
         this IHtmlHelper<IEnumerable<TModel>> h, IEnumerable<TModel> items, 
               Dictionary<string, Expression<Func<TModel, dynamic>>> columns, 
