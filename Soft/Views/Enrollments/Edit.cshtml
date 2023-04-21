@@ -3,8 +3,6 @@
 @using Contoso.Pages.HtmlHelpers
 
 @{
-    ViewData[Data.Title] = nameof(Enrollment);
-    ViewData[Data.ItemID] = Model.ID;
     Layout = Layouts.Edit;
 }
 <input type="hidden" asp-for="ID" />

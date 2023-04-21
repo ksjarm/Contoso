@@ -1,7 +1,10 @@
-﻿@using Contoso.Pages.HtmlHelpers
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers
 @model Enrollment
 
 @{
+    ViewData[Data.Title] = nameof(Enrollment);
+    ViewData[Data.ItemID] = Model?.ID;
     var courses = (IEnumerable<SelectListItem>)ViewData["CourseID"]; 
     var students = (IEnumerable<SelectListItem>)ViewData["StudentID"];
 }

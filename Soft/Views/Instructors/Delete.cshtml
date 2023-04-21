@@ -1,10 +1,11 @@
 ﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers;
 @model Instructor
 
 @{
-    ViewData[Data.Title] = nameof(Instructor);
-    ViewData[Data.ItemID] = Model.ID;
     Layout = Layouts.Delete;
 }
+
+@Html.ViewItem(x => x.ID)
 
 <partial name="_ViewInstructors" model="@Model" />

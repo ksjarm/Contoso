@@ -1,5 +1,11 @@
-﻿@using Contoso.Pages.HtmlHelpers;
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers;
 @model Enrollment
+
+@{
+    ViewData[Data.Title] = nameof(Enrollment);
+    ViewData[Data.ItemID] = Model?.ID;
+}
 
 @Html.ViewItem(x => x.Course.ID, x => x.Course)
 @Html.ViewItem(x => x.Student.ID, x => x.Student)

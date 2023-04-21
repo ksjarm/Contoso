@@ -1,32 +1,40 @@
-﻿@using Contoso.Pages.HtmlHelpers
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers
 @model Instructor
+
+@{
+    ViewData[Data.Title] = nameof(Instructor);
+    ViewData[Data.ItemID] = Model?.ID;
+}
 
 @Html.EditItem(x => x.Name)
 @Html.EditItem(x => x.FirstMidName)
 @Html.EditItem(x => x.HireDate)
 @Html.EditItem(x => x.OfficeAssignment.Location)
 
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-        <table>
-            <tr>
-                @{
-                    int cnt = 0;
-                    List<Contoso.Facade.AssignedCourseData> courses = ViewBag.Courses;
-                    foreach (var course in courses) {
-                        if (cnt++ % 3 == 0) {
-                            @:</tr><tr>
-                        }
-                        @:<td>
-                        <input type="checkbox"
-                        name="selectedCourses"
-                        value="@course.CourseID"
-                        @(Html.Raw(course.Assigned ? "checked=\"checked\"" : "")) />
-                        @course.CourseID @:  @course.Title
-                        @:</td>
+<dd class="col-sm-2" >
+    @Html.DisplayNameFor(x => x.CourseAssignments)
+</dd>
+
+<dd class="col-md-offset-2 col-md-10">
+    <table>
+        <tr>
+            @{
+                int cnt = 0;
+                List<Contoso.Facade.AssignedCourseData> courses = ViewBag.Courses;
+                foreach (var course in courses) {
+                    if (cnt++ % 4 == 0) {
+                        @:</tr><tr>
                     }
-            @:</tr>
+                    @:<td>
+                        <input type="checkbox"
+                                name="selectedCourses"
+                                value="@course.CourseID"
+                                @(Html.Raw(course.Assigned ? "checked=\"checked\"" : "")) />
+                                @course.CourseID @:  @course.Title
+                    @:</td>
                 }
-        </table>
-    </div>
-</div>
+                @:</tr>
+            }
+    </table>
+</dd>
