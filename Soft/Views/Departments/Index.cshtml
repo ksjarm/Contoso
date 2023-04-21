@@ -10,7 +10,7 @@
         {nameof(Department.Name), x => x.Name },
         {nameof(Department.Budget),x => x.Budget },
         {nameof(Department.StartDate),x => x.StartDate },
-        {nameof(Department.RowVersion),x => x.RowVersion },
+        //{nameof(Department.RowVersion),x => x.RowVersion },
         {nameof(Department.Administrator),x => x.Administrator.FullName } };
     dynamic getId(Department d) => d.ID;
 }

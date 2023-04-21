@@ -11,7 +11,7 @@ public class DepartmentsController : SchoolController<IDepartmentsRepo, Departme
     public DepartmentsController(SchoolContext c = null, IDepartmentsRepo r = null) : base(c, r) { }
     
     internal const string properties = $"{nameof(Department.ID)}, {nameof(Department.Name)}, " +
-        $"{nameof(Department.Budget)}, {nameof(Department.StartDate)}, {nameof(Department.InstructorID)}, {nameof(Department.RowVersion)}";
+        $"{nameof(Department.Budget)}, {nameof(Department.StartDate)}, {nameof(Department.InstructorID)}";
 
     [HttpPost] [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] Department department) => await create(department);
@@ -80,8 +80,8 @@ public class DepartmentsController : SchoolController<IDepartmentsRepo, Departme
                             + "edit operation was canceled and the current values in the database "
                             + "have been displayed. If you still want to edit this record, click "
                             + "the Save button again. Otherwise click the Back to List hyperlink.");
-                    departmentToUpdate.RowVersion = databaseValues.RowVersion;
-                    ModelState.Remove("RowVersion");
+                    //departmentToUpdate.RowVersion = databaseValues.RowVersion;
+                    //ModelState.Remove("RowVersion");
                 }
             }
         }

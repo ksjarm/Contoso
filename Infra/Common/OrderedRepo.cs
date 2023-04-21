@@ -7,10 +7,10 @@ using System.Reflection;
 
 namespace Contoso.Infra.Common;
 public abstract class OrderedRepo<T> : FilteredRepo<T>, IOrderedRepo<T> where T : class, IEntity {
+    public string SortOrder { get; set; }
     internal static string descendingStr => "_desc";
     internal string? propertyName => SortOrder?.Replace(descendingStr, string.Empty);
     internal PropertyInfo? propertyInfo => Safe.Run(() => typeof(T).GetProperty(propertyName ?? string.Empty));
-    public string SortOrder { get; set; }
 	protected OrderedRepo(DbContext? c, DbSet<T>? s) : base(c, s) { }
 	public override async Task<IEnumerable<T>> GetAsync(string sortOrder, int pageIndex, string searchString) {
 		SortOrder = sortOrder;

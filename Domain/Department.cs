@@ -9,7 +9,7 @@ public class Department : NamedEntity {
     [DataType(DataType.Date)] [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     [Display(Name = "Start Date")] public DateTime StartDate { get; set; }
 
-    [Timestamp] public byte[]? RowVersion { get; set; }
+    //[Timestamp] public byte[]? RowVersion { get; set; }
     public int? InstructorID { get; set; }
     public Instructor? Administrator { get; set; }
     public ICollection<Course>? Courses { get; set; }

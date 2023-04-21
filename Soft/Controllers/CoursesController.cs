@@ -14,15 +14,11 @@ public class CoursesController : SchoolController<ICoursesRepo, Course> {
         $"{nameof(Course.Name)}, {nameof(Course.Credits)}, {nameof(Course.DepartmentID)}";
 
     [HttpPost] [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind(properties)] Course course) => await create(course);
+    public async Task<IActionResult> Create([Bind(properties)] Course c) => await create(c);
     
     [HttpPost] [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind(properties)] Course course) => await edit(id, course);
+    public async Task<IActionResult> Edit(int id, [Bind(properties)] Course c) => await edit(id, c);
     protected internal override void relatedLists(Course selectedItem = null) {
-        var departmentsQuery = from d in context.Departments
-                               orderby d.Name
-                               select d;
-        ViewBag.Departments = new SelectList(departmentsQuery.AsNoTracking(), "ID", "Name", selectedItem?.DepartmentID);
+        ViewBag.Departments = new SelectList(context.Departments.AsNoTracking(), "ID", "Name", selectedItem?.DepartmentID);
     }
-    private bool CourseExists(int id) => context.Courses.Any(e => e.ID == id);
 }

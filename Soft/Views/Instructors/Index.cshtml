@@ -1,14 +1,14 @@
-﻿@model Contoso.Facade.InstructorIndexData
+﻿@using Contoso.Pages.HtmlHelpers
+@using Contoso.Pages.Constants
+@using System.Linq.Expressions;
+@model InstructorIndexData
 
 @{
-    ViewData["Name"] = "Instructors";
+    ViewData["Title"] = "Instructors";
+    Layout = Layouts.Index;
+    ViewData[Data.Title] = "Instructors";
 }
 
-<h2>Instructors</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -80,7 +80,7 @@
             }
                     <tr class="@selectedRow">
                         <td>
-                    @Html.ActionLink("Select", "Index", new { courseID = item.ID })
+                    @Html.ActionLink("Select", "Index", new { relatedId = item.ID })
                         </td>
                         <td>
                     @item.ID

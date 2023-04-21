@@ -13,17 +13,7 @@ public class StudentsController : SchoolController<IStudentsRepo, Student> {
     
 	internal const string properties = $"{nameof(Student.ID)}, {nameof(Student.EnrollmentDate)}, " +
 		$"{nameof(Student.FirstMidName)}, {nameof(Student.Name)}";
- //   public async Task<IActionResult> Details(int? id) {
-	//	if (id == null || context.Students == null) return NotFound();
-	//	var student = await context.Students
-	//		.Include(s => s.Enrollments)
-	//			.ThenInclude(e => e.Course)
-	//		.AsNoTracking()
-	//		.FirstOrDefaultAsync(m => m.ID == id);
-	//	if (student == null) return NotFound();
-	//	return View(student);
-	//}
-
+	
 	[HttpPost] [ValidateAntiForgeryToken]
 	public async Task<IActionResult> Create([Bind(properties)] Student s) => await create(s);
 
