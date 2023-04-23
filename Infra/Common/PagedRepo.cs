@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra.Common;
 public class PagedRepo<T> : OrderedRepo<T>, IPagedRepo<T> where T : class, IEntity {
-	public PagedRepo(DbContext? c, DbSet<T>? s) : base(c, s) { }
+	protected PagedRepo(DbContext? c, DbSet<T>? s) : base(c, s) { }
     public int TotalPages => Safe.Run(() => (int) Math.Ceiling(countPages), 0);
     internal double countPages => (double)set.Count() / PageSize;
     public int PageIndex { get; set; }

@@ -5,7 +5,7 @@
 
 @{
     Layout = Layouts.Index;
-    ViewData[Data.Title] = "Courses";
+    ViewData[Data.Title] = Texts.Courses;
     var columns = new Dictionary<string, Expression<Func<Course, dynamic>>>{
         {nameof(Course.Number), x => x.Number },
         {nameof(Course.Name),x => x.Name },

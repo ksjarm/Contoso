@@ -1,20 +1,17 @@
 ﻿@using Contoso.Pages.Constants;
-@model IEnumerable<Contoso.Facade.EnrollmentDateGroup>
+@using Contoso.Pages.HtmlHelpers;
+@using System.Linq.Expressions;
+@model IEnumerable<EnrollmentDateGroup>
 
 @{
-    ViewData[Data.Title] = "Student Body Statistics";
+    ViewData[Data.Title] = Texts.StudentBodyStatistics;
 }
-
-<h2>Student Body Statistics</h2>
+<h2>@ViewData[Data.Title]</h2>
 
 <table>
     <tr>
-        <th>
-            Enrollment Date |
-        </th>
-        <th>
-            Students
-        </th>
+        <th>Enrollment Date |</th>
+        <th>Students</th>
     </tr>
 
     @foreach (var item in Model)
@@ -23,7 +20,7 @@
                 <td>
                 @Html.DisplayFor(modelItem => item.EnrollmentDate)
                 </td>
-                <td>
+                <td align="center">
                 @item.StudentCount
                 </td>
             </tr>

@@ -1,5 +1,4 @@
 ﻿using Contoso.Data;
-using System.ComponentModel.DataAnnotations;
 
 namespace Contoso.Domain.Base;
 public abstract class BaseEntity : IEntity {

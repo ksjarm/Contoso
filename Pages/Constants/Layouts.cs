@@ -1,5 +1,4 @@
 ﻿namespace Contoso.Pages.Constants;
-
 public static class Layouts {
 	public static string Default => "_Layout";
 	public static string Details => "_Details";

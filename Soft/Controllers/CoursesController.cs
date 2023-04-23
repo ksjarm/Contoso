@@ -1,17 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Contoso.Domain;
-using Contoso.Infra;
 using Contoso.Domain.Repos;
 using Contoso.Soft.Controllers.Common;
 
 namespace Contoso.Soft.Controllers;
 public class CoursesController : BaseController<ICoursesRepo, Course> {
     private readonly IDepartmentsRepo departments;
-    public CoursesController(ICoursesRepo r, IDepartmentsRepo d) : base(r) {
-        departments = d;
-    }
+    public CoursesController(ICoursesRepo r, IDepartmentsRepo d) : base(r) => departments = d;
 
     [HttpPost] [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] Course c) => await create(c);

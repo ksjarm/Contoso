@@ -1,6 +1,7 @@
 ﻿using Contoso.Infra;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Contoso.Domain;
 
 namespace Contoso.Soft.Data;
 public class ApplicationDbContext : IdentityDbContext {
@@ -12,4 +13,5 @@ public class ApplicationDbContext : IdentityDbContext {
         initializeTables(b);
     }
     private static void initializeTables(ModelBuilder b) => SchoolContext.InitializeTables(b);
+    public DbSet<Contoso.Domain.CourseAssignment> CourseAssignment { get; set; }
 }

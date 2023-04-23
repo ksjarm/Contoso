@@ -5,6 +5,7 @@ namespace Contoso.Pages.HtmlHelpers;
 public static class HtmlTableHeader {
     public static IHtmlContent TableHeader<TModel>(
         this IHtmlHelper<TModel> h, string? name, string? sortOrder, string? page) {
+        
         var s = htmlStrings(name, sortOrder, page);
         return new HtmlContentBuilder(s);
     }

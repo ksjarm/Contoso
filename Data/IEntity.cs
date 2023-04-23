@@ -1,6 +1,4 @@
 ﻿namespace Contoso.Data;
-
-public interface IEntity
-{
+public interface IEntity {
     int ID { get; }
 }

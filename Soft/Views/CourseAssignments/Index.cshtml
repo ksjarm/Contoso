@@ -1,0 +1,15 @@
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers;
+@using System.Linq.Expressions;
+@model IEnumerable<CourseAssignment>
+
+@{
+    Layout = Layouts.Index;
+    ViewData[Data.Title] = Texts.CourseAssignments;
+    var columns = new Dictionary<string, Expression<Func<CourseAssignment, dynamic>>>{
+        {nameof(CourseAssignment.Instructor), x => x.Instructor.FullName },
+        {nameof(CourseAssignment.Course),x => x.Course.Name } };
+    dynamic getId(CourseAssignment c) => c.ID;
+}
+
+@Html.ViewList(Model, columns, getId)

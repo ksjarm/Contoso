@@ -1,0 +1,13 @@
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers
+@model CourseAssignment
+
+@{
+    ViewData[Data.Title] = nameof(CourseAssignment);
+    ViewData[Data.ItemID] = Model?.ID;
+    var instructors = (IEnumerable<SelectListItem>)ViewBag.Instructors;
+    var courses = (IEnumerable<SelectListItem>)ViewBag.Courses;
+}
+
+@Html.SelectItem(x => x.InstructorID, instructors, x => x.Instructor)
+@Html.SelectItem(x => x.CourseID, courses, x => x.Course)

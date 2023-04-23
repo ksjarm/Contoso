@@ -1,5 +1,4 @@
 ﻿namespace Contoso.Pages.Constants;
-
 public static class Tags {
 	public static string BoldTitleStart => "<dt class=\"col-sm-2\">";
 	public static string TitleStart => "<dd class=\"col-sm-2\">";
