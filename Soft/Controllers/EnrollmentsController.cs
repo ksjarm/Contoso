@@ -1,24 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Contoso.Domain;
-using Contoso.Infra;
 using Contoso.Domain.Repos;
 using Contoso.Soft.Controllers.Common;
 
 namespace Contoso.Soft.Controllers;
-public class EnrollmentsController : SchoolController<IEnrollmentsRepo, Enrollment> {
-    public EnrollmentsController(SchoolContext c = null, IEnrollmentsRepo r = null) : base(c, r) { }
-
-	internal const string properties = $"{nameof(Enrollment.ID)}, {nameof(Enrollment.CourseID)}, " +
-		$"{nameof(Enrollment.StudentID)}, {nameof(Enrollment.Grade)}";
-	protected internal override void relatedLists(Enrollment selectedItem = null) {
-		ViewData["CourseID"] = new SelectList(context.Courses, "ID", "Name", selectedItem?.CourseID);
-		ViewData["StudentID"] = new SelectList(context.Students, "ID", "FullName", selectedItem?.StudentID);
-	}
+public class EnrollmentsController : BaseController<IEnrollmentsRepo, Enrollment> {
+    private readonly ICoursesRepo courses;
+    private readonly IStudentsRepo students;
+    public EnrollmentsController(IEnrollmentsRepo r, ICoursesRepo c, IStudentsRepo s) : base(r) {
+        courses = c;
+        students = s;
+    }
 
     [HttpPost] [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind(properties)] Enrollment enrollment) => await create(enrollment);
+    public async Task<IActionResult> Create([Bind(properties)] Enrollment e) => await create(e);
     
     [HttpPost] [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind(properties)] Enrollment enrollment) => await edit(id, enrollment);
+    public async Task<IActionResult> Edit(int id, [Bind(properties)] Enrollment e) => await edit(id, e);
+
+	internal const string properties =
+        $"{nameof(Enrollment.ID)}," +
+        $"{nameof(Enrollment.CourseID)}," +
+		$"{nameof(Enrollment.StudentID)}," +
+        $"{nameof(Enrollment.Grade)}," +
+        $"{nameof(Course.DepartmentID)}";
+	protected internal override void relatedLists(Enrollment e = null) {
+		ViewBag.Courses = courses.SelectList;
+		ViewBag.Students = students.SelectList;
+	}
 }

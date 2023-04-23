@@ -7,11 +7,15 @@ using Contoso.Soft.Controllers.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Soft.Controllers;
-public class InstructorsController : SchoolController<IInstructorsRepo, Instructor> {
-	public InstructorsController(SchoolContext c = null, IInstructorsRepo r = null) : base(c, r) { }
+public class InstructorsController : BaseController<IInstructorsRepo, Instructor> {
+    private readonly SchoolContext context;
+    public InstructorsController(SchoolContext c, IInstructorsRepo r = null) : base(r) => context = c;
     
-    internal const string properties = $"{nameof(Instructor.ID)}, {nameof(Instructor.FirstMidName)}, " +
-        $"{nameof(Instructor.Name)}, {nameof(Instructor.HireDate)}";
+    internal const string properties = 
+        $"{nameof(Instructor.ID)}," +
+        $"{nameof(Instructor.FirstMidName)}," +
+        $"{nameof(Instructor.Name)}," +
+        $"{nameof(Instructor.HireDate)}";
     public async override Task<IActionResult> Index(string sortOrder, int pageIndex, string searchString, int? id, int? relatedId) {
         ViewData[Pages.Constants.Data.SortOrder] = sortOrder;
         ViewData[Pages.Constants.Data.Page] = getPage;

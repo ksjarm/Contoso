@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Contoso.Infra;
 public class StudentsRepo : BaseRepo<Student>, IStudentsRepo {
 	public StudentsRepo(SchoolContext c) : base(c, c.Students) { }
+    public override string selectTextField => nameof(Student.FullName);
     protected internal override IQueryable<Student> addFilter(IQueryable<Student> s) {
         var v = CurrentFilter;
         return string.IsNullOrWhiteSpace(v) ? base.addFilter(s) :

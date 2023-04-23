@@ -6,7 +6,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Contoso.Infra;
 public class InstructorsRepo : BaseRepo<Instructor>, IInstructorsRepo {
 	public InstructorsRepo(SchoolContext c) : base(c, c.Instructors) { }
-	protected internal override IQueryable<Instructor> addAggregates(IQueryable<Instructor> sql)
+    public override string selectTextField => nameof(Instructor.FullName);
+    protected internal override IQueryable<Instructor> addAggregates(IQueryable<Instructor> sql)
 		=> sql.Include(i => i.OfficeAssignment)
 			  .Include(i => i.CourseAssignments)
 				.ThenInclude(i => i.Course)

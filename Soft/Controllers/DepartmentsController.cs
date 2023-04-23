@@ -7,11 +7,16 @@ using Contoso.Domain.Repos;
 using Contoso.Soft.Controllers.Common;
 
 namespace Contoso.Soft.Controllers;
-public class DepartmentsController : SchoolController<IDepartmentsRepo, Department> {
-    public DepartmentsController(SchoolContext c = null, IDepartmentsRepo r = null) : base(c, r) { }
+public class DepartmentsController : BaseController<IDepartmentsRepo, Department> {
+    private readonly SchoolContext context;
+    public DepartmentsController(SchoolContext c, IDepartmentsRepo r = null) : base(r) => context = c;
     
-    internal const string properties = $"{nameof(Department.ID)}, {nameof(Department.Name)}, " +
-        $"{nameof(Department.Budget)}, {nameof(Department.StartDate)}, {nameof(Department.InstructorID)}";
+    internal const string properties = 
+        $"{nameof(Department.ID)}," +
+        $"{nameof(Department.Name)}," +
+        $"{nameof(Department.Budget)}," +
+        $"{nameof(Department.StartDate)}," +
+        $"{nameof(Department.InstructorID)}";
 
     [HttpPost] [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] Department department) => await create(department);
