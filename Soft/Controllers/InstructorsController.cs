@@ -13,7 +13,7 @@ public class InstructorsController : BaseController<IInstructorsRepo, Instructor
     
     internal const string properties = 
         $"{nameof(Instructor.ID)}," +
-        $"{nameof(Instructor.FirstMidName)}," +
+        $"{nameof(Instructor.FirstName)}," +
         $"{nameof(Instructor.Name)}," +
         $"{nameof(Instructor.HireDate)}";
     public async override Task<IActionResult> Index(string sortOrder, int pageIndex, string searchString, int? id, int? relatedId) {

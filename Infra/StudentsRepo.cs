@@ -11,7 +11,7 @@ public class StudentsRepo : BaseRepo<Student, Student>, IStudentsRepo {
         var v = CurrentFilter;
         return string.IsNullOrWhiteSpace(v) ? base.addFilter(s) :
              s.Where(x => x.Name.Contains(v) ||
-               x.FirstMidName.Contains(v) ||
+               x.FirstName.Contains(v) ||
                x.EnrollmentDate.ToString().Contains(v));
     }
     protected internal override IQueryable<Student> createSQL() => addAggregates(base.createSQL());

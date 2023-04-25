@@ -83,12 +83,12 @@ public abstract class BaseController<TRepo, TDomain, TView> : Controller
     protected internal async Task<IActionResult> create(TDomain item) {
         if (ModelState.IsValid && await repo.AddAsync(item)) return RedirectToAction(nameof(Index));
         relatedLists(item);
-        return View(item);
+        return View(toView(item));
     }
     protected internal async Task<IActionResult> edit(int id, TDomain item) {
         if (id != item.ID) return NotFound();
         if (ModelState.IsValid && await repo.UpdateAsync(item)) return RedirectToAction(nameof(Index));
         relatedLists(item);
-        return View(item);
+        return View(toView(item));
     }
 }

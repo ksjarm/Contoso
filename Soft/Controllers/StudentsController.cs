@@ -10,7 +10,7 @@ public class StudentsController : BaseController<IStudentsRepo, Student> {
 	internal const string properties = 
 		$"{nameof(Student.ID)}," +
 		$"{nameof(Student.EnrollmentDate)}," +
-		$"{nameof(Student.FirstMidName)}," +
+		$"{nameof(Student.FirstName)}," +
 		$"{nameof(Student.Name)}";
 	
 	[HttpPost] [ValidateAntiForgeryToken]

@@ -1,4 +1,5 @@
-﻿using Contoso.Domain;
+﻿using Contoso.Data;
+using Contoso.Domain;
 
 namespace Contoso.Facade;
 public sealed class CourseViewFactory {
@@ -10,4 +11,14 @@ public sealed class CourseViewFactory {
             DepartmentName = c.Department?.Name,
             Number = c.Number
         };
+    public Course Create(CourseView v) {
+        var d = new CourseData() { 
+            ID = v.ID,
+            Name = v.Name,
+            Credits = v.Credits,
+            DepartmentID = v.DepartmentID,
+            Number = v.Number
+        };
+    return new Course(d);
+    }
 }
