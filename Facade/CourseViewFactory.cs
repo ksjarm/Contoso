@@ -7,7 +7,7 @@ public sealed class CourseViewFactory {
             Name = c.Name,
             Credits = c.Credits,
             DepartmentID = c.DepartmentID,
-            DepartmentName = c.Department.Name,
+            DepartmentName = c.Department?.Name,
             Number = c.Number
         };
 }

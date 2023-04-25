@@ -1,4 +1,5 @@
-﻿using Contoso.Domain.Base;
+﻿using Contoso.Data;
+using Contoso.Domain.Base;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,6 +12,6 @@ public class Department : NamedEntity {
 
     //[Timestamp] public byte[]? RowVersion { get; set; }
     [Display(Name = "Instructor")] public int? InstructorID { get; set; }
-    public Instructor? Administrator { get; set; }
-    public ICollection<Course>? Courses { get; set; }
+    public Instructor Administrator { get; set; }
+    public ICollection<CourseData> Courses { get; set; }
 }

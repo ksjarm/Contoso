@@ -27,7 +27,7 @@ public class InstructorsController : BaseController<IInstructorsRepo, Instructor
         if (id != null) {
             ViewData["InstructorID"] = id.Value;
             Instructor instructor = viewModel.Instructors.Where(i => i.ID == id.Value).FirstOrDefault();
-            viewModel.Courses = instructor?.CourseAssignments.Select(s => s.Course);
+            viewModel.Courses = instructor?.CourseAssignments.Select(s => new Course(s.Course));
         }
         if (relatedId != null) {
             ViewData["CourseID"] = relatedId.Value;

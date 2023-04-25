@@ -1,6 +1,4 @@
 ﻿using Contoso.Data.Base;
-using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace Contoso.Data;
 public sealed class CourseData : NamedData{

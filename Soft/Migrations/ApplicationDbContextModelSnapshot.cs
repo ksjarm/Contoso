@@ -22,7 +22,7 @@ namespace Contoso.Soft.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Contoso.Domain.Course", b =>
+            modelBuilder.Entity("Contoso.Data.CourseData", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -30,16 +30,20 @@ namespace Contoso.Soft.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Credits")
                         .HasColumnType("int");
 
                     b.Property<int>("DepartmentID")
                         .HasColumnType("int");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Number")
                         .HasColumnType("int");
@@ -479,21 +483,19 @@ namespace Contoso.Soft.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Contoso.Domain.Course", b =>
+            modelBuilder.Entity("Contoso.Data.CourseData", b =>
                 {
-                    b.HasOne("Contoso.Domain.Department", "Department")
+                    b.HasOne("Contoso.Domain.Department", null)
                         .WithMany("Courses")
                         .HasForeignKey("DepartmentID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Department");
                 });
 
             modelBuilder.Entity("Contoso.Domain.CourseAssignment", b =>
                 {
-                    b.HasOne("Contoso.Domain.Course", "Course")
-                        .WithMany("CourseAssignments")
+                    b.HasOne("Contoso.Data.CourseData", "Course")
+                        .WithMany()
                         .HasForeignKey("CourseID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -520,8 +522,8 @@ namespace Contoso.Soft.Migrations
 
             modelBuilder.Entity("Contoso.Domain.Enrollment", b =>
                 {
-                    b.HasOne("Contoso.Domain.Course", "Course")
-                        .WithMany("Enrollments")
+                    b.HasOne("Contoso.Data.CourseData", "Course")
+                        .WithMany()
                         .HasForeignKey("CourseID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -597,13 +599,6 @@ namespace Contoso.Soft.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Contoso.Domain.Course", b =>
-                {
-                    b.Navigation("CourseAssignments");
-
-                    b.Navigation("Enrollments");
                 });
 
             modelBuilder.Entity("Contoso.Domain.Department", b =>

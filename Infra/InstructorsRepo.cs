@@ -10,8 +10,7 @@ public class InstructorsRepo : BaseRepo<Instructor, Instructor>, IInstructorsRep
     protected internal override IQueryable<Instructor> addAggregates(IQueryable<Instructor> sql)
 		=> sql.Include(i => i.OfficeAssignment)
 			  .Include(i => i.CourseAssignments)
-				.ThenInclude(i => i.Course)
-					.ThenInclude(i => i.Department);
+				.ThenInclude(i => i.Course);
 	protected internal override async Task<IEnumerable<Instructor>> runSQLAsync() => await sql.ToListAsync();
     protected override Instructor toDomain(Instructor d) => d;
 

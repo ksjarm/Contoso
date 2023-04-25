@@ -10,10 +10,10 @@ public class CoursesController : BaseController<ICoursesRepo, Course, CourseView
     public CoursesController(ICoursesRepo r = null, IDepartmentsRepo d = null) : base(r) => departments = d;
 
     [HttpPost] [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind(properties)] Course c) => await create(c);
+    public async Task<IActionResult> Create([Bind(properties)] CourseView c) => await create(c);
     
     [HttpPost] [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind(properties)] Course c) => await edit(id, c);
+    public async Task<IActionResult> Edit(int id, [Bind(properties)] CourseView c) => await edit(id, c);
     
     internal const string properties =
         $"{nameof(Course.ID)}," +
