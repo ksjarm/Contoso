@@ -3,5 +3,5 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Tests.Soft.Controllers;
 public class CoursesControllerTests : BaseTests<CoursesController, Controller> {
-    //protected override CoursesController createObj() => new();
+    protected override CoursesController createObj() => new();
 }

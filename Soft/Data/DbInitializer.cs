@@ -1,4 +1,5 @@
-﻿using Contoso.Domain;
+﻿using Contoso.Data;
+using Contoso.Domain;
 using Contoso.Infra;
 
 namespace Contoso.Soft.Data
@@ -83,32 +84,32 @@ namespace Contoso.Soft.Data
             }
             context.SaveChanges();
 
-            var courses = new Course[]
+            var courses = new CourseData[]
             {
-                new Course {Number = 1050, Name = "Chemistry",      Credits = 3,
+                new CourseData {Number = 1050, Name = "Chemistry",      Credits = 3,
                     DepartmentID = departments.Single( s => s.Name == "Engineering").ID
                 },
-                new Course {Number = 4022, Name = "Microeconomics", Credits = 3,
+                new CourseData {Number = 4022, Name = "Microeconomics", Credits = 3,
                     DepartmentID = departments.Single( s => s.Name == "Economics").ID
                 },
-                new Course {Number = 4041, Name = "Macroeconomics", Credits = 3,
+                new CourseData {Number = 4041, Name = "Macroeconomics", Credits = 3,
                     DepartmentID = departments.Single( s => s.Name == "Economics").ID
                 },
-                new Course {Number = 1045, Name = "Calculus",       Credits = 4,
+                new CourseData {Number = 1045, Name = "Calculus",       Credits = 4,
                     DepartmentID = departments.Single( s => s.Name == "Mathematics").ID
                 },
-                new Course {Number = 3141, Name = "Trigonometry",   Credits = 4,
+                new CourseData {Number = 3141, Name = "Trigonometry",   Credits = 4,
                     DepartmentID = departments.Single( s => s.Name == "Mathematics").ID
                 },
-                new Course {Number = 2021, Name = "Composition",    Credits = 3,
+                new CourseData {Number = 2021, Name = "Composition",    Credits = 3,
                     DepartmentID = departments.Single( s => s.Name == "English").ID
                 },
-                new Course {Number = 2042, Name = "Literature",     Credits = 4,
+                new CourseData {Number = 2042, Name = "Literature",     Credits = 4,
                     DepartmentID = departments.Single( s => s.Name == "English").ID
                 },
             };
 
-            foreach (Course c in courses)
+            foreach (CourseData c in courses)
             {
                 context.Courses.Add(c);
             }

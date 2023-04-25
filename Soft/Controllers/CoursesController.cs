@@ -2,11 +2,12 @@
 using Contoso.Domain;
 using Contoso.Domain.Repos;
 using Contoso.Soft.Controllers.Common;
+using Contoso.Facade;
 
 namespace Contoso.Soft.Controllers;
-public class CoursesController : BaseController<ICoursesRepo, Course> {
+public class CoursesController : BaseController<ICoursesRepo, Course, CourseView> {
     private readonly IDepartmentsRepo departments;
-    public CoursesController(ICoursesRepo r, IDepartmentsRepo d) : base(r) => departments = d;
+    public CoursesController(ICoursesRepo r = null, IDepartmentsRepo d = null) : base(r) => departments = d;
 
     [HttpPost] [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] Course c) => await create(c);
@@ -23,4 +24,5 @@ public class CoursesController : BaseController<ICoursesRepo, Course> {
     protected internal override void relatedLists(Course selectedItem = null) {
         ViewBag.Departments = departments.SelectList;
     }
+    protected override CourseView toView(Course o) => new CourseViewFactory().Create(o);
 }

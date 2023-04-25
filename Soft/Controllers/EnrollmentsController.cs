@@ -8,7 +8,7 @@ namespace Contoso.Soft.Controllers;
 public class EnrollmentsController : BaseController<IEnrollmentsRepo, Enrollment> {
     private readonly ICoursesRepo courses;
     private readonly IStudentsRepo students;
-    public EnrollmentsController(IEnrollmentsRepo r, ICoursesRepo c, IStudentsRepo s) : base(r) {
+    public EnrollmentsController(IEnrollmentsRepo r = null, ICoursesRepo c = null, IStudentsRepo s = null) : base(r) {
         courses = c;
         students = s;
     }

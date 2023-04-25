@@ -7,7 +7,9 @@
     Layout = Layouts.Index;
     ViewData[Data.Title] = Texts.CourseAssignments;
     var columns = new Dictionary<string, Expression<Func<CourseAssignment, dynamic>>>{
+        {nameof(CourseAssignment.InstructorID), x => x.InstructorID },
         {nameof(CourseAssignment.Instructor), x => x.Instructor.FullName },
+        {nameof(CourseAssignment.CourseID),x => x.CourseID },
         {nameof(CourseAssignment.Course),x => x.Course.Name } };
     dynamic getId(CourseAssignment c) => c.ID;
 }

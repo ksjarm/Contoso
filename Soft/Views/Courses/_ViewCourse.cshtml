@@ -1,6 +1,6 @@
 ﻿@using Contoso.Pages.Constants;
 @using Contoso.Pages.HtmlHelpers;
-@model Course
+@model CourseView
 
 @{
     ViewData[Data.Title] = nameof(Course);
@@ -10,4 +10,4 @@
 @Html.ViewItem(x => x.Number)
 @Html.ViewItem(x => x.Name)
 @Html.ViewItem(x => x.Credits)
-@Html.ViewItem(x => x.Department.Name, x => x.Department)
+@Html.ViewItem(x => x.DepartmentName)

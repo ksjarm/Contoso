@@ -4,7 +4,7 @@ using Contoso.Infra.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra;
-public class CourseAssignmentsRepo : BaseRepo<CourseAssignment>, ICourseAssignmentsRepo {
+public class CourseAssignmentsRepo : BaseRepo<CourseAssignment, CourseAssignment>, ICourseAssignmentsRepo {
     public CourseAssignmentsRepo(SchoolContext c) : base(c, c.CourseAssignments) { }
     protected internal override IQueryable<CourseAssignment> addFilter(IQueryable<CourseAssignment> s) {
         var v = CurrentFilter;
@@ -14,4 +14,7 @@ public class CourseAssignmentsRepo : BaseRepo<CourseAssignment>, ICourseAssignme
     }
     protected internal override IQueryable<CourseAssignment> addAggregates(IQueryable<CourseAssignment> sql) 
         => sql.Include(x => x.Instructor).Include(x => x.Course);
+    protected override CourseAssignment toDomain(CourseAssignment d) => d;
+
+    protected override CourseAssignment toData(CourseAssignment o) => o;
 }

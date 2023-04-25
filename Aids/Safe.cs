@@ -7,7 +7,7 @@ public static class Safe {
             return def;
         }
     }
-    public static void Run<T>(Action a) {
+    public static void Run(Action a) {
         try {
             a();
         } catch (Exception e) { }

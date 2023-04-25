@@ -4,7 +4,7 @@ using Contoso.Infra.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra;
-public class InstructorsRepo : BaseRepo<Instructor>, IInstructorsRepo {
+public class InstructorsRepo : BaseRepo<Instructor, Instructor>, IInstructorsRepo {
 	public InstructorsRepo(SchoolContext c) : base(c, c.Instructors) { }
     public override string selectTextField => nameof(Instructor.FullName);
     protected internal override IQueryable<Instructor> addAggregates(IQueryable<Instructor> sql)
@@ -13,5 +13,7 @@ public class InstructorsRepo : BaseRepo<Instructor>, IInstructorsRepo {
 				.ThenInclude(i => i.Course)
 					.ThenInclude(i => i.Department);
 	protected internal override async Task<IEnumerable<Instructor>> runSQLAsync() => await sql.ToListAsync();
+    protected override Instructor toDomain(Instructor d) => d;
 
+    protected override Instructor toData(Instructor o) => o;
 }

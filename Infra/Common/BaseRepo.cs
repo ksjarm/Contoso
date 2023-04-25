@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra.Common;
-public abstract class BaseRepo<T> : PagedRepo<T>, IRepo<T> where T : class, IEntity {
-	protected BaseRepo(DbContext? c, DbSet<T>? s) : base(c, s) { }
+public abstract class BaseRepo<TDomain, TData> : PagedRepo<TDomain, TData>, IRepo<TDomain> 
+    where TDomain : class, IEntity
+    where TData : class, IEntity{
+	protected BaseRepo(DbContext c, DbSet<TData> s) : base(c, s) { }
     public virtual string selectTextField => nameof(IEntity.ID);
     public IEnumerable<dynamic> SelectList => new SelectList(set.AsNoTracking(), nameof(IEntity.ID), selectTextField);
 }
