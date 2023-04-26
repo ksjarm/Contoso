@@ -21,6 +21,7 @@ public class HomeController : Controller {
         IQueryable<EnrollmentDateGroup> data =
             from student in context.Students
             group student by student.EnrollmentDate into dateGroup
+            orderby dateGroup.Key descending
             select new EnrollmentDateGroup() {
                 EnrollmentDate = dateGroup.Key,
                 StudentCount = dateGroup.Count()

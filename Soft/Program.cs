@@ -29,12 +29,7 @@ public class Program {
 
         GetRepo.SetServiceProvider(app.Services);
 
-        using (var scope = app.Services.CreateScope()) {
-            var services = scope.ServiceProvider;
-            var context = new SchoolContext(
-                        services.GetRequiredService<DbContextOptions<SchoolContext>>());
-            DbInitializer.Initialize(context);
-        }
+        Task.Run(() => InitSchool.Initialize(app));
 
         if (!app.Environment.IsDevelopment()) {
             app.UseExceptionHandler("/Home/Error");

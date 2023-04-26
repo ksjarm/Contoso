@@ -10,17 +10,16 @@
 
 <table>
     <tr>
-        <th>Enrollment Date |</th>
+        <th>Enrollment Year |</th>
         <th>Students</th>
     </tr>
-
     @foreach (var item in Model)
     {
-            <tr>
+             <tr>
                 <td>
-                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                @Html.DisplayFor(modelItem => item.EnrollmentDate.Year)
                 </td>
-                <td align="center">
+                <td>
                 @item.StudentCount
                 </td>
             </tr>
