@@ -1,8 +1,10 @@
-﻿//using Contoso.Soft.Controllers;
-//using Microsoft.AspNetCore.Mvc;
+﻿using Contoso.Domain.Repos;
+using Contoso.Domain;
+using Contoso.Soft.Controllers;
+using Contoso.Soft.Controllers.Common;
 
-//namespace Tests.Soft.Controllers;
-//public class InstructorsControllerTests : BaseTests<InstructorsController, Controller>
-//{
-//    protected override InstructorsController createObj() => new();
-//}
+namespace Tests.Soft.Controllers;
+public class InstructorsControllerTests : 
+    BaseTests<InstructorsController, BaseController<IInstructorsRepo, Instructor>> {
+    protected override InstructorsController createObj() => new(null);
+}

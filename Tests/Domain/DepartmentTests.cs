@@ -1,7 +1,8 @@
 ﻿using Contoso.Domain;
+using Contoso.Domain.Base;
 
 namespace Tests.Domain;
-[TestClass] public class DepartmentTests : ClassTests<Department, object> {
+[TestClass] public class DepartmentTests : ClassTests<Department, NamedEntity> {
      [TestMethod] public void DepartmentIDTest() {
         var i = new Random().Next();
         obj.ID = i;

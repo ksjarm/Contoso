@@ -1,6 +1,6 @@
 ﻿namespace Tests;
 public abstract class BaseTests<TClass, TBaseClass> : StaticTests {
-    protected TClass? obj;
+    protected TClass obj;
     [TestInitialize] public override void TestInitialize() {
         obj = createObj();
         base.TestInitialize();
