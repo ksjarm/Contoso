@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Contoso.Domain;
+namespace Contoso.Data;
 public enum Grade {
     [Description("Excellent")] A = 5,
     [Description("Very good")] B = 4,
