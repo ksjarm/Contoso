@@ -1,6 +1,6 @@
 ﻿using Contoso.Pages.Constants;
 
-namespace Tests.Pages.Constants;
+namespace Contoso.Tests.Pages.Constants;
 [TestClass] public class LayoutsTests : StaticTests {
     protected override Type getType() => typeof(Layouts);
     [TestMethod] public void DefaultTest() => Assert.AreEqual("_Layout", Layouts.Default);

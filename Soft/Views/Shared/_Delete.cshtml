@@ -3,7 +3,7 @@
     Layout = Layouts.Default;
 }
 
-<h1>@ViewData[Data.Title]</h1>
+<h1>@ViewData[Datas.Title]</h1>
 
 <h3>@Texts.Delete</h3>
 
@@ -16,7 +16,7 @@
 </dl>
 
 <form asp-action="Delete">
-    <input type="hidden" asp-for="@ViewData[Data.ItemID]" />
+    <input type="hidden" asp-for="@ViewData[Datas.ItemID]" />
     <input type="submit" value="@Texts.Delete" class="btn btn-danger" /> |
     <a asp-action="Index">@Texts.BackToList</a>
 </form>

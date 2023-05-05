@@ -1,19 +1,21 @@
 ﻿using Contoso.Aids;
 
-namespace Tests;
+namespace Contoso.Tests;
 public abstract class StaticTests {
-    protected Type type;
-    [TestInitialize] public virtual void TestInitialize() => type = getType();
-    protected abstract Type getType();
+    protected abstract Type type { get; }
+    protected Type testType => GetType();
+    [TestMethod] public void IsCorrectTest()
+        => Assert.AreEqual(testType.Name.Replace("Tests", ""), type.Name);
     [TestMethod] public void IsTested() {
+        var allTests = GetClass.DeclaredMemberNames(testType);
         var allMembers = GetClass.DeclaredMemberNames(type);
-        var allTests = GetClass.DeclaredMemberNames(this.GetType());
 
-        allMembers.RemoveAll("get_", "set_", ".ctor");
+        allMembers.RemoveAll("set_", "get_", ".ctor");
 
         foreach (var m in allMembers) {
-            if (allTests.Contains(m + "Test")) continue;
-            Assert.Inconclusive($"<{m}> is not tested");
+            var mTest = m + "Test";
+            if (allTests.Contains(mTest)) continue;
+            Assert.Inconclusive($"<{m}> is not tested.");
         }
     }
 }

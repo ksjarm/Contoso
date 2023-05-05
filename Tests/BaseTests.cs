@@ -1,4 +1,4 @@
-﻿namespace Tests;
+﻿namespace Contoso.Tests;
 public abstract class BaseTests<TClass, TBaseClass> : StaticTests {
     protected TClass obj;
     [TestInitialize] public override void TestInitialize() {

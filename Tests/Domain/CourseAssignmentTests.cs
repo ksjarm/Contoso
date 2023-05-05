@@ -1,7 +1,7 @@
 ﻿using Contoso.Domain;
 using Contoso.Domain.Base;
 
-namespace Tests.Domain;
+namespace Contoso.Tests.Domain;
 [TestClass] public class CourseAssignmentTests : ClassTests<CourseAssignment, BaseEntity> {
 
 }

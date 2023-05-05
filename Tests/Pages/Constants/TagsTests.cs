@@ -1,6 +1,6 @@
 ﻿using Contoso.Pages.Constants;
 
-namespace Tests.Pages.Constants;
+namespace Contoso.Tests.Pages.Constants;
 [TestClass] public class TagsTests : StaticTests {
     protected override Type getType() => typeof(Tags);
     [TestMethod] public void BoldTitleStartTest() => Assert.AreEqual("<dt class=\"col-sm-2\">", Tags.BoldTitleStart);

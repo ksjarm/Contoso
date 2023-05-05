@@ -17,11 +17,11 @@ public class InstructorsController : BaseController<IInstructorsRepo, Instructor
         $"{nameof(Instructor.Name)}," +
         $"{nameof(Instructor.HireDate)}";
     public async override Task<IActionResult> Index(string sortOrder, int pageIndex, string searchString, int? id, int? relatedId) {
-        ViewData[Pages.Constants.Data.SortOrder] = sortOrder;
-        ViewData[Pages.Constants.Data.Page] = getPage;
-        ViewData[Pages.Constants.Data.PageIndex] = pageIndex;
-        ViewData[Pages.Constants.Data.TotalPages] = repo.TotalPages;
-        ViewData[Pages.Constants.Data.CurrentFilter] = searchString;
+        ViewData[Pages.Constants.Datas.SortOrder] = sortOrder;
+        ViewData[Pages.Constants.Datas.Page] = getPage;
+        ViewData[Pages.Constants.Datas.PageIndex] = pageIndex;
+        ViewData[Pages.Constants.Datas.TotalPages] = repo.TotalPages;
+        ViewData[Pages.Constants.Datas.CurrentFilter] = searchString;
         var viewModel = new InstructorIndexData();
         viewModel.Instructors = await repo.GetAsync(sortOrder, pageIndex, searchString);
         if (id != null) {

@@ -3,8 +3,8 @@
 @model Department
 
 @{
-    ViewData[Data.Title] = nameof(Department);
-    ViewData[Data.ItemID] = Model?.ID;
+    ViewData[Datas.Title] = nameof(Department);
+    ViewData[Datas.ItemID] = Model?.ID;
     var instructors = (IEnumerable<SelectListItem>)ViewBag.Instructors;
 }
 

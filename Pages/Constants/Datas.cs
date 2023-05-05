@@ -1,5 +1,5 @@
 ﻿namespace Contoso.Pages.Constants;
-public static class Data {
+public static class Datas {
     public static string Title => nameof(Title);
     public static string ItemID => nameof(ItemID);
     public static string Page => nameof(Page);

@@ -3,8 +3,8 @@
 @model Enrollment
 
 @{
-    ViewData[Data.Title] = nameof(Enrollment);
-    ViewData[Data.ItemID] = Model?.ID;
+    ViewData[Datas.Title] = nameof(Enrollment);
+    ViewData[Datas.ItemID] = Model?.ID;
     var courses = (IEnumerable<SelectListItem>)ViewBag.Courses; 
     var students = (IEnumerable<SelectListItem>)ViewBag.Students;
 }

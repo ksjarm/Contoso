@@ -3,7 +3,7 @@
     Layout = Layouts.Default;
 }
 
-<h1>@ViewData[Data.Title]</h1>
+<h1>@ViewData[Datas.Title]</h1>
 
 <h3>@Texts.Details</h3>
 
@@ -13,5 +13,5 @@
     @RenderBody()
 </dl>
 
-<a asp-action="Edit" asp-route-id="@ViewData[Data.ItemID]">@Texts.Edit</a> |
+<a asp-action="Edit" asp-route-id="@ViewData[Datas.ItemID]">@Texts.Edit</a> |
 <a asp-action="Index">@Texts.BackToList</a>

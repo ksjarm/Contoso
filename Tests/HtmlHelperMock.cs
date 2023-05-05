@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Linq.Expressions;
 using System.Text.Encodings.Web;
 
-namespace Tests;
+namespace Contoso.Tests;
 public class HtmlHelperMock<TModel> : IHtmlHelper<TModel> {
     public ViewDataDictionary<TModel> ViewData => throw new NotImplementedException();
     public Html5DateRenderingMode Html5DateRenderingMode { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

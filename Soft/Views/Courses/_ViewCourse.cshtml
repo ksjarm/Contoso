@@ -3,8 +3,8 @@
 @model CourseView
 
 @{
-    ViewData[Data.Title] = nameof(Course);
-    ViewData[Data.ItemID] = Model?.ID;
+    ViewData[Datas.Title] = nameof(Course);
+    ViewData[Datas.ItemID] = Model?.ID;
 }
 
 @Html.ViewItem(x => x.Number)

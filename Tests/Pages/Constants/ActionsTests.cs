@@ -1,6 +1,6 @@
 ﻿using Contoso.Pages.Constants;
 
-namespace Tests.Pages.Constants;
+namespace Contoso.Tests.Pages.Constants;
 [TestClass] public class ActionsTests : StaticTests {
     protected override Type getType() => typeof(Actions);
     [TestMethod] public void EditTest() => Assert.AreEqual("Edit", Actions.Edit);

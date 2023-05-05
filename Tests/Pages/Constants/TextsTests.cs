@@ -1,6 +1,6 @@
 ﻿using Contoso.Pages.Constants;
 
-namespace Tests.Pages.Constants;
+namespace Contoso.Tests.Pages.Constants;
 [TestClass]
 public class TextsTests : StaticTests {
     protected override Type getType() => typeof(Contoso.Pages.Constants.Texts);

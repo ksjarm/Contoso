@@ -44,7 +44,7 @@ public static class HtmlViewList {
         return list;
     }
     private static string? getSortOrder<TModel>(IHtmlHelper<IEnumerable<TModel>> h)
-        => h.ViewData[Constants.Data.SortOrder]?.ToString();
+        => h.ViewData[Constants.Datas.SortOrder]?.ToString();
     private static string? getPage<TModel>(IHtmlHelper<IEnumerable<TModel>> h)
-        => h.ViewData[Constants.Data.Page]?.ToString();
+        => h.ViewData[Constants.Datas.Page]?.ToString();
 }

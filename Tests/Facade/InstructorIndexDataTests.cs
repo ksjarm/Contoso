@@ -1,6 +1,6 @@
 ﻿using Contoso.Facade;
 
-namespace Tests.Facade;
+namespace Contoso.Tests.Facade;
 [TestClass] public class InstructorIndexDataTests : ClassTests<InstructorIndexData, object> {
 		
 }

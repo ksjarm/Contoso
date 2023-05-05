@@ -11,11 +11,11 @@ public abstract class BaseController<TRepo, TDomain> : Controller
     public BaseController( TRepo r = null) => repo = r;
     internal string getPage => GetType().Name.Replace(nameof(Controller), string.Empty);
     public async virtual Task<IActionResult> Index(string sortOrder, int pageIndex, string searchString, int? id, int? relatedId) {
-        ViewData[Pages.Constants.Data.SortOrder] = sortOrder;
-        ViewData[Pages.Constants.Data.Page] = getPage;
-        ViewData[Pages.Constants.Data.PageIndex] = pageIndex;
-        ViewData[Pages.Constants.Data.TotalPages] = repo.TotalPages;
-        ViewData[Pages.Constants.Data.CurrentFilter] = searchString;
+        ViewData[Pages.Constants.Datas.SortOrder] = sortOrder;
+        ViewData[Pages.Constants.Datas.Page] = getPage;
+        ViewData[Pages.Constants.Datas.PageIndex] = pageIndex;
+        ViewData[Pages.Constants.Datas.TotalPages] = repo.TotalPages;
+        ViewData[Pages.Constants.Datas.CurrentFilter] = searchString;
         return View(await repo.GetAsync(sortOrder, pageIndex, searchString));
     }
     public IActionResult Create() {
@@ -54,11 +54,11 @@ public abstract class BaseController<TRepo, TDomain, TView> : Controller
     public BaseController(TRepo r = null) => repo = r;
     internal string getPage => GetType().Name.Replace(nameof(Controller), string.Empty);
     public async virtual Task<IActionResult> Index(string sortOrder, int pageIndex, string searchString, int? id, int? relatedId) {
-        ViewData[Pages.Constants.Data.SortOrder] = sortOrder;
-        ViewData[Pages.Constants.Data.Page] = getPage;
-        ViewData[Pages.Constants.Data.PageIndex] = pageIndex;
-        ViewData[Pages.Constants.Data.TotalPages] = repo.TotalPages;
-        ViewData[Pages.Constants.Data.CurrentFilter] = searchString;
+        ViewData[Pages.Constants.Datas.SortOrder] = sortOrder;
+        ViewData[Pages.Constants.Datas.Page] = getPage;
+        ViewData[Pages.Constants.Datas.PageIndex] = pageIndex;
+        ViewData[Pages.Constants.Datas.TotalPages] = repo.TotalPages;
+        ViewData[Pages.Constants.Datas.CurrentFilter] = searchString;
         var objectList = await repo.GetAsync(sortOrder, pageIndex, searchString);
         var viewList = objectList.Select(x => toView(x)).ToList();
         return View(viewList);

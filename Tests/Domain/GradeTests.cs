@@ -1,6 +1,6 @@
 ﻿using Contoso.Domain;
 
-namespace Tests.Domain; 
+namespace Contoso.Tests.Domain; 
 [TestClass] public class GradeTests {
     
 }
