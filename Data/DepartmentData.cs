@@ -1,7 +1,7 @@
 ﻿using Contoso.Data.Base;
 
 namespace Contoso.Data;
-public class DepartmentData : NamedData {
+public sealed class DepartmentData : NamedData {
     public decimal Budget { get; set; }
     public DateTime StartDate { get; set; }
 

@@ -1,6 +1,6 @@
-﻿namespace Contoso.Tests {
-    public class AbstractTests<TClass, TBaseClass> :
-        ClassTests<TClass, TBaseClass> where TClass : new() {
-        [TestMethod] public void IsAbstract() => Assert.Inconclusive();
-    }
+﻿namespace Contoso.Tests; 
+public abstract class AbstractTests<TClass, TBaseClass> :
+    BaseTests<TClass, TBaseClass> {
+    protected override Type type => obj.GetType().BaseType;
+    [TestMethod] public void IsAbstract() => Assert.IsTrue(type.IsAbstract);
 }

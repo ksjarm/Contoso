@@ -2,7 +2,7 @@
 
 namespace Contoso.Tests.Pages.Constants;
 [TestClass] public class LayoutsTests : StaticTests {
-    protected override Type getType() => typeof(Layouts);
+    protected override Type type => typeof(Layouts);
     [TestMethod] public void DefaultTest() => Assert.AreEqual("_Layout", Layouts.Default);
     [TestMethod] public void DetailsTest() => Assert.AreEqual("_Details", Layouts.Details);
     [TestMethod] public void DeleteTest() => Assert.AreEqual("_Delete", Layouts.Delete);

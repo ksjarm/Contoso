@@ -1,17 +1,16 @@
 ﻿//using Contoso.Domain;
 //using Contoso.Pages.HtmlHelpers;
+//using Contoso.Tests;
 //using Microsoft.AspNetCore.Html;
 //using System.Linq.Expressions;
 //using System.Text.Encodings.Web;
 
 //namespace Tests.Pages.HtmlHelpers;
 //[TestClass]
-//public class HtmlEditItemTests : StaticTests
-//{
-//    protected override Type getType() => typeof(HtmlEditItem);
+//public class HtmlEditItemTests : StaticTests {
+//    protected override Type type => typeof(HtmlEditItem);
 //    [TestMethod]
-//    public void ControllerForTest()
-//    {
+//    public void ControllerForTest() {
 //        var html = HtmlEditItem.EditItem(new HtmlHelperMock<Course>(), (Expression<Func<Course, string>>)(x => x.Title));
 //        var b = html as HtmlContentBuilder;
 //        Assert.IsNotNull(b);

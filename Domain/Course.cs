@@ -4,7 +4,8 @@ using Contoso.Domain.BaseRepos;
 using Contoso.Domain.Repos;
 
 namespace Contoso.Domain;
-public class Course : NewNamedEntity<CourseData> {
+public sealed class Course : NewNamedEntity<CourseData> {
+    public Course() : this(null) { }
     public Course(CourseData d) : base(d) { }
     public int Number => getValue(data.Number);
     public int Credits => getValue(data.Credits);

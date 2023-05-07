@@ -1,5 +1,5 @@
 ﻿namespace Contoso.Tests;
-public class SealedTests<TClass, TBaseClass> :
+public abstract class SealedTests<TClass, TBaseClass> :
     ClassTests<TClass, TBaseClass> where TClass : new() {
-    [TestMethod] public void IsSealed() => Assert.Inconclusive();
+    [TestMethod] public void IsSealed() => Assert.IsTrue(type.IsSealed);
 }

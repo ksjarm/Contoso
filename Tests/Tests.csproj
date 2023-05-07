@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="Aids\" />
-    <Folder Include="Data\Base\" />
   </ItemGroup>
 
   <ItemGroup>
