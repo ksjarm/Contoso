@@ -1,15 +1,21 @@
-﻿using Contoso.Domain;
+﻿using Contoso.Data;
+using Contoso.Domain;
 using Contoso.Domain.Repos;
 using Contoso.Infra.Common;
-using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra;
-public class EnrollmentsRepo : BaseRepo<Enrollment, Enrollment>, IEnrollmentsRepo {
+public class EnrollmentsRepo : BaseRepo<Enrollment, EnrollmentData>, IEnrollmentsRepo {
     public EnrollmentsRepo(SchoolContext c) : base(c, c.Enrollments) { }
-    protected internal override IQueryable<Enrollment> createSQL() => addAggregates(base.createSQL());
-    protected internal override IQueryable<Enrollment> addAggregates(IQueryable<Enrollment> sql)
-		=> sql.Include(e => e.Course).Include(e => e.Student);
-    protected override Enrollment toDomain(Enrollment d) => d;
-
-    protected override Enrollment toData(Enrollment o) => o;
+    protected internal override IQueryable<EnrollmentData> addFilter(IQueryable<EnrollmentData> s) {
+        var v = CurrentFilter;
+        return string.IsNullOrWhiteSpace(v) ? base.addFilter(s) :
+             s.Where(x => x.StudentID.ToString().Contains(v) ||
+               x.Description.Contains(v) ||
+               x.ValidFrom.ToString().Contains(v) ||
+               x.ValidTo.ToString().Contains(v) ||
+               x.Description.Contains(v) ||
+               x.CourseID.ToString().Contains(v));
+    }
+    protected override EnrollmentData toData(Enrollment o) => o?.Data;
+    protected override Enrollment toDomain(EnrollmentData d) => new(d);
 }

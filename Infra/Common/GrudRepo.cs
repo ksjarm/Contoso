@@ -4,7 +4,7 @@ using Contoso.Domain.BaseRepos;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra.Common;
-public abstract class GrudRepo<TDomain, TData> : IGrudRepo<TDomain> 
+public abstract class GrudRepo<TDomain, TData> : IGrudRepo<TDomain>
     where TDomain : class, IEntity
     where TData : class, IEntity {
     protected internal DbContext db { get; }
@@ -19,12 +19,13 @@ public abstract class GrudRepo<TDomain, TData> : IGrudRepo<TDomain>
     public bool Delete(int id) => Safe.Run(() => delete(id));
     public async Task<bool> DeleteAsync(int id) => await Safe.RunAsync(() => deleteAsync(id));
     public IEnumerable<TDomain> Get() => GetAsync().GetAwaiter().GetResult();
-    public async Task<IEnumerable<TDomain>> GetAsync() {
+    public async Task<IEnumerable<TDomain>> GetAsync() => (await getAsync()).Select(toDomain);
+    public async Task<IEnumerable<TData>> getAsync() {
         sql = createSQL();
         sql = addAggregates(sql);
-        return (await runSQLAsync()).Select(toDomain);
+        return await runSQLAsync();
     }
-    protected internal virtual IQueryable<TData> addAggregates(IQueryable<TData> sql) => sql; 
+    protected internal virtual IQueryable<TData> addAggregates(IQueryable<TData> sql) => sql;
     public async virtual Task<IEnumerable<TDomain>> GetAsync(string sortOrder, int pageIndex, string searchString) => await GetAsync();
     public TDomain Get(int? id) => toDomain(get(id));
     public async Task<TDomain> GetAsync(int? id) => toDomain(await getAsync(id));

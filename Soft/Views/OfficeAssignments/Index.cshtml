@@ -1,0 +1,20 @@
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers;
+@using System.Linq.Expressions;
+@model IEnumerable<OfficeAssignmentView>
+
+@{
+    Layout = Layouts.Index;
+    ViewData[Datas.Title] = Texts.OfficeAssignments;
+    var columns = new List<Expression<Func<OfficeAssignmentView, dynamic>>>{
+        {x => x.ID},
+        {x => x.InstructorName },
+        {x => x.Location },
+        {x => x.Description },
+        {x => x.ValidFrom },
+        {x => x.ValidTo },
+    };
+    dynamic getId(OfficeAssignmentView c) => c.ID;
+}
+
+@Html.ViewList(Model, columns, getId)

@@ -1,7 +1,8 @@
-﻿@using Contoso.Pages.Constants;
+﻿@using Contoso.Facade.Common;
+@using Contoso.Pages.Constants;
 @using Contoso.Pages.HtmlHelpers;
 @using System.Linq.Expressions;
-@model IEnumerable<EnrollmentDateGroup>
+@model IEnumerable<YearEnrollmentView>
 
 @{
     ViewData[Datas.Title] = Texts.StudentBodyStatistics;

@@ -1,6 +1,6 @@
 ﻿@using Contoso.Pages.Constants;
 @using Contoso.Pages.HtmlHelpers
-@model Department
+@model DepartmentView
 
 @{
     ViewData[Datas.Title] = nameof(Department);
@@ -8,7 +8,11 @@
     var instructors = (IEnumerable<SelectListItem>)ViewBag.Instructors;
 }
 
-@Html.EditItem(x => x.Name)
+@Html.EditItem( x => x.Name)
+@Html.EditItem(x => x.Code)
+@Html.EditItem(x => x.Description)
 @Html.EditItem(x => x.Budget)
+@Html.SelectItem(x => x.InstructorID, instructors)
 @Html.EditItem(x => x.StartDate)
-@Html.SelectItem(x => x.InstructorID, instructors, x => x.Administrator)
+@Html.EditItem(x => x.ValidFrom)
+@Html.EditItem(x => x.ValidTo)

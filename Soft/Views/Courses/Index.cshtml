@@ -6,10 +6,12 @@
 @{
     Layout = Layouts.Index;
     ViewData[Datas.Title] = Texts.Courses;
-    var columns = new Dictionary<string, Expression<Func<CourseView, dynamic>>>{
-        {nameof(CourseView.Number), x => x.Number },
-        {nameof(CourseView.Name),x => x.Name },
-        {nameof(CourseView.Credits),x => x.Credits } };
+    var columns = new List<Expression<Func<CourseView, dynamic>>>{
+        {x => x.Number },
+        {x => x.Name },
+        {x => x.Credits },
+        {x => x.DepartmentName },
+    };
     dynamic getId(CourseView c) => c.ID;
 }
 

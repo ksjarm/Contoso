@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Contoso.Data.Base;
 
 namespace Contoso.Domain.Base;
-public abstract class Person : NamedEntity {
-    [Display(Name = "Last Name")] public override string Name { get; set; }
-    [Required][StringLength(50, MinimumLength = 3)][Display(Name = "First name")] public string FirstName { get; set; }
-    [Display(Name = "Full Name")] public string FullName => Name + ", " + FirstName;
+public abstract class Person<TData> : NamedEntity<TData> where TData : PersonData, new() {
+    protected Person(TData d) : base(d) { }
+    public string FirstName => getValue(data.FirstName);
+    public string FullName => Name + ", " + FirstName;
 }

@@ -1,30 +1,27 @@
 ﻿using Contoso.Data;
-using Contoso.Domain;
-using Contoso.Domain.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra;
-
 public class SchoolContext : DbContext {
 	public SchoolContext(DbContextOptions<SchoolContext> options) : base(options) { }
+	public DbSet<CourseAssignmentData> CourseAssignments { get; set; }
 	public DbSet<CourseData> Courses { get; set; }
-	public DbSet<Enrollment> Enrollments { get; set; }
-	public DbSet<Student> Students { get; set; }
-	public DbSet<Department> Departments { get; set; }
-	public DbSet<Instructor> Instructors { get; set; }
-	public DbSet<OfficeAssignment> OfficeAssignments { get; set; }
-	public DbSet<CourseAssignment> CourseAssignments { get; set; }
+	public DbSet<DepartmentData> Departments { get; set; }
+	public DbSet<EnrollmentData> Enrollments { get; set; }
+	public DbSet<InstructorData> Instructors { get; set; }
+	public DbSet<OfficeAssignmentData> OfficeAssignments { get; set; }
+	public DbSet<StudentData> Students { get; set; }
     protected override void OnModelCreating(ModelBuilder b) {
         base.OnModelCreating(b);
         InitializeTables(b);
     }
     public static void InitializeTables(ModelBuilder b){
-        b.Entity<Student>().ToTable(nameof(Students));
+        b.Entity<CourseAssignmentData>().ToTable(nameof(CourseAssignments));
         b.Entity<CourseData>().ToTable(nameof(Courses));
-        b.Entity<Enrollment>().ToTable(nameof(Enrollments));
-        b.Entity<Department>().ToTable(nameof(Departments));
-        b.Entity<Instructor>().ToTable(nameof(Instructors));
-        b.Entity<OfficeAssignment>().ToTable(nameof(OfficeAssignments));
-        b.Entity<CourseAssignment>().ToTable(nameof(CourseAssignments));
+        b.Entity<DepartmentData>().ToTable(nameof(Departments));
+        b.Entity<EnrollmentData>().ToTable(nameof(Enrollments));
+        b.Entity<InstructorData>().ToTable(nameof(Instructors));
+        b.Entity<OfficeAssignmentData>().ToTable(nameof(OfficeAssignments));
+        b.Entity<StudentData>().ToTable(nameof(Students));
     }
 }

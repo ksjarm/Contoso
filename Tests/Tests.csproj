@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Aids\" />
+    <Folder Include="Facade\Base\" />
   </ItemGroup>
 
   <ItemGroup>

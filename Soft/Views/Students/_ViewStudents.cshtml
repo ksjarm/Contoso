@@ -1,6 +1,6 @@
 ﻿@using Contoso.Pages.Constants;
 @using Contoso.Pages.HtmlHelpers;
-@model Student
+@model StudentView
 
 @{
 	ViewData[Datas.Title] = nameof(Student);
@@ -24,11 +24,11 @@
 		{
 			<tr>
 				<td>
-					@Html.DisplayFor(modelItem => item.Course.Name)
+					@Html.DisplayFor(modelItem => item.Name)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.Grade)
-				</td>
+@*					@Html.DisplayFor(modelItem => item.Grade)
+*@				</td>
 			</tr>
 		}
 	</table>

@@ -1,0 +1,10 @@
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers;
+@model OfficeAssignmentView
+
+@{
+    Layout = Layouts.Delete;
+}
+
+@Html.ViewItem(x => x.ID)
+<partial name="_ViewOfficeAssignment" model="@Model" />

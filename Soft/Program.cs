@@ -3,10 +3,16 @@ using Contoso.Soft.Data;
 using Microsoft.EntityFrameworkCore;
 using Contoso.Domain.Repos;
 using Contoso.Domain.BaseRepos;
+using System.Globalization;
 
 namespace Contoso.Soft;
 public class Program {
     public static void Main(string[] args) {
+        CultureInfo cultureInfo = new CultureInfo("en-US");
+        cultureInfo.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
+        cultureInfo.DateTimeFormat.LongTimePattern = "";
+        CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+
         var builder = WebApplication.CreateBuilder(args);
         
         builder.Services.AddDbContext<SchoolContext>(options 

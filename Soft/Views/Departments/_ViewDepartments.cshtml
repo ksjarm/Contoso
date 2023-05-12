@@ -1,14 +1,17 @@
 ﻿@using Contoso.Pages.Constants;
 @using Contoso.Pages.HtmlHelpers;
-@model Department
+@model DepartmentView
 
 @{
     ViewData[Datas.Title] = nameof(Department);
     ViewData[Datas.ItemID] = Model?.ID;
 }
 
-@Html.ViewItem(x => x.Name)
+@Html.ViewItem( x => x.Name)
+@Html.ViewItem(x => x.Code)
+@Html.ViewItem(x => x.Description)
 @Html.ViewItem(x => x.Budget)
+@Html.ViewItem(x => x.InstructorName)
 @Html.ViewItem(x => x.StartDate)
-@*@Html.ViewItem(x => x.RowVersion)
-*@@Html.ViewItem(x => x.Administrator.FullName, x => x.Administrator)
+@Html.ViewItem(x => x.ValidFrom)
+@Html.ViewItem(x => x.ValidTo)

@@ -1,0 +1,15 @@
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers
+@model OfficeAssignmentView
+
+@{
+    ViewData[Datas.Title] = nameof(OfficeAssignment);
+    ViewData[Datas.ItemID] = Model?.ID;
+    var instructors = (IEnumerable<SelectListItem>)ViewBag.Instructors;
+}
+
+@Html.SelectItem(x => x.InstructorID, instructors)
+@Html.EditItem(x => x.Location)
+@Html.EditItem(x => x.Description)
+@Html.EditItem(x => x.ValidFrom)
+@Html.EditItem(x => x.ValidTo)

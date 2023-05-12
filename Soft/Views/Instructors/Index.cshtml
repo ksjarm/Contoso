@@ -1,7 +1,8 @@
-﻿@using Contoso.Pages.HtmlHelpers
+﻿@using Contoso.Facade.Common;
+@using Contoso.Pages.HtmlHelpers
 @using Contoso.Pages.Constants
 @using System.Linq.Expressions;
-@model InstructorIndexData
+@model InstructorIndexView
 
 @{
     Layout = Layouts.Index;
@@ -38,16 +39,16 @@
                 @Html.DisplayFor(modelItem => item.HireDate)
             </td>
             <td>
-                @if (item.OfficeAssignment != null)
+                @*@if (item.OfficeAssignment != null)
                 {
                     @item.OfficeAssignment.Location
-                }
+                }*@
             </td>
             <td>
-                @foreach (var course in item.CourseAssignments)
+                @*@foreach (var course in item.CourseAssignments)
                 {
                     @course.Course.ID @course.Course.Name <br />
-                }
+                }*@
             </td>
             <td>
                 <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
@@ -87,9 +88,9 @@
                         <td>
                     @item.Name
                         </td>
-                        <td>
+                   @*     <td>
                     @item.Department.Name
-                        </td>
+                        </td>*@
                     </tr>
         }
 
@@ -107,9 +108,9 @@
         @foreach (var item in Model.Enrollments)
         {
                     <tr>
-                        <td>
-                    @item.Student.FullName
-                        </td>
+                    @*    <td>
+                    @item.Student.Name
+                        </td>*@
                         <td>
                     @Html.DisplayFor(modelItem => item.Grade)
                         </td>

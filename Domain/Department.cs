@@ -1,17 +1,15 @@
 ﻿using Contoso.Data;
 using Contoso.Domain.Base;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Contoso.Domain.BaseRepos;
+using Contoso.Domain.Repos;
 
 namespace Contoso.Domain;
-public class Department : NamedEntity {
-    [DataType(DataType.Currency)] [Column(TypeName = "money")] public decimal Budget { get; set; }
-    
-    [DataType(DataType.Date)] [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-    [Display(Name = "Start Date")] public DateTime? StartDate { get; set; }
-
-    //[Timestamp] public byte[]? RowVersion { get; set; }
-    [Display(Name = "Instructor")] public int? InstructorID { get; set; }
-    public Instructor Administrator { get; set; }
-    public ICollection<CourseData> Courses { get; set; }
+public class Department : NamedEntity<DepartmentData> {
+    public Department() : this(null) { }
+    public Department(DepartmentData d) : base(d) { }
+    public decimal Budget => getValue(data.Budget);
+    public DateTime StartDate => getValue(data.StartDate);
+    public int? InstructorID => getValue(data.InstructorID);
+    public Lazy<Instructor> Administrator => new(GetRepo.Item<IInstructorsRepo, Instructor>(InstructorID));
+    public Lazy<IEnumerable<Course>> Courses => new(GetRepo.List<ICoursesRepo, Course>(x => x.DepartmentID == ID));
 }

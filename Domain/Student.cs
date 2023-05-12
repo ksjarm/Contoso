@@ -1,8 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Contoso.Data;
 using Contoso.Domain.Base;
+using Contoso.Domain.BaseRepos;
+using Contoso.Domain.Repos;
 
 namespace Contoso.Domain;
-public class Student : Person {
-    [DataType(DataType.Date)] [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")] public DateTime EnrollmentDate { get; set; }
-    public ICollection<Enrollment> Enrollments { get; set; }
+public sealed class Student : Person<StudentData> {
+    public Student() : this(null) { }
+    public Student(StudentData d) : base(d) { }
+    public DateTime EnrollmentDate => getValue(data.EnrollmentDate);
+    public Lazy<IEnumerable<Enrollment>> Enrollments
+        => new(GetRepo.List<IEnrollmentsRepo, Enrollment>(x => x.StudentID == ID));
 }

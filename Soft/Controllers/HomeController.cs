@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-using Contoso.Facade;
 using Contoso.Infra;
+using Contoso.Facade.Common;
 
 namespace Contoso.Soft.Controllers;
 public class HomeController : Controller {
@@ -16,13 +16,13 @@ public class HomeController : Controller {
     public IActionResult Privacy() => View();
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    public IActionResult Error() => View(new ErrorView { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     public async Task<ActionResult> About() {
-        IQueryable<EnrollmentDateGroup> data =
+        IQueryable<YearEnrollmentView> data =
             from student in context.Students
             group student by student.EnrollmentDate into dateGroup
             orderby dateGroup.Key descending
-            select new EnrollmentDateGroup() {
+            select new YearEnrollmentView() {
                 EnrollmentDate = dateGroup.Key,
                 StudentCount = dateGroup.Count()
             };

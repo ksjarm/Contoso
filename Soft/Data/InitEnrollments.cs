@@ -1,14 +1,13 @@
 ﻿using Contoso.Data;
-using Contoso.Domain;
 using Contoso.Infra;
 
 namespace Contoso.Soft.Data;
 internal static class InitEnrollments {
     private static SchoolContext db;
     internal static int cntEnrollments = 10 * InitStudents.cntStudents;
-    internal static List<Enrollment> enrollments {
+    internal static List<EnrollmentData> enrollments {
         get {
-            var l = new List<Enrollment> {
+            var l = new List<EnrollmentData> {
                 enrollment("Alexander", "Chemistry" , Grade.A),
                 enrollment("Alexander", "Microeconomics", Grade.C),
                 enrollment("Alexander", "Macroeconomics", Grade.B),
@@ -25,9 +24,9 @@ internal static class InitEnrollments {
             return l;
         }
     }
-    internal static Enrollment enrollment(int idx, string year)
+    internal static EnrollmentData enrollment(int idx, string year)
         => enrollment($"LastName{idx % InitStudents.cntStudents}", $"Course{idx % InitCourses.cntCourses}", grade(idx, year));
-    internal static Enrollment enrollment(string student, string course, Grade? g = null) {
+    internal static EnrollmentData enrollment(string student, string course, Grade? g = null) {
         var sId = InitStudents.studentId(student);
         var cId = InitCourses.courseId(course);
         return InitSchool.db.Enrollments.Any(x => (x.StudentID == sId) && (x.CourseID == cId))

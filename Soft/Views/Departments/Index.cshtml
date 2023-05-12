@@ -1,18 +1,19 @@
 ﻿@using Contoso.Pages.HtmlHelpers
 @using Contoso.Pages.Constants
 @using System.Linq.Expressions;
-@model IEnumerable<Department>
+@model IEnumerable<DepartmentView>
 
 @{
     Layout = Layouts.Index;
     ViewData[Datas.Title] = Texts.Departments;
-    var columns = new Dictionary<string, Expression<Func<Department, dynamic>>>{
-        {nameof(Department.Name), x => x.Name },
-        {nameof(Department.Budget),x => x.Budget },
-        {nameof(Department.StartDate),x => x.StartDate },
-        //{nameof(Department.RowVersion),x => x.RowVersion },
-        {nameof(Department.Administrator),x => x.Administrator.FullName } };
-    dynamic getId(Department d) => d.ID;
+    var columns = new List<Expression<Func<DepartmentView, dynamic>>>{
+        {x => x.Name },
+        {x => x.Description },
+        {x => x.Budget },
+        {x => x.StartDate },
+        {x => x.InstructorName },
+    };
+    dynamic getId(DepartmentView c) => c.ID;
 }
 
 @Html.ViewList(Model, columns, getId)

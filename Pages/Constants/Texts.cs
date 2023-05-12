@@ -8,6 +8,7 @@ public static class Texts {
     public static string Departments => "Departments";
     public static string Enrollments => "Enrollments";
     public static string CourseAssignments => "Course Assignments";
+    public static string OfficeAssignments => "Office Assignments";
     public static string Instructors => "Instructors";
 
     public static string Edit => "Edit";
@@ -18,5 +19,4 @@ public static class Texts {
 	public static string Details => "Details";
 	public static string BackToList => "Back to List";
 	public static string DeleteQuestion => "Are you sure you want to delete this?";
-
 }

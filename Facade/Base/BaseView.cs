@@ -1,5 +1,6 @@
 ﻿using Contoso.Data;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Contoso.Facade.Base;
 public abstract class BaseView : IEntity {

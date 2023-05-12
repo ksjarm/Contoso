@@ -1,11 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Contoso.Data;
 using Contoso.Domain.Base;
+using Contoso.Domain.BaseRepos;
+using Contoso.Domain.Repos;
 
 namespace Contoso.Domain;
-public class Instructor : Person {
-    [DataType(DataType.Date)] [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-    [Display(Name = "Hire Date")] public DateTime HireDate { get; set; }
-
-    [Display(Name = "Taught courses")] public ICollection<CourseAssignment> CourseAssignments { get; set; }
-    [Display(Name = "Office")] public OfficeAssignment OfficeAssignment { get; set; }
+public sealed class Instructor : Person<InstructorData> {
+    public Instructor() : this(null) { }
+    public Instructor(InstructorData d) : base(d) { }
+    public DateTime HireDate => getValue(data.HireDate);
+    public Lazy<IEnumerable<CourseAssignment>> CourseAssignments
+        => new(GetRepo.List<ICourseAssignmentsRepo, CourseAssignment>(x => x.InstructorID == ID));
+    public Lazy<OfficeAssignment> OfficeAssignment
+        => new(GetRepo
+            .List<IOfficeAssignmentsRepo, OfficeAssignment>(x => x.InstructorID == ID)
+            .FirstOrDefault());
 }

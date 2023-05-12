@@ -6,5 +6,5 @@ namespace Contoso.Tests.Data;
     SealedTests<EnrollmentData, DescribedData> {
     [TestMethod] public void CourseIDTest() => isProperty<int>();
     [TestMethod] public void StudentIDTest() => isProperty<int>();
-    [TestMethod] public void GradeTest() => isProperty<Grade>();
+    [TestMethod] public void GradeTest() => isProperty<Grade?>();
 }

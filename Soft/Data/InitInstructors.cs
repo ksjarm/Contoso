@@ -1,4 +1,5 @@
-﻿using Contoso.Domain;
+﻿using Contoso.Data;
+using Contoso.Domain;
 using Contoso.Infra;
 
 namespace Contoso.Soft.Data;
@@ -6,10 +7,10 @@ internal static class InitInstructors {
     private static SchoolContext db;
     internal static int cntInstructors = 1000;
     private static Dictionary<string, int> instructorIDs;
-    private static Action<int, Func<int, string, Instructor>> add;
-    internal static List<Instructor> instructors {
+    private static Action<int, Func<int, string, InstructorData>> add;
+    internal static List<InstructorData> instructors {
         get {
-            var l = new List<Instructor> {
+            var l = new List<InstructorData> {
                  instructor("Kim", "Abercrombie","1995-03-11"),
                  instructor("Fadi", "Fakhouri","2002-07-06"),
                  instructor( "Roger", "Harui", "1998-07-01"),
@@ -20,14 +21,14 @@ internal static class InitInstructors {
             return l;
         }
     }
-    internal static void init(SchoolContext c, Action<int, Func<int, string, Instructor>> a) {
+    internal static void init(SchoolContext c, Action<int, Func<int, string, InstructorData>> a) {
         db = c;
         instructorIDs = new Dictionary<string, int>();
         add = a;
     }
-    internal static Instructor instructor(int idx, string year)
+    internal static InstructorData instructor(int idx, string year)
         => instructor($"FirstName{idx}", $"LastName{idx}", $"{year}-09-01");
-    internal static Instructor instructor(string firstName, string name, string date)
+    internal static InstructorData instructor(string firstName, string name, string date)
         => db.Instructors.Any(x => (x.Name == name) && (x.FirstName == firstName))
         ? null
         : new() { FirstName = firstName, Name = name, HireDate = DateTime.Parse(date) };

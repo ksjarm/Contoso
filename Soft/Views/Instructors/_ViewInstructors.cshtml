@@ -1,6 +1,6 @@
 ﻿@using Contoso.Pages.HtmlHelpers;
 @using Contoso.Pages.Constants;
-@model Instructor
+@model InstructorView
 
 @{
     ViewData[Datas.Title] = nameof(Instructor);
@@ -10,10 +10,10 @@
 @Html.ViewItem(x => x.FirstName)
 @Html.ViewItem(x => x.Name)
 @Html.ViewItem(x => x.HireDate)
-@Html.ViewItem(x => x.OfficeAssignment.Location)
+@Html.ViewItem(x => x.Office)
 
 <dd class="col-sm-2">
-    @Html.DisplayNameFor(x => x.CourseAssignments)
+    @Html.DisplayNameFor(x => x.Courses)
 </dd>
 
 <dd class="col-sm-10">
@@ -23,16 +23,16 @@
             <td>Title</td>
             <td>Credits</td>
         </tr>
-        @foreach (var item in Model.CourseAssignments) {
+        @foreach (var item in Model.Courses) {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Course.Number)
+                    @Html.DisplayFor(modelItem => item.Number)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Course.Name)
+                    @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Course.Credits)
+                    @Html.DisplayFor(modelItem => item.Credits)
                 </td>
             </tr>
         }

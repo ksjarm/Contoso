@@ -1,6 +1,8 @@
-﻿@using Contoso.Pages.Constants;
-@using Contoso.Pages.HtmlHelpers
-@model Instructor
+﻿@using Contoso.Data;
+@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers;
+@using Contoso.Facade.Common;
+@model InstructorView
 
 @{
     ViewData[Datas.Title] = nameof(Instructor);
@@ -10,31 +12,4 @@
 @Html.EditItem(x => x.Name)
 @Html.EditItem(x => x.FirstName)
 @Html.EditItem(x => x.HireDate)
-@Html.EditItem(x => x.OfficeAssignment.Location)
-
-<dd class="col-sm-2" >
-    @Html.DisplayNameFor(x => x.CourseAssignments)
-</dd>
-
-<dd class="col-md-offset-2 col-md-10">
-    <table>
-        <tr>
-            @{
-                int cnt = 0;
-                List<Contoso.Facade.AssignedCourseData> courses = ViewBag.Courses;
-                foreach (var course in courses) {
-                    if (cnt++ % 4 == 0) {
-                        @:</tr><tr>
-                    }
-                    @:<td>
-                        <input type="checkbox"
-                                name="selectedCourses"
-                                value="@course.CourseID"
-                                @(Html.Raw(course.Assigned ? "checked=\"checked\"" : "")) />
-                                @course.CourseID @:  @course.Title
-                    @:</td>
-                }
-                @:</tr>
-            }
-    </table>
-</dd>
+@Html.EditItem(x => x.Office)

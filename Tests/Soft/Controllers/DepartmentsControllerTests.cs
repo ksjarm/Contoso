@@ -2,10 +2,10 @@
 using Contoso.Domain;
 using Contoso.Soft.Controllers;
 using Contoso.Soft.Controllers.Common;
-using Microsoft.AspNetCore.Mvc;
+using Contoso.Facade;
 
 namespace Contoso.Tests.Soft.Controllers;
 [TestClass] public class DepartmentsControllerTests : 
-    BaseTests<DepartmentsController, BaseController<IDepartmentsRepo, Department>> {
+    BaseTests<DepartmentsController, BaseController<IDepartmentsRepo, Department, DepartmentView>> {
     protected override DepartmentsController createObj() => new();
 }

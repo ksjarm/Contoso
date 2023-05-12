@@ -9,7 +9,7 @@ public static class GetRepo {
             => provider?.CreateScope()?.ServiceProvider?.GetRequiredService<TRepo>();
     public static void SetServiceProvider(IServiceProvider p) => provider = p;
 
-    internal static TItem Item<TRepo, TItem>(int id)
+    internal static TItem Item<TRepo, TItem>(int? id)
         where TRepo : class, IRepo<TItem> where TItem : IEntity
             => Instance<TRepo, TItem>().Get(id);
 

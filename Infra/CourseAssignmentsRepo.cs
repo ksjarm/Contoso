@@ -1,20 +1,21 @@
-﻿using Contoso.Domain;
+﻿using Contoso.Data;
+using Contoso.Domain;
 using Contoso.Domain.Repos;
 using Contoso.Infra.Common;
-using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra;
-public class CourseAssignmentsRepo : BaseRepo<CourseAssignment, CourseAssignment>, ICourseAssignmentsRepo {
+public class CourseAssignmentsRepo : BaseRepo<CourseAssignment, CourseAssignmentData>, ICourseAssignmentsRepo {
     public CourseAssignmentsRepo(SchoolContext c) : base(c, c.CourseAssignments) { }
-    protected internal override IQueryable<CourseAssignment> addFilter(IQueryable<CourseAssignment> s) {
+    protected internal override IQueryable<CourseAssignmentData> addFilter(IQueryable<CourseAssignmentData> s) {
         var v = CurrentFilter;
         return string.IsNullOrWhiteSpace(v) ? base.addFilter(s) :
              s.Where(x => x.InstructorID.ToString().Contains(v) ||
+               x.Description.Contains(v) ||
+               x.ValidFrom.ToString().Contains(v) ||
+               x.ValidTo.ToString().Contains(v) ||
+               x.Description.Contains(v) || 
                x.CourseID.ToString().Contains(v));
     }
-    protected internal override IQueryable<CourseAssignment> addAggregates(IQueryable<CourseAssignment> sql) 
-        => sql.Include(x => x.Instructor).Include(x => x.Course);
-    protected override CourseAssignment toDomain(CourseAssignment d) => d;
-
-    protected override CourseAssignment toData(CourseAssignment o) => o;
+    protected override CourseAssignmentData toData(CourseAssignment o) => o.data;
+    protected override CourseAssignment toDomain(CourseAssignmentData d) => new(d);
 }

@@ -1,4 +1,5 @@
-﻿using Contoso.Domain;
+﻿using Contoso.Data;
+using Contoso.Domain;
 using Contoso.Infra;
 
 namespace Contoso.Soft.Data;
@@ -6,10 +7,10 @@ public static class InitStudents {
     private static SchoolContext db;
     internal static int cntStudents = 10000;
     private static Dictionary<string, int> studentIDs;
-    private static Action<int, Func<int, string, Student>> add; 
-    internal static List<Student> students {
+    private static Action<int, Func<int, string, StudentData>> add; 
+    internal static List<StudentData> students {
         get {
-            var l = new List<Student> {
+            var l = new List<StudentData> {
                 student("Carson", "Alexander", "2010-09-01"),
                 student("Meredith", "Alonso", "2012-09-01"),
                 student("Arturo", "Anand", "2013-09-01"),
@@ -23,14 +24,14 @@ public static class InitStudents {
             return l;
         }
     }
-    internal static void init(SchoolContext c, Action<int, Func<int, string, Student>> a) {
+    internal static void init(SchoolContext c, Action<int, Func<int, string, StudentData>> a) {
         db = c;
         studentIDs = new Dictionary<string, int>();
         add = a;
     }
-    internal static Student student(int idx, string year) 
+    internal static StudentData student(int idx, string year) 
         => student($"FirstName{idx}", $"LastName{idx}", $"{year}-09-01");
-    internal static Student student(string firstName, string name, string enrollment) 
+    internal static StudentData student(string firstName, string name, string enrollment) 
         => db.Students.Any(x => x.Name == name)
         ? null
         : new() { FirstName = firstName, Name = name, EnrollmentDate = DateTime.Parse(enrollment) };

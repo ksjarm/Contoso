@@ -1,0 +1,14 @@
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers;
+@model OfficeAssignmentView
+
+@{
+    ViewData[Datas.Title] = nameof(OfficeAssignment);
+    ViewData[Datas.ItemID] = Model?.ID;
+}
+
+@Html.ViewItem(x => x.InstructorName)
+@Html.ViewItem(x => x.Location)
+@Html.ViewItem(x => x.Description)
+@Html.ViewItem(x => x.ValidFrom)
+@Html.ViewItem(x => x.ValidTo)

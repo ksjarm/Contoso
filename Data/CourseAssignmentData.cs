@@ -2,6 +2,6 @@
 
 namespace Contoso.Data;
 public sealed class CourseAssignmentData : DescribedData {
-    public int InstructorID { get; set; }
     public int CourseID { get; set; }
+    public int InstructorID { get; set; }
 }
