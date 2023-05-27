@@ -1,5 +1,4 @@
 ﻿using Contoso.Data;
-using Contoso.Domain;
 using Contoso.Infra;
 
 namespace Contoso.Soft.Data;

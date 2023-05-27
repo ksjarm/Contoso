@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Contoso.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230512155952_NewSystem")]
-    partial class NewSystem
+    [Migration("20230517101324_Photo")]
+    partial class Photo
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -184,7 +184,13 @@ namespace Contoso.Soft.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Photo")
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("PhotoFile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhotoFileType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ValidFrom")
@@ -252,7 +258,13 @@ namespace Contoso.Soft.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Photo")
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("PhotoFile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhotoFileType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ValidFrom")

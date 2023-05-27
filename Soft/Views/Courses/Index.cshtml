@@ -7,10 +7,13 @@
     Layout = Layouts.Index;
     ViewData[Datas.Title] = Texts.Courses;
     var columns = new List<Expression<Func<CourseView, dynamic>>>{
-        {x => x.Number },
-        {x => x.Name },
-        {x => x.Credits },
-        {x => x.DepartmentName },
+        {x => x.Number},
+        {x => x.Name},
+        {x => x.Credits},
+        {x => x.DepartmentName},
+        {x => x.Description},
+        {x => x.ValidFrom},
+        {x => x.ValidTo}
     };
     dynamic getId(CourseView c) => c.ID;
 }

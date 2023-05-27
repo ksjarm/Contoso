@@ -1,9 +1,7 @@
 ﻿using Contoso.Data;
-using Contoso.Infra;
 
 namespace Contoso.Soft.Data;
 internal static class InitCourseAssignments {
-    private static SchoolContext db;
     internal static int cntCourceAssignments = 3 * InitInstructors.cntInstructors;
     internal static List<CourseAssignmentData> courseAssignments {
         get {

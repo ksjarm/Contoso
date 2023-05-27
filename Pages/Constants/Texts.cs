@@ -10,6 +10,7 @@ public static class Texts {
     public static string CourseAssignments => "Course Assignments";
     public static string OfficeAssignments => "Office Assignments";
     public static string Instructors => "Instructors";
+    public static string EnrollmentYear => "Enrollment year";
 
     public static string Edit => "Edit";
 	public static string Index => "Index";

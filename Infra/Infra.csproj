@@ -12,7 +12,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.3" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
-	  <InternalsVisibleTo Include="Contoso.Tests" />
+	<InternalsVisibleTo Include="Contoso.Tests" />
   </ItemGroup>
 
 </Project>

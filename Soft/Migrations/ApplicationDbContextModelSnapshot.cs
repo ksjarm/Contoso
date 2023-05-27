@@ -181,7 +181,13 @@ namespace Contoso.Soft.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Photo")
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("PhotoFile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhotoFileType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ValidFrom")
@@ -249,7 +255,13 @@ namespace Contoso.Soft.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Photo")
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("PhotoFile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhotoFileType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ValidFrom")

@@ -14,6 +14,7 @@ public class InstructorsController : BaseController<IInstructorsRepo, Instructor
         $"{nameof(InstructorView.ID)}, " +
         $"{nameof(InstructorView.FirstName)}, " +
         $"{nameof(InstructorView.Name)}, " +
+        $"{nameof(InstructorView.PhotoUpload)}, " +
         $"{nameof(InstructorView.HireDate)}";
 
     public async override Task<IActionResult> Index(string sortOrder, int pageIndex, string searchString, int? id, int? relatedId) {

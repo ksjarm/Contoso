@@ -4,7 +4,7 @@ using Contoso.Domain.BaseRepos;
 using Contoso.Domain.Repos;
 
 namespace Contoso.Domain;
-public class Department : NamedEntity<DepartmentData> {
+public sealed class Department : NamedEntity<DepartmentData> {
     public Department() : this(null) { }
     public Department(DepartmentData d) : base(d) { }
     public decimal Budget => getValue(data.Budget);

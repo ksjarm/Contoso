@@ -10,15 +10,16 @@ public class StudentsController : BaseController<IStudentsRepo, Student, Student
 
     internal const string properties = 
 		$"{nameof(StudentView.ID)}," +
-		$"{nameof(StudentView.EnrollmentDate)}," +
 		$"{nameof(StudentView.FirstName)}," +
-		$"{nameof(StudentView.Name)}";
+		$"{nameof(StudentView.Name)}," +
+		$"{nameof(StudentView.PhotoUpload)}" +
+        $"{nameof(StudentView.EnrollmentDate)}";
 
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] StudentView v) => await create(toDomain(v));
 
     [HttpPost, ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind(properties)] StudentView v) => await edit(id, toDomain(v));
+    public async Task<IActionResult> Edit(int id, [Bind(properties)] StudentView c) => await edit(id, toDomain(c));
 
     protected Student toDomain(StudentView v) => new StudentViewFactory().Create(v);
     protected override StudentView toView(Student o, bool load = false) => new StudentViewFactory().Create(o, load);

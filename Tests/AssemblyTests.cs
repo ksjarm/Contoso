@@ -9,8 +9,7 @@ public class AssemblyTests {
     private Assembly typeAssembly => Assembly.Load(nameSpace);
     private List<string> tests => getTypes(testAssembly, isThisTest).ToList();
     private IEnumerable<string> types => getTypes(typeAssembly, isThisType);
-    [TestMethod]
-    public void IsTested() =>
+    [TestMethod] public void IsTested() =>
         notTested(types.Where(t => !tests.Contains(toTestClass(t))).FirstOrDefault());
     private static void notTested(string s) {
         if (s is not null) Assert.Inconclusive($"Class <{s}> is not tested");

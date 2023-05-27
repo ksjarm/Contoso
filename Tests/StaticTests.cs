@@ -1,5 +1,4 @@
 ﻿using Contoso.Aids;
-using Contoso.Data;
 using System.Diagnostics;
 using System.Reflection;
 

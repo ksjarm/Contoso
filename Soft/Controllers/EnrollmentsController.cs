@@ -23,8 +23,8 @@ public class EnrollmentsController : BaseController<IEnrollmentsRepo, Enrollment
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] EnrollmentView e) => await create(toDomain(e));
 
-    [HttpPost, ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind(properties)] EnrollmentView e) => await edit(id, toDomain(e));
+	[HttpPost, ValidateAntiForgeryToken]
+	public async Task<IActionResult> Edit(int id, [Bind(properties)] EnrollmentView v) => await edit(id, toDomain(v));
 
 	protected internal override void relatedLists(Enrollment e = null) {
 		ViewBag.Courses = courses.SelectList;

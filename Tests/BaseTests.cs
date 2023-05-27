@@ -1,7 +1,5 @@
 ﻿using Contoso.Aids;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
 using System.Reflection;
 
 namespace Contoso.Tests;
@@ -23,6 +21,14 @@ public abstract class BaseTests<TClass, TBaseClass> : StaticTests {
         var n = propertyName();
         hasDisplayName(n, displayName);
         isReadWrite<T>(n);
+    }
+    protected void isReadable<T>(string displayName = null) {
+        var n = propertyName();
+        hasDisplayName(n, displayName);
+        var propertyInfo = property(n);
+        var value = propertyInfo.GetValue(obj);
+        Assert.IsNotNull(value);
+        Assert.AreEqual(typeof(T), value.GetType());
     }
     private void hasDisplayName(string n, string displayName) {
         if (displayName is null) return;

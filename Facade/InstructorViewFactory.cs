@@ -3,7 +3,7 @@ using Contoso.Domain;
 using Contoso.Facade.Base;
 
 namespace Contoso.Facade;
-public sealed class InstructorViewFactory : BaseViewFactory<InstructorData, Instructor, InstructorView> {
+public sealed class InstructorViewFactory : PersonViewFactory<InstructorData, Instructor, InstructorView> {
     protected internal override Instructor toObject(InstructorData d) => new(d);
     public override InstructorView Create(Instructor o, bool load = false) {
         var v = Create(o?.data);

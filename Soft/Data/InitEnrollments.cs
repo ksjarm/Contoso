@@ -1,9 +1,7 @@
 ﻿using Contoso.Data;
-using Contoso.Infra;
 
 namespace Contoso.Soft.Data;
 internal static class InitEnrollments {
-    private static SchoolContext db;
     internal static int cntEnrollments = 10 * InitStudents.cntStudents;
     internal static List<EnrollmentData> enrollments {
         get {

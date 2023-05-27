@@ -1,3 +1,2 @@
 ﻿namespace Contoso.Tests.Facade;
-[TestClass] public class IsFacadeTested : AssemblyTests{
-}
+[TestClass] public class IsFacadeTested : AssemblyTests {}
