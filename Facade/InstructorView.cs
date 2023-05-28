@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Contoso.Data;
 using Contoso.Facade.Base;
 
 namespace Contoso.Facade;

@@ -5,8 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra.Common;
 public abstract class GrudRepo<TDomain, TData> : IGrudRepo<TDomain>
-    where TDomain : class, IEntity
-    where TData : class, IEntity {
+    where TDomain : class, IEntity where TData : class, IEntity {
     protected internal DbContext db { get; }
     protected internal DbSet<TData> set { get; }
     protected internal IQueryable<TData> sql { get; set; }
@@ -61,7 +60,6 @@ public abstract class GrudRepo<TDomain, TData> : IGrudRepo<TDomain>
     protected internal virtual IQueryable<TData> createSQL() => from s in set select s;
     protected internal virtual IEnumerable<TData> runSQL() => runSQLAsync().GetAwaiter().GetResult();
     protected internal virtual async Task<IEnumerable<TData>> runSQLAsync() => await sql.AsNoTracking().ToListAsync();
-
     protected abstract TDomain toDomain(TData d);
     protected abstract TData toData(TDomain o);
 }

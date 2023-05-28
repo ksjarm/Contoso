@@ -1,14 +1,13 @@
 ﻿using Contoso.Domain;
 using Contoso.Domain.Repos;
 using Contoso.Facade;
-using Contoso.Infra;
 using Contoso.Soft.Controllers.Common;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Contoso.Soft.Controllers;
 public class OfficeAssignmentsController : BaseController<IOfficeAssignmentsRepo, OfficeAssignment, OfficeAssignmentView> {
     
-   private readonly IInstructorsRepo instructors;
+    private readonly IInstructorsRepo instructors;
     public OfficeAssignmentsController(IOfficeAssignmentsRepo r = null, IInstructorsRepo i = null) : base(r) => instructors = i;
     
     internal const string properties =
@@ -20,10 +19,10 @@ public class OfficeAssignmentsController : BaseController<IOfficeAssignmentsRepo
          $"{nameof(OfficeAssignmentView.ValidTo)}";    
     
     [HttpPost, ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind(properties)] OfficeAssignmentView a) => await create(toDomain(a));
+    public async Task<IActionResult> Create([Bind(properties)] OfficeAssignmentView v) => await create(toDomain(v));
     
     [HttpPost, ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind(properties)] OfficeAssignmentView a) => await edit(id, toDomain(a));
+    public async Task<IActionResult> Edit(int id, [Bind(properties)] OfficeAssignmentView v) => await edit(id, toDomain(v));
     
     protected internal override void relatedLists(OfficeAssignment a) {
         ViewBag.Instructors = instructors?.SelectList;

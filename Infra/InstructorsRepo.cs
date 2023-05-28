@@ -14,10 +14,10 @@ public class InstructorsRepo : BaseRepo<Instructor, InstructorData>, IInstructor
                x.FirstName.Contains(v) ||
                x.Gender.ToString().Contains(v) ||
                x.HireDate.ToString().Contains(v) ||
-               x.ValidFrom.ToString().Contains(v) ||
-               x.ValidTo.ToString().Contains(v) ||
+               x.Code.Contains(v) ||
                x.Description.Contains(v) ||
-               x.Code.Contains(v));
+               x.ValidFrom.ToString().Contains(v) ||
+               x.ValidTo.ToString().Contains(v));
     }
     protected override InstructorData toData(Instructor o) => o?.Data;
     protected override Instructor toDomain(InstructorData d) => new(d);

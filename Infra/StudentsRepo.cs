@@ -14,10 +14,10 @@ public class StudentsRepo : BaseRepo<Student, StudentData>, IStudentsRepo {
                x.FirstName.Contains(v) ||
                x.Gender.ToString().Contains(v) ||
                x.EnrollmentDate.ToString().Contains(v) ||
-               x.ValidFrom.ToString().Contains(v) ||
-               x.ValidTo.ToString().Contains(v) ||
+               x.Code.Contains(v) ||
                x.Description.Contains(v) ||
-               x.Code.Contains(v));
+               x.ValidFrom.ToString().Contains(v) ||
+               x.ValidTo.ToString().Contains(v));
     }
     protected override StudentData toData(Student o) => o?.Data;
     protected override Student toDomain(StudentData d) => new(d);

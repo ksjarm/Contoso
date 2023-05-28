@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Contoso.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230517101324_Photo")]
-    partial class Photo
+    [Migration("20230528102957_M1")]
+    partial class M1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

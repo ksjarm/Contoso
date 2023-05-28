@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Contoso.Domain.BaseRepos.GetRepo" Collapsed="true">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAEAAAAEAAAAAAAAQAAAAAAAAAI=</HashCode>
+      <FileName>BaseRepos\GetRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Contoso.Domain.BaseRepos.IFilteredRepo&lt;T&gt;">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <InheritanceLine Type="Contoso.Domain.BaseRepos.IGrudRepo&lt;T&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="2" Y="2.25" />
+        <Point X="2.5" Y="2.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseRepos\IFilteredRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Contoso.Domain.BaseRepos.IGrudRepo&lt;T&gt;">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAABAAAAAAAEAAAEAAAgAAAAAIAAAAIA=</HashCode>
+      <FileName>BaseRepos\IGrudRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Contoso.Domain.BaseRepos.IOrderedRepo&lt;T&gt;">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <InheritanceLine Type="Contoso.Domain.BaseRepos.IFilteredRepo&lt;T&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="4" Y="2.25" />
+        <Point X="4.5" Y="2.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseRepos\IOrderedRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Contoso.Domain.BaseRepos.IPagedRepo&lt;T&gt;">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>BaseRepos\IPagedRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Contoso.Domain.BaseRepos.IRepo&lt;T&gt;">
+    <Position X="8.5" Y="1.75" Width="1.5" />
+    <InheritanceLine Type="Contoso.Domain.BaseRepos.IPagedRepo&lt;T&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="8" Y="2.25" />
+        <Point X="8.5" Y="2.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAIAA=</HashCode>
+      <FileName>BaseRepos\IRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

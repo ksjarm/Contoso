@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Contoso.Data;
+﻿using Contoso.Data;
 using Contoso.Domain.Base;
 using Contoso.Domain.BaseRepos;
 using Contoso.Domain.Repos;

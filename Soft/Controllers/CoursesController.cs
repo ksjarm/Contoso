@@ -14,8 +14,11 @@ public class CoursesController : BaseController<ICoursesRepo, Course, CourseView
         $"{nameof(CourseView.Number)}," +
         $"{nameof(CourseView.Name)}," +
         $"{nameof(CourseView.Credits)}," +
-        $"{nameof(CourseView.DepartmentID)}";
-    
+        $"{nameof(CourseView.DepartmentID)}" +
+        $"{nameof(CourseView.Description)}," +
+        $"{nameof(CourseView.ValidFrom)}," +
+        $"{nameof(CourseView.ValidTo)}";
+
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] CourseView v) => await create(toDomain(v));
     

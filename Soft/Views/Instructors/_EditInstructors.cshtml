@@ -7,9 +7,14 @@
 @{
     ViewData[Datas.Title] = nameof(Instructor);
     ViewData[Datas.ItemID] = Model?.ID;
+    var genders = (IEnumerable<SelectListItem>)ViewBag.Genders;
 }
 
-@Html.EditItem(x => x.Name)
 @Html.EditItem(x => x.FirstName)
+@Html.EditItem(x => x.Name)
+@Html.SelectItem(x => x.Gender, genders)
 @Html.EditItem(x => x.HireDate)
 @Html.EditItem(x => x.Office)
+@Html.EditItem(x => x.Description)
+@Html.EditItem(x => x.ValidFrom)
+@Html.EditItem(x => x.ValidTo)

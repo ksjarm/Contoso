@@ -5,17 +5,24 @@ using Contoso.Soft.Controllers.Common;
 using Contoso.Facade.Common;
 using Contoso.Facade;
 using Contoso.Pages.Constants;
+using Contoso.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Contoso.Soft.Controllers;
 public class InstructorsController : BaseController<IInstructorsRepo, Instructor, InstructorView> {
-    public InstructorsController(IInstructorsRepo r = null) : base(r) { }
+    private readonly List<IsoGender> genders;
+    public InstructorsController(IInstructorsRepo r = null) : base(r)
+        => genders = Enum.GetValues(typeof(IsoGender)).Cast<IsoGender>().ToList();
 
     internal const string properties = 
         $"{nameof(InstructorView.ID)}, " +
         $"{nameof(InstructorView.FirstName)}, " +
         $"{nameof(InstructorView.Name)}, " +
         $"{nameof(InstructorView.PhotoUpload)}, " +
-        $"{nameof(InstructorView.HireDate)}";
+        $"{nameof(InstructorView.HireDate)}" +
+        $"{nameof(InstructorView.Description)}, " +
+        $"{nameof(InstructorView.ValidFrom)}, " +
+        $"{nameof(InstructorView.ValidTo)}";
 
     public async override Task<IActionResult> Index(string sortOrder, int pageIndex, string searchString, int? id, int? relatedId) {
         ViewData[Datas.SortOrder] = sortOrder;
@@ -41,11 +48,14 @@ public class InstructorsController : BaseController<IInstructorsRepo, Instructor
     }
 
     [HttpPost, ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind(properties)] InstructorView c) => await create(toDomain(c));
+    public async Task<IActionResult> Create([Bind(properties)] InstructorView v) => await create(toDomain(v));
 
     [HttpPost, ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind(properties)] InstructorView c) => await edit(id, toDomain(c));
-    
+    public async Task<IActionResult> Edit(int id, [Bind(properties)] InstructorView v) => await edit(id, toDomain(v));
+
+    protected internal override void relatedLists(Instructor selectedItem = null) {
+        ViewBag.Genders = new SelectList(genders);
+    }
     protected Instructor toDomain(InstructorView v) => new InstructorViewFactory().Create(v);
     protected override InstructorView toView(Instructor o, bool load = false) => new InstructorViewFactory().Create(o, load);
 }

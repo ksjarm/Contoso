@@ -10,11 +10,10 @@ public class CourseAssignmentsRepo : BaseRepo<CourseAssignment, CourseAssignment
         var v = CurrentFilter;
         return string.IsNullOrWhiteSpace(v) ? base.addFilter(s) :
              s.Where(x => x.InstructorID.ToString().Contains(v) ||
+               x.CourseID.ToString().Contains(v) ||
                x.Description.Contains(v) ||
                x.ValidFrom.ToString().Contains(v) ||
-               x.ValidTo.ToString().Contains(v) ||
-               x.Description.Contains(v) || 
-               x.CourseID.ToString().Contains(v));
+               x.ValidTo.ToString().Contains(v));
     }
     protected override CourseAssignmentData toData(CourseAssignment o) => o.data;
     protected override CourseAssignment toDomain(CourseAssignmentData d) => new(d);

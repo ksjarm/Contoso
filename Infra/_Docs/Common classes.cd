@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Contoso.Infra.Common.BaseRepo&lt;TDomain, TData&gt;">
+    <Position X="8.5" Y="2" Width="1.5" />
+    <InheritanceLine Type="Contoso.Infra.Common.PagedRepo&lt;TDomain, TData&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="8" Y="3.125" />
+        <Point X="8.5" Y="3.125" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>CAAAAAABQAiAAAAAAAAAAAAAAAAASAAAAAQAAAAAIAA=</HashCode>
+      <FileName>Common\BaseRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Contoso.Infra.Common.FilteredRepo&lt;TDomain, TData&gt;">
+    <Position X="2.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAEgAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Common\FilteredRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Contoso.Infra.Common.GrudRepo&lt;TDomain, TData&gt;">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYIAAAAgAARAADAAAQEQUEAABEBAQgEAAAAIAAGAKA=</HashCode>
+      <FileName>Common\GrudRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Contoso.Infra.Common.OrderedRepo&lt;TDomain, TData&gt;">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAEBAEAAgAAAAAAAAAEAAAAABAEAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Common\OrderedRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Contoso.Infra.Common.PagedRepo&lt;TDomain, TData&gt;">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <InheritanceLine Type="Contoso.Infra.Common.OrderedRepo&lt;TDomain, TData&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="6" Y="3.125" />
+        <Point X="6.5" Y="3.125" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAIAAgAAAAAAAEAAAAAEEACAAAAAAAAAAAAAMAAAAAA=</HashCode>
+      <FileName>Common\PagedRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

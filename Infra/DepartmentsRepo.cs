@@ -2,7 +2,6 @@
 using Contoso.Domain;
 using Contoso.Domain.Repos;
 using Contoso.Infra.Common;
-using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra;
 public class DepartmentsRepo : BaseRepo<Department, DepartmentData>, IDepartmentsRepo {
@@ -13,11 +12,11 @@ public class DepartmentsRepo : BaseRepo<Department, DepartmentData>, IDepartment
         return string.IsNullOrWhiteSpace(v) ? base.addFilter(s) :
              s.Where(x => x.Name.Contains(v) ||
                x.Code.Contains(v) ||
+               x.Budget.ToString().Contains(v) ||
+               x.StartDate.ToString().Contains(v) ||
                x.Description.Contains(v) ||
                x.ValidFrom.ToString().Contains(v) ||
-               x.ValidTo.ToString().Contains(v) ||
-               x.Budget.ToString().Contains(v) ||
-               x.StartDate.ToString().Contains(v));
+               x.ValidTo.ToString().Contains(v));
     }
     protected override DepartmentData toData(Department o) => o.data;
     protected override Department toDomain(DepartmentData d) => new (d);

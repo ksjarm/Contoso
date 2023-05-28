@@ -12,7 +12,10 @@ public class CoursesRepo : BaseRepo<Course, CourseData>, ICoursesRepo {
         return string.IsNullOrWhiteSpace(v) ? base.addFilter(s) :
              s.Where(x => x.Name.Contains(v) ||
                x.Credits.ToString().Contains(v) ||
-               x.Number.ToString().Contains(v));
+               x.Number.ToString().Contains(v) ||
+               x.Description.Contains(v) ||
+               x.ValidFrom.ToString().Contains(v) ||
+               x.ValidTo.ToString().Contains(v));
     }
     protected override CourseData toData(Course o) => o.data;
     protected override Course toDomain(CourseData d) => new (d);

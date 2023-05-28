@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Contoso.Facade.Base.BaseView">
+    <Position X="1" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAACAAACAAAAAAAAA=</HashCode>
+      <FileName>Base\BaseView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Contoso.Facade.Base.BaseViewFactory&lt;TData, TObject, TView&gt;">
+    <Position X="1" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAEIAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\BaseViewFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Contoso.Facade.Base.DescribedView">
+    <Position X="3" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\DescribedView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Contoso.Facade.Base.NamedView">
+    <Position X="5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\NamedView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Contoso.Facade.Base.PersonView">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <InheritanceLine Type="Contoso.Facade.Base.NamedView" FixedFromPoint="true">
+      <Path>
+        <Point X="6.5" Y="2.875" />
+        <Point X="7" Y="2.875" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAICABAAAAAQAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Base\PersonView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Contoso.Facade.Base.PersonViewFactory&lt;TData, TObject, TView&gt;">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\PersonViewFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -7,8 +7,7 @@ using System.Reflection;
 
 namespace Contoso.Infra.Common;
 public abstract class OrderedRepo<TDomain, TData> : FilteredRepo<TDomain, TData>, IOrderedRepo<TDomain>
-    where TDomain : class, IEntity
-    where TData : class, IEntity {
+    where TDomain : class, IEntity where TData : class, IEntity {
     public string SortOrder { get; set; }
     internal static string descendingStr => "_desc";
     internal string propertyName => SortOrder?.Replace(descendingStr, string.Empty);

@@ -1,5 +1,6 @@
 ﻿using Contoso.Aids;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
 namespace Contoso.Tests;
@@ -17,9 +18,10 @@ public abstract class BaseTests<TClass, TBaseClass> : StaticTests {
         isReadWrite<T>(n);
         setValue(property(n), null);
     }
-    protected void isProperty<T>(string displayName = null) {
+    protected void isProperty<T>(string displayName = null, string dataType = null) {
         var n = propertyName();
         hasDisplayName(n, displayName);
+        hasDataType(n, dataType);
         isReadWrite<T>(n);
     }
     protected void isReadable<T>(string displayName = null) {
@@ -35,6 +37,14 @@ public abstract class BaseTests<TClass, TBaseClass> : StaticTests {
         var p = property(n);
         var a = p.GetCustomAttribute<DisplayNameAttribute>(true);
         Assert.AreEqual(displayName, a?.DisplayName); 
+    }
+    private void hasDataType(string n, string dataType) {
+        if (dataType is null) return;
+        var p = property(n);
+        var a = p.GetCustomAttributes<DataTypeAttribute>(true).FirstOrDefault();
+        Assert.IsNotNull(a);
+        var actualDataType = a.DataType.ToString();
+        Assert.AreEqual(dataType, actualDataType);
     }
     private void isReadWrite<T>(string propertyName) {
         var v = GetRandom.Value<T>();

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Contoso.Data.Base.BaseData">
+    <Position X="1.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAACAAACAAAAAAAAA=</HashCode>
+      <FileName>Base\BaseData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Contoso.Data.Base.DescribedData">
+    <Position X="3.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\DescribedData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Contoso.Data.Base.NamedData">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\NamedData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Contoso.Data.Base.PersonData">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <InheritanceLine Type="Contoso.Data.Base.NamedData" FixedFromPoint="true">
+      <Path>
+        <Point X="7.5" Y="3.125" />
+        <Point X="8.25" Y="3.125" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAACCAAAAEAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\PersonData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

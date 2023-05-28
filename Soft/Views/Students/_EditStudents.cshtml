@@ -5,12 +5,13 @@
 @{
     ViewData[Datas.Title] = nameof(Student);
     ViewData[Datas.ItemID] = Model?.ID;
+    var genders = (IEnumerable<SelectListItem>)ViewBag.Genders;
 }
 
 @Html.EditItem(x => x.FirstName)
 @Html.EditItem(x => x.Name)
+@Html.SelectItem(x => x.Gender, genders)
 @Html.EditItem(x => x.EnrollmentDate)
-@Html.EditItem(x => x.Gender)
 @Html.EditItem(x => x.Description)
 @Html.EditItem(x => x.ValidFrom)
 @Html.EditItem(x => x.ValidTo)

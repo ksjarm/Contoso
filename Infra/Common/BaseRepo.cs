@@ -5,8 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Contoso.Infra.Common;
 public abstract class BaseRepo<TDomain, TData> : PagedRepo<TDomain, TData>, IRepo<TDomain>
-    where TDomain : class, IEntity
-    where TData : class, IEntity {
+    where TDomain : class, IEntity where TData : class, IEntity {
+
     private int itemId;
     protected BaseRepo(DbContext c, DbSet<TData> s) : base(c, s) { }
     public virtual string selectTextField => nameof(IEntity.ID);

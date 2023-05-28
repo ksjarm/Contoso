@@ -26,8 +26,7 @@ public abstract class StaticTests {
         var enumName = Enum.GetName(enumType, e);
         var fieldInfo = enumType.GetField(enumName);
         var descriptionAttribute = fieldInfo.GetCustomAttribute<System.ComponentModel.DescriptionAttribute>(true);
-        var attributeDescription = descriptionAttribute?.Description;
-        Assert.AreEqual(description, attributeDescription);
+        Assert.AreEqual(description, descriptionAttribute?.Description);
     }
     protected void isInterface<T>(bool canWrite = false) {
         var n = propertyName();

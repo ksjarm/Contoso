@@ -10,11 +10,10 @@ public class OfficeAssignmentsRepo : BaseRepo<OfficeAssignment, OfficeAssignment
         var v = CurrentFilter;
         return string.IsNullOrWhiteSpace(v) ? base.addFilter(s) :
              s.Where(x => x.InstructorID.ToString().Contains(v) ||
+               x.Location.Contains(v) ||
                x.Description.Contains(v) ||
                x.ValidFrom.ToString().Contains(v) ||
-               x.ValidTo.ToString().Contains(v) ||
-               x.Description.Contains(v) ||
-               x.Location.Contains(v));
+               x.ValidTo.ToString().Contains(v));
     }
     protected override OfficeAssignmentData toData(OfficeAssignment o) => o.data;
     protected override OfficeAssignment toDomain(OfficeAssignmentData d) => new(d);

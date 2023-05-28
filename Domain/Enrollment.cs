@@ -2,7 +2,6 @@
 using Contoso.Domain.Base;
 using Contoso.Domain.BaseRepos;
 using Contoso.Domain.Repos;
-using System.ComponentModel.DataAnnotations;
 
 namespace Contoso.Domain;
 public sealed class Enrollment : DescribedEntity<EnrollmentData> {

@@ -1,2 +1,2 @@
-﻿namespace Contoso.Tests.Data; 
+﻿namespace Contoso.Tests.Data;
 [TestClass] public class IsDataTested : AssemblyTests { }

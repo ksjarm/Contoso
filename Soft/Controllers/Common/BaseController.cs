@@ -5,13 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Contoso.Soft.Controllers.Common;
 public abstract class BaseController<TRepo, TDomain, TView> : Controller
-    where TRepo : class, IRepo<TDomain>
-    where TDomain : class, IEntity
-    where TView : BaseView {
+    where TRepo : class, IRepo<TDomain> where TDomain : class, IEntity where TView : BaseView {
 
     protected readonly TRepo repo;
     public BaseController(TRepo r = null) => repo = r;
-
     public IActionResult Create() {
         relatedLists();
         return View();
@@ -39,16 +36,14 @@ public abstract class BaseController<TRepo, TDomain, TView> : Controller
     }
     protected abstract TView toView(TDomain o, bool load = false);
     protected internal async Task<IActionResult> create(TDomain item) {
-        if (ModelState.IsValid && await repo.AddAsync(item))
-            return RedirectToAction(nameof(Index));
+        if (ModelState.IsValid && await repo.AddAsync(item)) return RedirectToAction(nameof(Index));
         relatedLists(item);
         var v = toView(item);
         return View(v);
     }
     protected internal async Task<IActionResult> edit(int id, TDomain item) {
         if (id != item.ID) return NotFound();
-        if (ModelState.IsValid && await repo.UpdateAsync(item))
-            return RedirectToAction(nameof(Index));
+        if (ModelState.IsValid && await repo.UpdateAsync(item)) return RedirectToAction(nameof(Index));
         relatedLists(item);
         return View(toView(item));
     }

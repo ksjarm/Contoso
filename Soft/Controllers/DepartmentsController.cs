@@ -7,16 +7,17 @@ using Contoso.Facade;
 namespace Contoso.Soft.Controllers;
 public class DepartmentsController : BaseController<IDepartmentsRepo, Department, DepartmentView> {
     private readonly IInstructorsRepo instructors;
-    public DepartmentsController(IDepartmentsRepo r = null, IInstructorsRepo i = null) : base(r) {
-        instructors = i;
-    }
-    
-    internal const string properties = 
+    public DepartmentsController(IDepartmentsRepo r = null, IInstructorsRepo i = null) : base(r) => instructors = i;
+
+    internal const string properties =
         $"{nameof(DepartmentView.ID)}," +
         $"{nameof(DepartmentView.Name)}," +
         $"{nameof(DepartmentView.Budget)}," +
         $"{nameof(DepartmentView.StartDate)}," +
-        $"{nameof(DepartmentView.InstructorID)}";
+        $"{nameof(DepartmentView.InstructorID)}" +
+        $"{nameof(DepartmentView.Description)}," +
+        $"{nameof(DepartmentView.ValidFrom)}," +
+        $"{nameof(DepartmentView.ValidTo)}";
 
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] DepartmentView v) => await create(toDomain(v));
