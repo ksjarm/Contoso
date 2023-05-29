@@ -14,15 +14,20 @@ public class InstructorsController : BaseController<IInstructorsRepo, Instructor
     public InstructorsController(IInstructorsRepo r = null) : base(r)
         => genders = Enum.GetValues(typeof(IsoGender)).Cast<IsoGender>().ToList();
 
-    internal const string properties = 
+    internal const string properties =
         $"{nameof(InstructorView.ID)}, " +
+        $"{nameof(InstructorView.ValidFrom)}, " +
+        $"{nameof(InstructorView.ValidTo)}, " +
+        $"{nameof(InstructorView.Description)}, " +
+        $"{nameof(InstructorView.Code)}, " +
         $"{nameof(InstructorView.FirstName)}, " +
         $"{nameof(InstructorView.Name)}, " +
-        $"{nameof(InstructorView.PhotoUpload)}, " +
-        $"{nameof(InstructorView.HireDate)}" +
-        $"{nameof(InstructorView.Description)}, " +
-        $"{nameof(InstructorView.ValidFrom)}, " +
-        $"{nameof(InstructorView.ValidTo)}";
+        $"{nameof(InstructorView.FullName)}, " +
+        $"{nameof(InstructorView.Gender)}, " +
+		$"{nameof(InstructorView.PhotoView)}, " +
+		$"{nameof(InstructorView.PhotoUpload)}, " +
+        $"{nameof(InstructorView.HireDate)}, " +
+        $"{nameof(InstructorView.Office)}";
 
     public async override Task<IActionResult> Index(string sortOrder, int pageIndex, string searchString, int? id, int? relatedId) {
         ViewData[Datas.SortOrder] = sortOrder;

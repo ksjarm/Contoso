@@ -9,14 +9,15 @@ public class OfficeAssignmentsController : BaseController<IOfficeAssignmentsRepo
     
     private readonly IInstructorsRepo instructors;
     public OfficeAssignmentsController(IOfficeAssignmentsRepo r = null, IInstructorsRepo i = null) : base(r) => instructors = i;
-    
+
     internal const string properties =
-         $"{nameof(OfficeAssignmentView.ID)}," +
-         $"{nameof(OfficeAssignmentView.InstructorID)}," +
-         $"{nameof(OfficeAssignmentView.Location)}," +
-         $"{nameof(OfficeAssignmentView.Description)}," +
-         $"{nameof(OfficeAssignmentView.ValidFrom)}," +
-         $"{nameof(OfficeAssignmentView.ValidTo)}";    
+         $"{nameof(OfficeAssignmentView.ID)}, " +
+         $"{nameof(OfficeAssignmentView.ValidFrom)}, " +
+         $"{nameof(OfficeAssignmentView.ValidTo)}, " +
+         $"{nameof(OfficeAssignmentView.Description)}, " +
+         $"{nameof(OfficeAssignmentView.InstructorID)}, " +
+         $"{nameof(OfficeAssignmentView.InstructorName)}, " +
+         $"{nameof(OfficeAssignmentView.Location)}";
     
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] OfficeAssignmentView v) => await create(toDomain(v));
@@ -25,7 +26,7 @@ public class OfficeAssignmentsController : BaseController<IOfficeAssignmentsRepo
     public async Task<IActionResult> Edit(int id, [Bind(properties)] OfficeAssignmentView v) => await edit(id, toDomain(v));
     
     protected internal override void relatedLists(OfficeAssignment a) {
-        ViewBag.Instructors = instructors?.SelectList;
+        ViewBag.Instructors = instructors.SelectList;
     }
     protected OfficeAssignment toDomain(OfficeAssignmentView v) => new OfficeAssignmentViewFactory().Create(v);
     protected override OfficeAssignmentView toView(OfficeAssignment o, bool load = false) 

@@ -7,10 +7,12 @@
 	ViewData[Datas.ItemID] = Model?.ID;
 }
 
+@Html.ViewItem(x => x.ID)
 @Html.ViewItem(x => x.FirstName)
 @Html.ViewItem(x => x.Name)
 @Html.ViewItem(x => x.Gender)
 @Html.ViewItem(x => x.EnrollmentDate)
+@Html.ViewItem(x => x.Code)
 @Html.ViewItem(x => x.Description)
 @Html.ViewItem(x => x.ValidFrom)
 @Html.ViewItem(x => x.ValidTo)

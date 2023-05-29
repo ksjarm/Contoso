@@ -7,6 +7,7 @@
     Layout = Layouts.Index;
     ViewData[Datas.Title] = Texts.Enrollments;
     var columns = new List<Expression<Func<EnrollmentView, dynamic>>>{
+        {x => x.ID},
         {x => x.CourseID},
         {x => x.CourseName},
         {x => x.StudentID},

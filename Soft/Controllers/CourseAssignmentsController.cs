@@ -16,14 +16,16 @@ public class CourseAssignmentsController : BaseController<ICourseAssignmentsRepo
     }
 
     internal const string properties =
-        $"{nameof(CourseAssignmentView.ID)}," +
-        $"{nameof(CourseAssignmentView.InstructorID)}," +
-        $"{nameof(CourseAssignmentView.CourseID)}" +
-        $"{nameof(CourseAssignmentView.Description)}," +
-        $"{nameof(CourseAssignmentView.ValidFrom)}," +
-        $"{nameof(CourseAssignmentView.ValidTo)}";
+        $"{nameof(CourseAssignmentView.ID)}, " +
+        $"{nameof(CourseAssignmentView.ValidFrom)}, " +
+        $"{nameof(CourseAssignmentView.ValidTo)}, " +
+        $"{nameof(CourseAssignmentView.Description)}, " +
+        $"{nameof(CourseAssignmentView.CourseID)}, " +
+        $"{nameof(CourseAssignmentView.CourseName)}, " +
+        $"{nameof(CourseAssignmentView.InstructorID)}, " +
+        $"{nameof(CourseAssignmentView.InstructorName)}";
 
-    [HttpPost, ValidateAntiForgeryToken]
+	[HttpPost, ValidateAntiForgeryToken]
      public async Task<IActionResult> Create([Bind(properties)] CourseAssignmentView v) => await create(toDomain(v));
     
     [HttpPost, ValidateAntiForgeryToken]

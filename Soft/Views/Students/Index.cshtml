@@ -1,5 +1,6 @@
 ﻿@using Contoso.Pages.Constants;
 @using Contoso.Pages.HtmlHelpers;
+@using Contoso.Aids;
 @using System.Linq.Expressions;
 @model IEnumerable<StudentView>
 
@@ -7,13 +8,15 @@
     Layout = Layouts.Index;
     ViewData[Datas.Title] = Texts.Students;
     var columns = new List<Expression<Func<StudentView, dynamic>>>{
-        { x => x.FirstName },
-        { x => x.Name },
-        { x => x.Gender },
-        { x => x.EnrollmentDate },
-        { x => x.Description },
-        { x => x.ValidFrom },
-        { x => x.ValidTo },
+        {x => x.ID},
+        {x => x.FirstName},
+        {x => x.Name},
+        {x => EnumHelper.GetDescription(x.Gender)},
+        {x => x.EnrollmentDate},
+        {x => x.Code},
+        {x => x.Description},
+        {x => x.ValidFrom},
+        {x => x.ValidTo},
     };
     dynamic getId(StudentView c) => c.ID;
 }

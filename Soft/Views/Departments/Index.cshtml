@@ -7,10 +7,12 @@
     Layout = Layouts.Index;
     ViewData[Datas.Title] = Texts.Departments;
     var columns = new List<Expression<Func<DepartmentView, dynamic>>>{
+        {x => x.ID},
         {x => x.Name},
         {x => x.Budget},
         {x => x.StartDate},
         {x => x.InstructorName},
+        {x => x.Code},
         {x => x.Description},
         {x => x.ValidFrom},
         {x => x.ValidTo}

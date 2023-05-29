@@ -7,6 +7,7 @@
     ViewData[Datas.ItemID] = Model?.ID;
 }
 
+@Html.ViewItem(x => x.ID)
 @Html.ViewItem(x => x.CourseName)
 @Html.ViewItem(x => x.StudentName)
 @Html.ViewItem(x => x.Grade)

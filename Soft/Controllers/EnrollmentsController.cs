@@ -17,15 +17,16 @@ public class EnrollmentsController : BaseController<IEnrollmentsRepo, Enrollment
         grades = Enum.GetValues(typeof(Grade)).Cast<Grade>().ToList();
     }
 
-	internal const string properties =
-        $"{nameof(EnrollmentView.ID)}," +
-        $"{nameof(EnrollmentView.CourseID)}," +
-		$"{nameof(EnrollmentView.StudentID)}," +
-        $"{nameof(EnrollmentView.Grade)}," +
-        $"{nameof(CourseView.DepartmentID)}" +
-        $"{nameof(EnrollmentView.Description)}," +
-        $"{nameof(EnrollmentView.ValidFrom)}," +
-        $"{nameof(EnrollmentView.ValidTo)}";
+    internal const string properties =
+        $"{nameof(EnrollmentView.ID)}, " +
+        $"{nameof(EnrollmentView.ValidFrom)}, " +
+        $"{nameof(EnrollmentView.ValidTo)}, " +
+        $"{nameof(EnrollmentView.Description)}, " +
+        $"{nameof(EnrollmentView.CourseID)}, " +
+        $"{nameof(EnrollmentView.CourseName)}, " +
+        $"{nameof(EnrollmentView.StudentID)}, " +
+        $"{nameof(EnrollmentView.StudentName)}, " +
+        $"{nameof(EnrollmentView.Grade)}";
 
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] EnrollmentView v) => await create(toDomain(v));

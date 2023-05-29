@@ -1,6 +1,7 @@
 ﻿@using Contoso.Facade.Common;
-@using Contoso.Pages.HtmlHelpers
-@using Contoso.Pages.Constants
+@using Contoso.Pages.HtmlHelpers;
+@using Contoso.Pages.Constants;
+@using Contoso.Aids;
 @using System.Linq.Expressions;
 @model InstructorIndexView
 
@@ -16,6 +17,7 @@
 			<th>First Name</th>
 			<th>Gender</th>
 			<th>Hire Date</th>
+			<th>Code</th>
 			<th>Description</th>
 			<th>Valid from</th>
 			<th>Valid to</th>
@@ -36,10 +38,13 @@
 					@Html.DisplayFor(modelItem => item.FirstName)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.Gender)
+					@Html.Raw(EnumHelper.GetDescription(item.Gender))
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.HireDate)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Code)
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.Description)

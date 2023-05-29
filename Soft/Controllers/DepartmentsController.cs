@@ -10,16 +10,18 @@ public class DepartmentsController : BaseController<IDepartmentsRepo, Department
     public DepartmentsController(IDepartmentsRepo r = null, IInstructorsRepo i = null) : base(r) => instructors = i;
 
     internal const string properties =
-        $"{nameof(DepartmentView.ID)}," +
-        $"{nameof(DepartmentView.Name)}," +
-        $"{nameof(DepartmentView.Budget)}," +
-        $"{nameof(DepartmentView.StartDate)}," +
-        $"{nameof(DepartmentView.InstructorID)}" +
-        $"{nameof(DepartmentView.Description)}," +
-        $"{nameof(DepartmentView.ValidFrom)}," +
-        $"{nameof(DepartmentView.ValidTo)}";
+        $"{nameof(DepartmentView.ID)}, " +
+        $"{nameof(DepartmentView.ValidFrom)}, " +
+        $"{nameof(DepartmentView.ValidTo)}," +
+        $"{nameof(DepartmentView.Description)}, " +
+        $"{nameof(DepartmentView.Code)}, " +
+        $"{nameof(DepartmentView.Name)}, " +
+        $"{nameof(DepartmentView.Budget)}, " +
+        $"{nameof(DepartmentView.StartDate)}, " +
+        $"{nameof(DepartmentView.InstructorID)}, " +
+        $"{nameof(DepartmentView.InstructorName)}";
 
-    [HttpPost, ValidateAntiForgeryToken]
+	[HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] DepartmentView v) => await create(toDomain(v));
 
     [HttpPost, ValidateAntiForgeryToken]

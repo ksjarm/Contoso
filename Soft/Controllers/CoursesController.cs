@@ -8,16 +8,18 @@ namespace Contoso.Soft.Controllers;
 public class CoursesController : BaseController<ICoursesRepo, Course, CourseView> {
     private readonly IDepartmentsRepo departments;
     public CoursesController(ICoursesRepo r = null, IDepartmentsRepo d = null) : base(r) => departments = d;
-    
+
     internal const string properties =
-        $"{nameof(CourseView.ID)}," +
-        $"{nameof(CourseView.Number)}," +
-        $"{nameof(CourseView.Name)}," +
-        $"{nameof(CourseView.Credits)}," +
-        $"{nameof(CourseView.DepartmentID)}" +
-        $"{nameof(CourseView.Description)}," +
-        $"{nameof(CourseView.ValidFrom)}," +
-        $"{nameof(CourseView.ValidTo)}";
+        $"{nameof(CourseView.ID)}, " +
+        $"{nameof(CourseView.ValidFrom)}, " +
+        $"{nameof(CourseView.ValidTo)}, " +
+        $"{nameof(CourseView.Description)}, " +
+        $"{nameof(CourseView.Code)}, " +
+        $"{nameof(CourseView.Name)}, " +
+        $"{nameof(CourseView.Number)}, " +
+        $"{nameof(CourseView.Credits)}, " +
+        $"{nameof(CourseView.DepartmentID)}, " +
+        $"{nameof(CourseView.DepartmentName)}";
 
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] CourseView v) => await create(toDomain(v));

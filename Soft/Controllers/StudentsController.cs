@@ -5,22 +5,27 @@ using Contoso.Soft.Controllers.Common;
 using Contoso.Facade;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Contoso.Data;
+using Contoso.Aids;
 
 namespace Contoso.Soft.Controllers;
 public class StudentsController : BaseController<IStudentsRepo, Student, StudentView> {
-    private readonly List<IsoGender> genders;
+    private readonly List<string> genders;
     public StudentsController(IStudentsRepo r = null) : base(r) 
-        => genders = Enum.GetValues(typeof(IsoGender)).Cast<IsoGender>().ToList();
+        => genders = Enum.GetValues(typeof(IsoGender)).Cast<IsoGender>().Select(EnumHelper.GetDescription).ToList();
 
     internal const string properties =
-        $"{nameof(StudentView.ID)}," +
-        $"{nameof(StudentView.FirstName)}," +
-        $"{nameof(StudentView.Name)}," +
-        $"{nameof(StudentView.PhotoUpload)}" +
-        $"{nameof(StudentView.EnrollmentDate)}" +
-        $"{nameof(StudentView.Description)}," +
-        $"{nameof(StudentView.ValidFrom)}" +
-        $"{nameof(StudentView.ValidTo)}";
+        $"{nameof(StudentView.ID)}, " +
+        $"{nameof(StudentView.ValidFrom)}, " +
+        $"{nameof(StudentView.ValidTo)}, " +        
+        $"{nameof(StudentView.Description)}, " +
+        $"{nameof(StudentView.Code)}, " +
+        $"{nameof(StudentView.FirstName)}, " +
+        $"{nameof(StudentView.Name)}, " +
+	    $"{nameof(StudentView.FullName)}, " +
+		$"{nameof(StudentView.Gender)}, " +
+        $"{nameof(StudentView.PhotoView)}, " +
+        $"{nameof(StudentView.PhotoUpload)}, " +
+        $"{nameof(StudentView.EnrollmentDate)}";
 
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] StudentView v) => await create(toDomain(v));

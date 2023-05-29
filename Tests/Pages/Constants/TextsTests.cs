@@ -25,4 +25,5 @@ public class TextsTests : StaticTests {
     [TestMethod] public void DetailsTest() => Assert.AreEqual("Details", Texts.Details);
     [TestMethod] public void BackToListTest() => Assert.AreEqual("Back to List", Texts.BackToList);
     [TestMethod] public void DeleteQuestionTest() => Assert.AreEqual("Are you sure you want to delete this?", Texts.DeleteQuestion);
+    [TestMethod] public void ErrorTest() => Assert.AreEqual("Error", Texts.Error);
 }

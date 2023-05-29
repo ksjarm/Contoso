@@ -20,4 +20,5 @@ public static class Texts {
 	public static string Details => "Details";
 	public static string BackToList => "Back to List";
 	public static string DeleteQuestion => "Are you sure you want to delete this?";
+    public static string Error => "Error";
 }
