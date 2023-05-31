@@ -1,0 +1,22 @@
+﻿@using Contoso.Pages.HtmlHelpers
+@using Contoso.Pages.Constants
+@using System.Linq.Expressions;
+@model IEnumerable<RelationshipView>
+
+@{
+    Layout = Layouts.Index;
+    ViewData[Datas.Title] = Texts.Relationships;
+    var columns = new List<Expression<Func<RelationshipView, dynamic>>>{
+        {x => x.ID},
+        {x => x.StudentID},
+        {x => x.StudentName},        
+        {x => x.ParentID},
+        {x => x.ParentName},
+        {x => x.Description},
+        {x => x.ValidFrom},
+        {x => x.ValidTo}
+    };
+    dynamic getId(RelationshipView c) => c.ID;
+}
+
+@Html.ViewList(Model, columns, getId)

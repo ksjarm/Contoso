@@ -9,8 +9,8 @@ public sealed class StudentViewFactory : PersonViewFactory<StudentData, Student,
         var v = Create(o?.data);
         v.FullName = o?.FullName;
         if (!load) return v;
-        var f = new CourseViewFactory();
-        v.Enrollments = o?.Enrollments?.Value?.Select(x => f.Create(x?.Course?.Value));
+        var c = new CourseViewFactory();
+        v.Enrollments = o?.Enrollments?.Value?.Select(x => c.Create(x?.Course?.Value));
         return v;
     }
 }

@@ -11,7 +11,7 @@ internal static class InitOfficeAssignments {
                 officeAssignment("Harui", "Gowan 27"),
                 officeAssignment("Kapoor", "Thompson 304")
             };
-            InitSchool.add(cntOfficeAssignments, officeAssignment);
+            InitSchool.addYear(cntOfficeAssignments, officeAssignment);
             return l;
         }
     }

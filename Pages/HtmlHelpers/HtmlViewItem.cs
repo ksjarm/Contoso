@@ -12,16 +12,14 @@ public static class HtmlViewItem {
         return new HtmlContentBuilder(s);
     }
     public static IHtmlContent ViewItem<TModel, TValue, TLabel>
-        (this IHtmlHelper<TModel> h, Expression<Func<TModel, TValue>> value,
+        (this IHtmlHelper<TModel> h, Expression<Func<TModel, TValue>> value, Expression<Func<TModel, TLabel>> label) {
         
-        Expression<Func<TModel, TLabel>> label) {
         var s = htmlStrings(h, value, label);
         return new HtmlContentBuilder(s);
     }
 
     internal static List<object> htmlStrings<TModel, TValue, TLabel>
-        (IHtmlHelper<TModel> h, Expression<Func<TModel, TValue>> value, 
-        Expression<Func<TModel, TLabel>> label) => new() {
+        (IHtmlHelper<TModel> h, Expression<Func<TModel, TValue>> value, Expression<Func<TModel, TLabel>> label) => new() {
             new HtmlString(Tags.TitleStart),
             h.DisplayNameFor(label),
             new HtmlString(Tags.TitleEnd),

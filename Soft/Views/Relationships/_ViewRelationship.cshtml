@@ -1,0 +1,15 @@
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers;
+@model RelationshipView
+
+@{
+    ViewData[Datas.Title] = nameof(Relationship);
+    ViewData[Datas.ItemID] = Model?.ID;
+}
+
+@Html.ViewItem(x => x.ID)
+@Html.ViewItem(x => x.ParentName)
+@Html.ViewItem(x => x.StudentName)
+@Html.ViewItem(x => x.Description)
+@Html.ViewItem(x => x.ValidFrom)
+@Html.ViewItem(x => x.ValidTo)

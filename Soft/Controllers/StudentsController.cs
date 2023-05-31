@@ -23,7 +23,7 @@ public class StudentsController : BaseController<IStudentsRepo, Student, Student
         $"{nameof(StudentView.Name)}, " +
 	    $"{nameof(StudentView.FullName)}, " +
 		$"{nameof(StudentView.Gender)}, " +
-        $"{nameof(StudentView.PhotoView)}, " +
+		$"{nameof(StudentView.PhotoView)}, " +
         $"{nameof(StudentView.PhotoUpload)}, " +
         $"{nameof(StudentView.EnrollmentDate)}";
 

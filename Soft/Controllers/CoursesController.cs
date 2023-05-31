@@ -28,7 +28,7 @@ public class CoursesController : BaseController<ICoursesRepo, Course, CourseView
     public async Task<IActionResult> Edit(int id, [Bind(properties)] CourseView v) => await edit(id, toDomain(v));
 
     protected internal override void relatedLists(Course selectedItem = null) {
-        ViewBag.Departments = departments.SelectList;
+        ViewBag.Departments = departments?.SelectList;
     }
     protected Course toDomain(CourseView v) => new CourseViewFactory().Create(v);
     protected override CourseView toView(Course o, bool load = false) => new CourseViewFactory().Create(o, load);

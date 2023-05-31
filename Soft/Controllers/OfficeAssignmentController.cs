@@ -26,7 +26,7 @@ public class OfficeAssignmentsController : BaseController<IOfficeAssignmentsRepo
     public async Task<IActionResult> Edit(int id, [Bind(properties)] OfficeAssignmentView v) => await edit(id, toDomain(v));
     
     protected internal override void relatedLists(OfficeAssignment a) {
-        ViewBag.Instructors = instructors.SelectList;
+        ViewBag.Instructors = instructors?.SelectList;
     }
     protected OfficeAssignment toDomain(OfficeAssignmentView v) => new OfficeAssignmentViewFactory().Create(v);
     protected override OfficeAssignmentView toView(OfficeAssignment o, bool load = false) 

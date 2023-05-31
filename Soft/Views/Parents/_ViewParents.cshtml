@@ -1,0 +1,43 @@
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers;
+@using Contoso.Aids;
+@model ParentView
+
+@{
+	ViewData[Datas.Title] = nameof(Parent);
+	ViewData[Datas.ItemID] = Model?.ID;
+}
+
+@Html.ViewItem(x => x.ID)
+@Html.ViewItem(x => x.FirstName)
+@Html.ViewItem(x => x.Name)
+@Html.ViewItem(x => x.Gender)
+@Html.ViewItem(x => x.PhoneNr)
+@Html.ViewItem(x => x.Code)
+@Html.ViewItem(x => x.Description)
+@Html.ViewItem(x => x.ValidFrom)
+@Html.ViewItem(x => x.ValidTo)
+@Html.ViewImage(x => x.PhotoView, 100)
+
+@*<dt class="col-sm-2">
+	@Html.DisplayNameFor(m => m.Enrollments)
+</dt>
+<dd class="col-sm-10">
+	<table class="table">
+		<tr>
+			<th>Course Title</th>
+			<th>Grade</th>
+		</tr>
+		@foreach (var item in Model.Enrollments)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Grade)
+				</td>
+			</tr>
+		}
+	</table>
+</dd>*@

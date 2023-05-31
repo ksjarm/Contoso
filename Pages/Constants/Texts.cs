@@ -5,12 +5,15 @@ public static class Texts {
 	public static string PrivacyPolicy => "Privacy Policy";
     public static string Courses => "Courses";
     public static string Students => "Students";
+    public static string Parents => "Parents";
     public static string Departments => "Departments";
     public static string Enrollments => "Enrollments";
+    public static string Relationships => "Relationships";
     public static string CourseAssignments => "Course Assignments";
     public static string OfficeAssignments => "Office Assignments";
     public static string Instructors => "Instructors";
     public static string EnrollmentYear => "Enrollment year";
+    public static string CountryCode => "+372";
 
     public static string Edit => "Edit";
 	public static string Index => "Index";

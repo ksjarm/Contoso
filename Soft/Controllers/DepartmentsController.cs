@@ -28,7 +28,7 @@ public class DepartmentsController : BaseController<IDepartmentsRepo, Department
     public async Task<IActionResult> Edit(int id, [Bind(properties)] DepartmentView v) => await edit(id, toDomain(v));
     
     protected internal override void relatedLists(Department selectedItem = null) {
-        ViewBag.Instructors = instructors.SelectList;
+        ViewBag.Instructors = instructors?.SelectList;
     }
     protected Department toDomain(DepartmentView v) => new DepartmentViewFactory().Create(v);
     protected override DepartmentView toView(Department o, bool load = false) => new DepartmentViewFactory().Create(o, load);

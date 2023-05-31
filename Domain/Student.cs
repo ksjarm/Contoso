@@ -10,4 +10,6 @@ public sealed class Student : Person<StudentData> {
     public DateTime EnrollmentDate => getValue(data.EnrollmentDate);
     public Lazy<IEnumerable<Enrollment>> Enrollments
         => new(GetRepo.List<IEnrollmentsRepo, Enrollment>(x => x.StudentID == ID));
+    //public Lazy<IEnumerable<Relationship>> Relationships
+    //    => new(GetRepo.List<IRelationshipsRepo, Relationship>(x => x.StudentID == ID));
 }

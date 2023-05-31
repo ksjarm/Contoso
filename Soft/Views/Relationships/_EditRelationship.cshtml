@@ -1,0 +1,14 @@
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers
+@model RelationshipView
+
+@{
+    ViewData[Datas.Title] = nameof(Relationship);
+    ViewData[Datas.ItemID] = Model?.ID;
+}
+
+@Html.SelectItem(x => x.ParentID, "parents")
+@Html.SelectItem(x => x.StudentID, "students")
+@Html.EditItem(x => x.Description)
+@Html.EditItem(x => x.ValidFrom)
+@Html.EditItem(x => x.ValidTo)

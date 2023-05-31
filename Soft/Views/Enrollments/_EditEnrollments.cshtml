@@ -5,13 +5,11 @@
 @{
     ViewData[Datas.Title] = nameof(Enrollment);
     ViewData[Datas.ItemID] = Model?.ID;
-    var courses = (IEnumerable<SelectListItem>)ViewBag.Courses; 
-    var students = (IEnumerable<SelectListItem>)ViewBag.Students;
     var grades = (IEnumerable<SelectListItem>)ViewBag.Grades;
 }
 
-@Html.SelectItem(x => x.CourseID, courses)
-@Html.SelectItem(x => x.StudentID, students)
+@Html.SelectItem(x => x.CourseID, "courses")
+@Html.SelectItem(x => x.StudentID, "students")
 @Html.SelectItem(x => x.Grade, grades)
 @Html.EditItem(x => x.Description)
 @Html.EditItem(x => x.ValidFrom)

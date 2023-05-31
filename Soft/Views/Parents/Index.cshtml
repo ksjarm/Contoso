@@ -1,0 +1,24 @@
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers;
+@using Contoso.Aids;
+@using System.Linq.Expressions;
+@model IEnumerable<ParentView>
+
+@{
+    Layout = Layouts.Index;
+    ViewData[Datas.Title] = Texts.Parents;
+    var columns = new List<Expression<Func<ParentView, dynamic>>>{
+        {x => x.ID},
+        {x => x.FirstName},
+        {x => x.Name},
+        {x => x.Gender},
+        {x => x.PhoneNr},
+        {x => x.Code},
+        {x => x.Description},
+        {x => x.ValidFrom},
+        {x => x.ValidTo},
+    };
+    dynamic getId(ParentView c) => c.ID;
+}
+
+@Html.ViewList(Model, columns, getId)

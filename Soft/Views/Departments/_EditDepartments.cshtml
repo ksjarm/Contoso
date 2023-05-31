@@ -5,12 +5,11 @@
 @{
     ViewData[Datas.Title] = nameof(Department);
     ViewData[Datas.ItemID] = Model?.ID;
-    var instructors = (IEnumerable<SelectListItem>)ViewBag.Instructors;
 }
 
 @Html.EditItem( x => x.Name)
 @Html.EditItem(x => x.Budget)
-@Html.SelectItem(x => x.InstructorID, instructors)
+@Html.SelectItem(x => x.InstructorID, "instructors")
 @Html.EditItem(x => x.StartDate)
 @Html.EditItem(x => x.Code)
 @Html.EditItem(x => x.Description)

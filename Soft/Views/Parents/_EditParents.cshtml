@@ -1,0 +1,20 @@
+﻿@using Contoso.Pages.Constants;
+@using Contoso.Pages.HtmlHelpers
+@model ParentView
+
+@{
+    ViewData[Datas.Title] = nameof(Parent);
+    ViewData[Datas.ItemID] = Model?.ID;
+    var genders = (IEnumerable<SelectListItem>)ViewBag.Genders;
+}
+
+@Html.EditItem(x => x.FirstName)
+@Html.EditItem(x => x.Name)
+@Html.SelectItem(x => x.Gender, genders)
+@Html.EditItem(x => x.PhoneNr)
+@Html.EditItem(x => x.Code)
+@Html.EditItem(x => x.Description)
+@Html.EditItem(x => x.ValidFrom)
+@Html.EditItem(x => x.ValidTo)
+@Html.ViewImage(x => x.PhotoView, 100, string.Empty)
+@Html.EditItem(x => x.PhotoUpload)

@@ -15,7 +15,7 @@ internal static class InitCourseAssignments {
                 courseAssignment("Composition","Abercrombie"),
                 courseAssignment("Literature", "Abercrombie")
             };
-            InitSchool.add(cntCourceAssignments, courseAssignment);
+            InitSchool.addYear(cntCourceAssignments, courseAssignment);
             return l;
         }
     }

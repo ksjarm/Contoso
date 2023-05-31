@@ -1,0 +1,11 @@
+﻿@using Contoso.Pages.Constants
+@using Contoso.Pages.HtmlHelpers
+@model RelationshipView
+
+@{
+    Layout = Layouts.Edit;
+}
+<input type="hidden" asp-for="ID" />
+@Html.ViewItem(x => x.ID)
+
+<partial name="_EditRelationships" model="@Model" />

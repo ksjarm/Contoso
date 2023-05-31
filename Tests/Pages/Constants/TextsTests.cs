@@ -9,12 +9,15 @@ public class TextsTests : StaticTests {
     [TestMethod] public void PrivacyPolicyTest() => Assert.AreEqual("Privacy Policy", Texts.PrivacyPolicy);
     [TestMethod] public void CoursesTest() => Assert.AreEqual("Courses", Texts.Courses);
     [TestMethod] public void StudentsTest() => Assert.AreEqual("Students", Texts.Students);
+    [TestMethod] public void ParentsTest() => Assert.AreEqual("Parents", Texts.Parents);
     [TestMethod] public void DepartmentsTest() => Assert.AreEqual("Departments", Texts.Departments);
     [TestMethod] public void EnrollmentsTest() => Assert.AreEqual("Enrollments", Texts.Enrollments);
+    [TestMethod] public void RelationshipsTest() => Assert.AreEqual("Relationships", Texts.Relationships);
     [TestMethod] public void CourseAssignmentsTest() => Assert.AreEqual("Course Assignments", Texts.CourseAssignments);
     [TestMethod] public void OfficeAssignmentsTest() => Assert.AreEqual("Office Assignments", Texts.OfficeAssignments);
     [TestMethod] public void InstructorsTest() => Assert.AreEqual("Instructors", Texts.Instructors);
     [TestMethod] public void EnrollmentYearTest() => Assert.AreEqual("Enrollment year", Texts.EnrollmentYear);
+    [TestMethod] public void CountryCodeTest() => Assert.AreEqual("+372", Texts.CountryCode);
 
     public static string DeleteQuestion => "Are you sure you want to delete this?";
     [TestMethod] public void EditTest() => Assert.AreEqual("Edit", Texts.Edit);

@@ -25,9 +25,11 @@ public class Program {
 
         builder.Services.AddTransient<IInstructorsRepo, InstructorsRepo>();
         builder.Services.AddTransient<IStudentsRepo, StudentsRepo>();
+        builder.Services.AddTransient<IParentsRepo, ParentsRepo>();
         builder.Services.AddTransient<ICoursesRepo, CoursesRepo>();
         builder.Services.AddTransient<IDepartmentsRepo, DepartmentsRepo>();
         builder.Services.AddTransient<IEnrollmentsRepo, EnrollmentsRepo>();
+        builder.Services.AddTransient<IRelationshipsRepo, RelationshipsRepo>();
         builder.Services.AddTransient<IOfficeAssignmentsRepo, OfficeAssignmentsRepo>();
         builder.Services.AddTransient<ICourseAssignmentsRepo, CourseAssignmentsRepo>();
 

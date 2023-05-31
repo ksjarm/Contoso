@@ -35,8 +35,8 @@ public class EnrollmentsController : BaseController<IEnrollmentsRepo, Enrollment
 	public async Task<IActionResult> Edit(int id, [Bind(properties)] EnrollmentView v) => await edit(id, toDomain(v));
 
 	protected internal override void relatedLists(Enrollment e = null) {
-		ViewBag.Courses = courses.SelectList;
-		ViewBag.Students = students.SelectList;
+		ViewBag.Courses = courses?.SelectList;
+		ViewBag.Students = students?.SelectList;
         ViewBag.Grades = new SelectList(grades);
     }
     protected Enrollment toDomain(EnrollmentView v) => new EnrollmentViewFactory().Create(v);

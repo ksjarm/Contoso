@@ -10,6 +10,6 @@ public sealed class Enrollment : DescribedEntity<EnrollmentData> {
     public int CourseID => getValue(data.CourseID);
     public int StudentID => getValue(data.StudentID);
     public Grade? Grade => getValue(data.Grade);
-    public Lazy<Student> Student => new(GetRepo.Item<IStudentsRepo, Student>(StudentID));
     public Lazy<Course> Course => new(GetRepo.Item<ICoursesRepo, Course>(CourseID));
+    public Lazy<Student> Student => new(GetRepo.Item<IStudentsRepo, Student>(StudentID));
 }

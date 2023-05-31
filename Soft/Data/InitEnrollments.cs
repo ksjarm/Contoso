@@ -18,12 +18,12 @@ internal static class InitEnrollments {
                 enrollment("Li", "Composition", Grade.B),
                 enrollment("Justice", "Literature",Grade.B)
             };
-            InitSchool.add(cntEnrollments, enrollment);
+            InitSchool.addYear(cntEnrollments, enrollment);
             return l;
         }
     }
     internal static EnrollmentData enrollment(int idx, string year)
-        => enrollment($"LastName{idx % InitStudents.cntStudents}", $"Course{idx % InitCourses.cntCourses}", grade(idx, year));
+        => enrollment($"SLastName{idx % InitStudents.cntStudents}", $"Course{idx % InitCourses.cntCourses}", grade(idx, year));
     internal static EnrollmentData enrollment(string student, string course, Grade? g = null) {
         var sId = InitStudents.studentId(student);
         var cId = InitCourses.courseId(course);
