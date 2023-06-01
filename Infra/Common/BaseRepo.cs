@@ -1,4 +1,4 @@
-﻿using Contoso.Data;
+﻿using Contoso.Data.Base;
 using Contoso.Domain.BaseRepos;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;

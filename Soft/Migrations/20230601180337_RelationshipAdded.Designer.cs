@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Contoso.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230531113619_RelationshipAdded")]
+    [Migration("20230601180337_RelationshipAdded")]
     partial class RelationshipAdded
     {
         /// <inheritdoc />

@@ -24,7 +24,7 @@ public class InstructorsController : BaseController<IInstructorsRepo, Instructor
         $"{nameof(InstructorView.Name)}, " +
         $"{nameof(InstructorView.FullName)}, " +
         $"{nameof(InstructorView.Gender)}, " +
-		$"{nameof(InstructorView.PhotoView)}, " +
+        $"{nameof(InstructorView.PhotoView)}, " +
 		$"{nameof(InstructorView.PhotoUpload)}, " +
         $"{nameof(InstructorView.HireDate)}, " +
         $"{nameof(InstructorView.Office)}";

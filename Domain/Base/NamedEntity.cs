@@ -6,4 +6,3 @@ public abstract class NamedEntity<TData> : DescribedEntity<TData> where TData : 
     public string Code => getValue(data?.Code);
     public string Name => getValue(data?.Name);
 }
-

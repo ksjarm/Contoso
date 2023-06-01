@@ -1,4 +1,4 @@
-﻿using Contoso.Data;
+﻿using Contoso.Data.Base;
 
 namespace Contoso.Domain.BaseRepos;
 public interface IGrudRepo<T> where T : IEntity {

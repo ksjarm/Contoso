@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Contoso.Domain;
 using Contoso.Domain.Repos;
 using Contoso.Soft.Controllers.Common;
 using Contoso.Facade;
+using Contoso.Domain;
 
 namespace Contoso.Soft.Controllers;
 public class RelationshipsController : BaseController<IRelationshipsRepo, Relationship, RelationshipView> {
     private readonly IParentsRepo parents;
     private readonly IStudentsRepo students;
-    public RelationshipsController(IRelationshipsRepo r = null, IParentsRepo p = null, IStudentsRepo s = null) : base(r) {
-        parents = p;
+    public RelationshipsController(IRelationshipsRepo r = null, IStudentsRepo s = null, IParentsRepo p = null) : base(r) {
         students = s;
+        parents = p;
     }
 
     internal const string properties =

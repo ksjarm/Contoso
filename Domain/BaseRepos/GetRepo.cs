@@ -1,4 +1,4 @@
-﻿using Contoso.Data;
+﻿using Contoso.Data.Base;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Contoso.Domain.BaseRepos;

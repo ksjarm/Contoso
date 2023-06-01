@@ -1,5 +1,4 @@
-﻿using Contoso.Data;
-using Contoso.Data.Base;
+﻿using Contoso.Data.Base;
 
 namespace Contoso.Domain.Base;
 public abstract class BaseEntity<TData> : AnEntity<TData>, IEntity where TData : BaseData, new() {

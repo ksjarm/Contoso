@@ -29,9 +29,9 @@ public static class InitStudents {
         studentIDs = new Dictionary<string, int>();
         add = a;
     }
-    internal static StudentData student(int idx, string year) 
+    internal static StudentData student(int idx, string year)
         => student($"SFirstName{idx}", $"SLastName{idx}", $"{year}-09-01", EnumHelper.GetRandomValue<IsoGender>());
-    internal static StudentData student(string firstName, string name, string enrollment, IsoGender gender) 
+    internal static StudentData student(string firstName, string name, string enrollment, IsoGender gender)
         => db.Students.Any(x => x.Name == name)
         ? null
         : new() { FirstName = firstName, Name = name, EnrollmentDate = DateTime.Parse(enrollment), Gender = gender };

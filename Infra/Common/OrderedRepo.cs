@@ -1,5 +1,5 @@
 ﻿using Contoso.Aids;
-using Contoso.Data;
+using Contoso.Data.Base;
 using Contoso.Domain.BaseRepos;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;

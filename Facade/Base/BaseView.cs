@@ -1,4 +1,4 @@
-﻿using Contoso.Data;
+﻿using Contoso.Data.Base;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 

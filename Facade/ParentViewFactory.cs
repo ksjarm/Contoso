@@ -8,6 +8,9 @@ public sealed class ParentViewFactory : PersonViewFactory<ParentData, Parent, Pa
     public override ParentView Create(Parent o, bool load = false) {
         var v = Create(o?.data);
         v.FullName = o?.FullName;
-        return v;
+		if (!load) return v;
+		var p = new StudentViewFactory();
+		v.Relationships = o?.Relationships?.Value?.Select(x => p.Create(x?.Student?.Value));
+		return v;
     }
 }

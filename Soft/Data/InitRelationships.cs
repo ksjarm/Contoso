@@ -2,7 +2,7 @@
 
 namespace Contoso.Soft.Data;
 internal static class InitRelationships {
-    internal static int cntRelationships = InitStudents.cntStudents;
+    internal static int cntRelationships = 10000;
     internal static List<RelationshipData> relationships {
         get {
             var l = new List<RelationshipData> {

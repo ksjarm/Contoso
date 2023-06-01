@@ -10,7 +10,7 @@ using Contoso.Aids;
 namespace Contoso.Soft.Controllers;
 public class StudentsController : BaseController<IStudentsRepo, Student, StudentView> {
     private readonly List<string> genders;
-    public StudentsController(IStudentsRepo r = null) : base(r) 
+    public StudentsController(IStudentsRepo r = null) : base(r)
         => genders = Enum.GetValues(typeof(IsoGender)).Cast<IsoGender>().Select(EnumHelper.GetDescription).ToList();
 
     internal const string properties =
@@ -22,8 +22,8 @@ public class StudentsController : BaseController<IStudentsRepo, Student, Student
         $"{nameof(StudentView.FirstName)}, " +
         $"{nameof(StudentView.Name)}, " +
 	    $"{nameof(StudentView.FullName)}, " +
-		$"{nameof(StudentView.Gender)}, " +
-		$"{nameof(StudentView.PhotoView)}, " +
+        $"{nameof(StudentView.Gender)}, " +
+        $"{nameof(StudentView.PhotoView)}, " +
         $"{nameof(StudentView.PhotoUpload)}, " +
         $"{nameof(StudentView.EnrollmentDate)}";
 
