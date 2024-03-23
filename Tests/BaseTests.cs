@@ -18,7 +18,7 @@ public abstract class BaseTests<TClass, TBaseClass> : StaticTests {
         isReadWrite<T>(n);
         setValue(property(n), null);
     }
-    protected void isProperty<T>(string displayName = null, string dataType = null) {
+    protected void isProperty<T>(string displayName = null, DataType? dataType = null) {
         var n = propertyName();
         hasDisplayName(n, displayName);
         hasDataType(n, dataType);
@@ -38,12 +38,12 @@ public abstract class BaseTests<TClass, TBaseClass> : StaticTests {
         var a = p.GetCustomAttribute<DisplayNameAttribute>(true);
         Assert.AreEqual(displayName, a?.DisplayName); 
     }
-    private void hasDataType(string n, string dataType) {
+    private void hasDataType(string n, DataType? dataType) {
         if (dataType is null) return;
         var p = property(n);
         var a = p.GetCustomAttributes<DataTypeAttribute>(true).FirstOrDefault();
         Assert.IsNotNull(a);
-        var actualDataType = a.DataType.ToString();
+        var actualDataType = a.DataType;
         Assert.AreEqual(dataType, actualDataType);
     }
     private void isReadWrite<T>(string propertyName) {

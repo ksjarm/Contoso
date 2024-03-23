@@ -252,8 +252,8 @@ namespace Contoso.Soft.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNr")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("PhoneNr")
+                        .HasColumnType("int");
 
                     b.Property<byte[]>("Photo")
                         .HasColumnType("varbinary(max)");

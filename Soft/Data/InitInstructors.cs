@@ -27,7 +27,7 @@ internal static class InitInstructors {
         add = a;
     }
     internal static InstructorData instructor(int idx, string year)
-        => instructor($"FirstName{idx}", $"LastName{idx}", $"{year}-09-01", EnumHelper.GetRandomValue<IsoGender>());
+        => instructor($"FirstName{idx}", $"LastName{idx}", $"{year}-09-01", GetRandom.Enum<IsoGender>());
     internal static InstructorData instructor(string firstName, string name, string date, IsoGender gender)
         => db.Instructors.Any(x => (x.Name == name) && (x.FirstName == firstName))
         ? null

@@ -10,7 +10,7 @@ using Contoso.Aids;
 namespace Contoso.Soft.Controllers;
 public class ParentsController : BaseController<IParentsRepo, Parent, ParentView> {
     private readonly List<string> genders;
-    public ParentsController(IParentsRepo r = null) : base(r)
+    public ParentsController(IParentsRepo r = null, IStudentsRepo s = null) : base(r)
         => genders = Enum.GetValues(typeof(IsoGender)).Cast<IsoGender>().Select(EnumHelper.GetDescription).ToList();
 
     internal const string properties =
@@ -25,7 +25,8 @@ public class ParentsController : BaseController<IParentsRepo, Parent, ParentView
         $"{nameof(ParentView.Gender)}, " +
         $"{nameof(ParentView.PhotoView)}, " +
         $"{nameof(ParentView.PhotoUpload)}, " +
-        $"{nameof(ParentView.PhoneNr)}";
+        $"{nameof(ParentView.PhoneNr)}, " +
+        $"{nameof(ParentView.Relationships)}";
 
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(properties)] ParentView v) => await create(toDomain(v));

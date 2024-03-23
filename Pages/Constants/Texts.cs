@@ -13,7 +13,6 @@ public static class Texts {
     public static string OfficeAssignments => "Office Assignments";
     public static string Instructors => "Instructors";
     public static string EnrollmentYear => "Enrollment year";
-    public static string CountryCode => "+372";
 
     public static string Edit => "Edit";
 	public static string Index => "Index";

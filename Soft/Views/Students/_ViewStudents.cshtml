@@ -41,3 +41,25 @@
 		}
 	</table>
 </dd>
+
+<dt class="col-sm-2">
+	@Html.DisplayNameFor(m => m.Relationships)
+</dt>
+<dd class="col-sm-10">
+	<table class="table">
+		<tr>
+			<th>Parent</th>
+			<th>Phone Number</th>
+		</tr>
+		@foreach (var item in Model.Relationships) {
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.FullName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.PhoneNr)
+				</td>
+			</tr>
+		}
+	</table>
+</dd>

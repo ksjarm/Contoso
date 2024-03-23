@@ -13,7 +13,7 @@ public class ParentsRepo : BaseRepo<Parent, ParentData>, IParentsRepo {
              s.Where(x => x.Name.Contains(v) ||
                x.FirstName.Contains(v) ||
                x.Gender.ToString().Contains(v) ||
-               x.PhoneNr.Contains(v) ||
+               x.PhoneNr.ToString().Contains(v) ||
                x.Code.Contains(v) ||
                x.Description.Contains(v) ||
                x.ValidFrom.ToString().Contains(v) ||

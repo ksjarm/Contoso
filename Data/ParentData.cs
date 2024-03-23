@@ -2,5 +2,5 @@
 
 namespace Contoso.Data;
 public sealed class ParentData : PersonData {
-    public string PhoneNr { get; set; }
+    public int PhoneNr { get; set; }
 }

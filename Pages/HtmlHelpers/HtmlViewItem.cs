@@ -20,9 +20,9 @@ public static class HtmlViewItem {
 
     internal static List<object> htmlStrings<TModel, TValue, TLabel>
         (IHtmlHelper<TModel> h, Expression<Func<TModel, TValue>> value, Expression<Func<TModel, TLabel>> label) => new() {
-            new HtmlString(Tags.TitleStart),
+            new HtmlString(Tags.BoldTitleStart),
             h.DisplayNameFor(label),
-            new HtmlString(Tags.TitleEnd),
+            new HtmlString(Tags.BoldTitleEnd),
             new HtmlString(Tags.DataStart),
             h.DisplayFor(value),
             new HtmlString(Tags.DataEnd),

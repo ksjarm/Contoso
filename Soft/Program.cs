@@ -8,7 +8,7 @@ using System.Globalization;
 namespace Contoso.Soft;
 public class Program {
     public static void Main(string[] args) {
-        CultureInfo cultureInfo = new CultureInfo("en-US");
+        CultureInfo cultureInfo = new CultureInfo("et-EE");
         cultureInfo.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
         cultureInfo.DateTimeFormat.LongTimePattern = "";
         CultureInfo.DefaultThreadCurrentCulture = cultureInfo;

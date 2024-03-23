@@ -5,7 +5,7 @@ using Contoso.Infra;
 namespace Contoso.Soft.Data;
 public static class InitStudents {
     private static SchoolContext db;
-    internal static int cntStudents = 10000;
+    internal static int cntStudents = 1000;
     private static Dictionary<string, int> studentIDs;
     private static Action<int, Func<int, string, StudentData>> add; 
     internal static List<StudentData> students {
@@ -30,7 +30,7 @@ public static class InitStudents {
         add = a;
     }
     internal static StudentData student(int idx, string year)
-        => student($"SFirstName{idx}", $"SLastName{idx}", $"{year}-09-01", EnumHelper.GetRandomValue<IsoGender>());
+        => student($"SFirstName{idx}", $"SLastName{idx}", $"{year}-09-01", GetRandom.Enum<IsoGender>());
     internal static StudentData student(string firstName, string name, string enrollment, IsoGender gender)
         => db.Students.Any(x => x.Name == name)
         ? null

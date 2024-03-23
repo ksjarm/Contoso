@@ -18,9 +18,9 @@ public static class HtmlViewImage {
 	internal static List<object> htmlStrings<TModel, TValue>
         (IHtmlHelper<TModel> h, Expression<Func<TModel, TValue>> value, int height)
         => new() {
-            new HtmlString(Tags.TitleStart),
+            new HtmlString(Tags.BoldTitleStart),
             h.DisplayNameFor(value),
-            new HtmlString(Tags.TitleEnd),
+            new HtmlString(Tags.BoldTitleEnd),
             new HtmlString(Tags.DataStart),
             getImage(h, value, height),
             new HtmlString(Tags.DataEnd),
@@ -29,9 +29,9 @@ public static class HtmlViewImage {
         (IHtmlHelper<TModel> h, Expression<Func<TModel, TValue>> value,
         int height, string label)
         => new() {
-            new HtmlString(Tags.TitleStart),
+            new HtmlString(Tags.BoldTitleStart),
             h.Raw(label),
-            new HtmlString(Tags.TitleEnd),
+            new HtmlString(Tags.BoldTitleEnd),
             new HtmlString(Tags.DataStart),
             getImage(h, value, height),
             new HtmlString(Tags.DataEnd),

@@ -27,9 +27,9 @@ public static class HtmlSelectItem {
     internal static List<object> htmlStrings<TModel, TValue, TLabel>(IHtmlHelper<TModel> h,
         Expression<Func<TModel, TValue>> value, IEnumerable<SelectListItem> items, Expression<Func<TModel, TLabel>> label)
             => new() {
-                new HtmlString(Tags.TitleStart),
+                new HtmlString(Tags.BoldTitleStart),
                 h.DisplayNameFor(label),
-                new HtmlString(Tags.TitleEnd),
+                new HtmlString(Tags.BoldTitleEnd),
                 new HtmlString(Tags.DataStart),
                 h.DropDownListFor(value, items, new { @class = Tags.FormControl } ),
                 h.ValidationMessageFor(value, string.Empty, new { @class = Tags.TextDanger }),
@@ -38,9 +38,9 @@ public static class HtmlSelectItem {
     internal static List<object> htmlStrings<TModel, TValue, TLabel>(IHtmlHelper<TModel> h,
         Expression<Func<TModel, TValue>> value, string controller, Expression<Func<TModel, TLabel>> label)
             => new() {
-                new HtmlString(Tags.TitleStart),
+                new HtmlString(Tags.BoldTitleStart),
                 h.DisplayNameFor(label),
-                new HtmlString(Tags.TitleEnd),
+                new HtmlString(Tags.BoldTitleEnd),
                 new HtmlString(Tags.DataStart),
                 new HtmlString($"<select name=\"{getName(value)}\" " +
                                         $"class=\"selectItems2 {Tags.FormControl}\" " +

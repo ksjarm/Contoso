@@ -27,7 +27,7 @@ public static class InitSchool {
         db = c;
         c.Database.EnsureCreated();
         InitStudents.init(c, addYear);
-        InitParents.init(c, addYear);
+        InitParents.init(c, addPhoneNr);
         InitCourses.init(c, addYear);
         InitInstructors.init(c, addYear);
         InitDepartments.init(c, addYear);
@@ -56,17 +56,27 @@ public static class InitSchool {
         }
         db.SaveChanges();
     }
-    //internal static void addPhoneNr<T>(int count, Func<int, string, T> item) {
-    //    Random random = new Random();
-    //    var numberStart = 5000000;
-    //    var numberRange = 10000000 - numberStart;
-    //    for (var i = 0; i < count; i++) {
-    //        var randomNumber = "5" + random.Next(1000000, 10000000).ToString();
-    //        var x = item(i, randomNumber);
-    //        if (x is null) continue;
-    //        db.Add(x);
-    //        if (i % 500 == 0) db.SaveChanges();
+    internal static void addPhoneNr<T>(int count, Func<int, string, T> item) {
+        Random random = new Random();
+        for (var i = 0; i < count; i++) {
+            var randomNumber = "5" + random.Next(1000000, 10000000).ToString();
+            var x = item(i, randomNumber);
+            if (x is null) continue;
+            db.Add(x);
+            if (i % 500 == 0) db.SaveChanges();
+        }
+        db.SaveChanges();
+    }
+    //internal static byte[] GetDefaultPhoto() {
+    //    string defaultPhotoPath = "C:/Users/Ksenija Jarmuhhamedo/Desktop/Contoso/defaultPhoto.jpg";
+    //    if (File.Exists(defaultPhotoPath)) {
+    //        using (FileStream fileStream = File.OpenRead(defaultPhotoPath))
+    //        using (MemoryStream memoryStream = new MemoryStream()) {
+    //            fileStream.CopyTo(memoryStream);
+    //            return memoryStream.ToArray();
+    //        }
+    //    } else {
+    //        return null;
     //    }
-    //    db.SaveChanges();
     //}
 }

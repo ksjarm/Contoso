@@ -4,17 +4,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq.Expressions;
 
 namespace Contoso.Pages.HtmlHelpers;
-public static class HtmlEditItem {
-    public static IHtmlContent EditItem<TModel, TValue>
-        (this IHtmlHelper<TModel> h, Expression<Func<TModel, TValue>> value) {
-        
+public static class HtmlEditPhoneNr {
+    public static IHtmlContent EditPhoneNr<TModel, TValue>
+            (this IHtmlHelper<TModel> h, Expression<Func<TModel, TValue>> value) {
+
         var s = htmlStrings(h, value, value);
-        return new HtmlContentBuilder(s);
-    }
-    public static IHtmlContent EditItem<TModel, TValue, TLabel>
-        (this IHtmlHelper<TModel> h, Expression<Func<TModel, TValue>> value, Expression<Func<TModel, TLabel>> label) {
-        
-        var s = htmlStrings(h, value, label);
         return new HtmlContentBuilder(s);
     }
     internal static List<object> htmlStrings<TModel, TValue, TLabel>(IHtmlHelper<TModel> h,

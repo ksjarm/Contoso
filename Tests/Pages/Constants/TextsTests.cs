@@ -17,7 +17,6 @@ public class TextsTests : StaticTests {
     [TestMethod] public void OfficeAssignmentsTest() => Assert.AreEqual("Office Assignments", Texts.OfficeAssignments);
     [TestMethod] public void InstructorsTest() => Assert.AreEqual("Instructors", Texts.Instructors);
     [TestMethod] public void EnrollmentYearTest() => Assert.AreEqual("Enrollment year", Texts.EnrollmentYear);
-    [TestMethod] public void CountryCodeTest() => Assert.AreEqual("+372", Texts.CountryCode);
 
     public static string DeleteQuestion => "Are you sure you want to delete this?";
     [TestMethod] public void EditTest() => Assert.AreEqual("Edit", Texts.Edit);
